@@ -49,7 +49,7 @@ MonoBehaviour:
   movement:
     speed: 300
     angleSpeed: 0
-  damage: 5
+  damage: 10
 --- !u!212 &4027001048496272995
 SpriteRenderer:
   m_ObjectHideFlags: 0

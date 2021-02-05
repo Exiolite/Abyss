@@ -1,4 +1,5 @@
-﻿using Modules.Movements;
+﻿using Modules.HealthStats;
+using Modules.Movements;
 using Objects.Turrets;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Objects.SpaceObjects.Dynamic
     {
         [SerializeField] private Movement movement;
         [SerializeField] private TurretBehaviour[] turretBehaviours;
+        [SerializeField] private HealthStats healthStats;
 
         public SpaceObject target;
 
@@ -15,9 +17,14 @@ namespace Objects.SpaceObjects.Dynamic
 
         public void ApplyDamage(float value)
         {
+            healthStats.TryRemoveShield(value, out var success);
+            if (!success)
+            {
+                healthStats.TryRemoveHitPoints(value, out var haveHp);
+                if (!haveHp) DestroyItSelf();
+            }
+
             
-            
-            //DestroyItSelf();
         }
 
         protected override void Initialize()
