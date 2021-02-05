@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6751072013335441321}
   - component: {fileID: 6819314240838115459}
   m_Layer: 0
-  m_Name: Crawler
+  m_Name: Falcon Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3597351669651588995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7, y: -2.21, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5464723244935324128}
@@ -54,13 +54,13 @@ MonoBehaviour:
   - {fileID: 1404456769695516042}
   healthStats:
     hitPoints:
-      statValue: 5000
-      maxStatValue: 5000
+      statValue: 800
+      maxStatValue: 800
       regenerateValue: 0
     shield:
-      statValue: 2500
-      maxStatValue: 2500
-      regenerateValue: 0
+      statValue: 650
+      maxStatValue: 650
+      regenerateValue: 65
   target: {fileID: 0}
 --- !u!212 &7417966786929729339
 SpriteRenderer:
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3694011042877506897, guid: c60915f824808994db1637ac16b6b5c4,
+  m_Sprite: {fileID: -3955315786042260600, guid: c60915f824808994db1637ac16b6b5c4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 5464723245060540750, guid: d01f7a4c9ce27d04cace33e4be92ccef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5464723245060540750, guid: d01f7a4c9ce27d04cace33e4be92ccef,
         type: 3}
