@@ -4,24 +4,8 @@ using UnityEngine;
 
 namespace Modules.LevelManager.Factory
 {
-    public class Factory : ObjectBehaviour
+    public class Factory : MonoBehaviour
     {
-        protected override void Execute(){}
-        protected override void Initialize()
-        {
-            #region AddListeners
-
-            EventFactory.SpawnObject.AddListener(SpawnObject);
-            EventFactory.SpawnObjectAtTransform.AddListener(SpawnObjectAtTransform);
-            EventFactory.SpawnSpaceObject.AddListener(SpawnSpaceObject);
-            EventFactory.SpawnSpaceObjectAtTransform.AddListener(SpawnSpaceObjectAtTransform);
-            
-            #endregion
-        }
-
-
-        #region Listeners
-
         private void SpawnObject(GameObject target)
         {
             Instantiate(target);
@@ -31,7 +15,6 @@ namespace Modules.LevelManager.Factory
         {
             Instantiate(target, parentTransform);
         }
-
         
         
         private void SpawnSpaceObject(SpaceObject target)
@@ -43,8 +26,5 @@ namespace Modules.LevelManager.Factory
         {
             Instantiate(target, parentTransform);
         }
-
-        #endregion
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Modules.Account;
-using Modules.LevelManager;
 using Modules.LevelManager.Factory;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ namespace Core
 {
     public class Core : MonoBehaviour
     {
-        //Запуск ядра. НЕ ТРОГАТЬ!!!
         #region Singleton
 
         private static Core _instance;
@@ -29,13 +27,8 @@ namespace Core
 
        
         #endregion
-        
-        
-        [SerializeField] private SpaceObjectsDataBase spaceObjectsDataBase;
-        
         private readonly Account _playersAccount = new Account();
-        private readonly LevelManager _levelManager = new LevelManager();
-        
+        private readonly LevelManager.LevelManager _levelManager = new LevelManager.LevelManager();
         
         
         
@@ -46,11 +39,8 @@ namespace Core
 
         private void InitializeCoreModules()
         {
-            EventCore.CallForDataBase.AddListener(spaceObjectsDataBase.CallBackDataBase);
-            
             _playersAccount.Initialize();
             gameObject.AddComponent<Factory>();
-            _levelManager.Initialize();
         }
     }
 }

@@ -20,17 +20,12 @@ namespace Modules.HealthStats
         {
             statValue = value;
         }
-        
+
         public float GetPercent()
         {
             return statValue / maxStatValue;
         }
         
-        public void ChangeStat(float value)
-        {
-            statValue = Mathf.Clamp(statValue + value, 0, maxStatValue);
-        }
-
         public void RegenerateStat()
         {
             statValue = Mathf.Clamp(statValue + (regenerateValue * Time.deltaTime), 0, maxStatValue);
