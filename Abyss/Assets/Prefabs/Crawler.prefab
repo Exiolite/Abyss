@@ -52,6 +52,15 @@ MonoBehaviour:
     angleSpeed: 15
   turretBehaviours:
   - {fileID: 1404456769695516042}
+  healthStats:
+    hitPoints:
+      statValue: 5000
+      maxStatValue: 5000
+      regenerateValue: 0
+    shield:
+      statValue: 2500
+      maxStatValue: 2500
+      regenerateValue: 0
   target: {fileID: 0}
 --- !u!212 &7417966786929729339
 SpriteRenderer:
