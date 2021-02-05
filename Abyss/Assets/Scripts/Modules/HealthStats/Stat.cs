@@ -5,17 +5,22 @@ namespace Modules.HealthStats
     [System.Serializable]
     public class Stat
     {
-
         [SerializeField] private float statValue;
-        public float StatValue => statValue;
-        
         [SerializeField] private float maxStatValue;
-        public float MaxStatValue => maxStatValue;
-        
         [SerializeField] private float regenerateValue;
 
 
+        
+        public void Add(float value)
+        {
+            statValue = Mathf.Clamp(statValue + value, 0, maxStatValue);
+        }
 
+        public void Remove(float value)
+        {
+            statValue = Mathf.Clamp(statValue - value, 0, maxStatValue);
+        }
+        
         public void SetStat(float value)
         {
             statValue = value;
@@ -31,9 +36,9 @@ namespace Modules.HealthStats
             statValue = Mathf.Clamp(statValue + (regenerateValue * Time.deltaTime), 0, maxStatValue);
         }
         
-        public bool CheckStat()
+        public bool IsEnough(float value)
         {
-            return (statValue > 0);
+            return statValue > value;
         }
 
         public bool CheckStatRegenerated()
