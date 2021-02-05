@@ -1,30 +1,36 @@
-﻿using Core;
-using Objects.SpaceObjects;
+﻿using Objects.SpaceObjects;
+using Statics;
 using UnityEngine;
 
-namespace Modules.LevelManager.Factory
+namespace Core
 {
     public class Factory : MonoBehaviour
     {
-        private void SpawnObject(GameObject target)
+        public void SpawnObject(GameObject target)
         {
             Instantiate(target);
         }
 
-        private void SpawnObjectAtTransform(GameObject target, Transform parentTransform)
+        public void SpawnObjectAtTransform(GameObject target, Transform parentTransform)
         {
             Instantiate(target, parentTransform);
         }
         
         
-        private void SpawnSpaceObject(SpaceObject target)
+        public void SpawnSpaceObject(SpaceObject target)
         {
             Instantiate(target);
         }
         
-        private void SpawnSpaceObjectAtTransform(SpaceObject target, Transform parentTransform)
+        public void SpawnSpaceObjectAtTransform(SpaceObject target, Transform parentTransform)
         {
             Instantiate(target, parentTransform);
+        }
+        
+        public void SpawnSpaceObjectAtRange(SpaceObject target)
+        {
+            var spaceObject = Instantiate(target);
+            spaceObject.transform.position = Randomizer.GenerateDotOfInterest(60);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Modules.Account;
-using Modules.LevelManager.Factory;
 using UnityEngine;
 
 namespace Core
@@ -27,9 +26,12 @@ namespace Core
 
        
         #endregion
+
+        
+        
         private readonly Account _playersAccount = new Account();
         private readonly LevelManager.LevelManager _levelManager = new LevelManager.LevelManager();
-        
+        private Factory _factory;
 
         private void FirstInitialization()
         {
@@ -39,7 +41,8 @@ namespace Core
         private void InitializeCoreModules()
         {
             _playersAccount.Initialize();
-            gameObject.AddComponent<Factory>();
+            _factory = gameObject.AddComponent<Factory>();
+            _levelManager.Initialize(_factory);
             _levelManager.CreateLevel();
         }
     }
