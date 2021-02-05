@@ -30,8 +30,7 @@ namespace Core
         private readonly Account _playersAccount = new Account();
         private readonly LevelManager.LevelManager _levelManager = new LevelManager.LevelManager();
         
-        
-        
+
         private void FirstInitialization()
         {
             InitializeCoreModules();
@@ -41,6 +40,7 @@ namespace Core
         {
             _playersAccount.Initialize();
             gameObject.AddComponent<Factory>();
+            _levelManager.CreateLevel();
         }
     }
 }

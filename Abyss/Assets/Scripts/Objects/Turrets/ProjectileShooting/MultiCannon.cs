@@ -1,15 +1,17 @@
-﻿namespace Objects.Turrets.ProjectileShooting
+﻿using UnityEngine;
+
+namespace Objects.Turrets.ProjectileShooting
 {
     public class MultiCannon : TurretBehaviour
     {
-        protected override void Initialize()
+        [SerializeField] private ProjectileBehaviour projectileBehaviour;
+        
+        protected override void AttackTarget()
         {
-            
-        }
-
-        protected override void Execute()
-        {
-            
+            if (Target == null) return;
+            var projectile = Instantiate(projectileBehaviour, transform);
+            projectile.SetTarget(Target);
+            projectile.transform.parent = null;
         }
     }
 }
