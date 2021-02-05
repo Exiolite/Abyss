@@ -15,7 +15,8 @@ namespace Modules.HealthStats
         [SerializeField] private float regenerateValue;
 
 
-
+        
+        
         public void SetStat(float value)
         {
             statValue = value;
