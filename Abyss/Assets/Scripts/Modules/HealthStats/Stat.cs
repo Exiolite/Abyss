@@ -40,6 +40,11 @@ namespace Modules.HealthStats
         {
             return statValue > value;
         }
+        
+        public bool CheckUnderZero()
+        {
+            return statValue > 0;
+        }
 
         public bool CheckStatRegenerated()
         {

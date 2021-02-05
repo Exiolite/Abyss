@@ -30,7 +30,7 @@ namespace Modules.HealthStats
         }
         public void TryRemoveShield(float value, out bool success)
         {
-            if (shield.IsEnough(value))
+            if (shield.CheckUnderZero())
             {
                 shield.Remove(value);
                 success = true;
