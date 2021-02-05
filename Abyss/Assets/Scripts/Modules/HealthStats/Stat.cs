@@ -10,7 +10,17 @@ namespace Modules.HealthStats
         [SerializeField] private float regenerateValue;
 
 
+        
+        public void Add(float value)
+        {
+            statValue = Mathf.Clamp(statValue + value, 0, maxStatValue);
+        }
+
         public void Remove(float value)
+        {
+            statValue = Mathf.Clamp(statValue - value, 0, maxStatValue);
+        }
+        
         public void SetStat(float value)
         {
             statValue = value;
