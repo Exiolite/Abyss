@@ -17,22 +17,17 @@ namespace Objects.SpaceObjects.Dynamic
         [SerializeField] private TurretBehaviour[] turretBehaviours;
         [SerializeField] private HealthStats healthStats;
 
-        public SpaceObject _target;
-
+        private SpaceObject _target;
+        private float _damagedTime;
 
 
         public void ApplyDamage(float value)
         {
-            healthStats.TryRemoveShield(value, out var success);
-            if (!success)
-            {
-                healthStats.TryRemoveHitPoints(value, out var haveHp);
-                if (!haveHp)
-                {
-                    NavigationEvent.RemoveArrow.Invoke(this);
-                    DestroyItSelf();
-                }
-            }
+            _damagedTime = Time.time;
+            healthStats.TryApplyDamage(value, out var haveHp);
+            if (!haveHp) return;
+            NavigationEvent.RemoveArrow.Invoke(this);
+            DestroyItSelf();
         }
 
         public void SetTarget(SpaceObject target)
@@ -42,6 +37,7 @@ namespace Objects.SpaceObjects.Dynamic
         
         protected override void Execute()
         {
+            if (Time.time > _damagedTime + 3.0f)healthStats.RegenerateShield();
             if (_target == null) return;
             movement.SmoothRotateToTarget(gameObject.transform, _target.transform);
             movement.HardMoveForward(gameObject.transform);

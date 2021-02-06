@@ -34,6 +34,5 @@ namespace Modules.Movements
         {
             transform.position += transform.right * (Time.deltaTime * Random.Range(speed-Random.Range(0,50),speed+Random.Range(0,50)));
         }
-
     }
 }

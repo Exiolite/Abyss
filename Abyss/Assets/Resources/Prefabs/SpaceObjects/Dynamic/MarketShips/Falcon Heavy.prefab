@@ -50,19 +50,20 @@ MonoBehaviour:
   objName: Falcon Heavy
   maxDepth: 20
   movement:
-    speed: 10
-    angleSpeed: 6
+    speed: 13
+    angleSpeed: 8
   turretBehaviours:
   - {fileID: 1404456769695516042}
   healthStats:
     hitPoints:
-      statValue: 800
-      maxStatValue: 800
+      statValue: 1650
+      maxStatValue: 1650
       regenerateValue: 0
     shield:
-      statValue: 650
-      maxStatValue: 650
-      regenerateValue: 65
+      statValue: 1100
+      maxStatValue: 1100
+      regenerateValue: 55
+    delayBeforeRegenerateShield: 3
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

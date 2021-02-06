@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Objects.Bot;
+using UnityEngine;
 
 namespace Core.LevelManager
 {
@@ -66,7 +67,11 @@ namespace Core.LevelManager
             for (var i = 0; i <= _levelManager.DepthCounter; i++)
             {
                 var enemyShip = _levelManager.DataBase.TryGetEnemyForDepth(_levelManager.DepthCounter, out var success);
-                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(enemyShip);
+                if (success)
+                {
+                    enemyShip.gameObject.AddComponent<Bot>();
+                    _levelManager.Factory.SpawnSpaceObjectAtRange(enemyShip);
+                }
                 if (_levelManager.DepthCounter >= Random.Range(10,12)) break;
             }
         }

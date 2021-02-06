@@ -11,6 +11,7 @@ namespace Objects.Camera
         
         private void LateUpdate()
         {
+            if (LevelManager.InstancedPlayer==null)return;
             var desiredPosition = LevelManager.InstancedPlayer.transform.position + offset;
             var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
             transform.position = smoothedPosition;

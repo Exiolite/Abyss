@@ -78,14 +78,14 @@ namespace Objects.NavigationCircle
         {
             canvasRotator.transform.eulerAngles = new Vector3(0,0,0);
             var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
-            if (distanceToTarget < 15)
+            if (distanceToTarget < 17.5f)
             {
                 toTargetSpring.transform.localPosition = new Vector3(distanceToTarget, 0,0);
                 arrowCollider.transform.localPosition = new Vector3(0,4,0);
             }
             else
             {
-                toTargetSpring.transform.localPosition = new Vector3(15, 0,0);
+                toTargetSpring.transform.localPosition = new Vector3(17.5f, 0,0);
                 arrowCollider.transform.localPosition = new Vector3(0,0,0);
             }
         }
