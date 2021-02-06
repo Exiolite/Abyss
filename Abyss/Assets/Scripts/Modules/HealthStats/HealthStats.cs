@@ -28,6 +28,7 @@ namespace Modules.HealthStats
                 success = false;
             }
         }
+        
         public void TryRemoveShield(float value, out bool success)
         {
             if (shield.CheckUnderZero())

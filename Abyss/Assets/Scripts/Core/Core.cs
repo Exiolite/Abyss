@@ -43,7 +43,7 @@ namespace Core
             _playersAccount.Initialize();
             _factory = gameObject.AddComponent<Factory>();
             _levelManager.Initialize(_factory);
-            _levelManager.CreateLevel();
+            _levelManager.ManageLevelCreation();
         }
     }
 }

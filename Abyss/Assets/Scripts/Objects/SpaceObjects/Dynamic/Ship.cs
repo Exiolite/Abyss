@@ -23,8 +23,6 @@ namespace Objects.SpaceObjects.Dynamic
                 healthStats.TryRemoveHitPoints(value, out var haveHp);
                 if (!haveHp) DestroyItSelf();
             }
-
-            
         }
 
         protected override void Initialize()
