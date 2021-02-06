@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6751072013335441321}
   - component: {fileID: 6819314240838115459}
   m_Layer: 0
-  m_Name: Container_Small
+  m_Name: Container_Small_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a683b8dad78f4569af6448ba61621e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Small Container
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

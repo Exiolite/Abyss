@@ -47,21 +47,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852a32df303462eb2fcb88bbcf6bfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Falcon
+  maxDepth: 10
   movement:
-    speed: 20
-    angleSpeed: 15
+    speed: 14
+    angleSpeed: 9
   turretBehaviours:
   - {fileID: 1404456769695516042}
   healthStats:
     hitPoints:
-      statValue: 450
-      maxStatValue: 450
+      statValue: 800
+      maxStatValue: 800
       regenerateValue: 0
     shield:
-      statValue: 250
-      maxStatValue: 250
-      regenerateValue: 10
-  target: {fileID: 0}
+      statValue: 450
+      maxStatValue: 450
+      regenerateValue: 45
+    delayBeforeRegenerateShield: 3
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -80,7 +82,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

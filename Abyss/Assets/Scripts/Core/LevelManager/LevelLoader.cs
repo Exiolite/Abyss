@@ -2,9 +2,12 @@
 {
     public class LevelLoader
     {
-        public void LoadLevel()
+        private LevelManager _levelManager;
+        
+        
+        public void Initialize(LevelManager levelManager)
         {
-            
+            _levelManager = levelManager;
         }
     }
 }

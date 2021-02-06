@@ -25,10 +25,14 @@ namespace Modules.Movements
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * angleSpeed / 10);
         }
         
-        public void MoveShipForward(Transform transform)
+        public void HardMoveForward(Transform transform)
         {
             transform.position += transform.right * (Time.deltaTime * speed);
         }
 
+        public void HardMoveRandomSpeed(Transform transform)
+        {
+            transform.position += transform.right * (Time.deltaTime * Random.Range(speed-Random.Range(0,50),speed+Random.Range(0,50)));
+        }
     }
 }

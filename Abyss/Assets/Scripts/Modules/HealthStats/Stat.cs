@@ -48,7 +48,7 @@ namespace Modules.HealthStats
 
         public bool CheckStatRegenerated()
         {
-            return !(statValue == maxStatValue);
+            return statValue == maxStatValue;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Modules.Account
         private bool _haveProgress;
         private bool _isPlayerAlive;
 
+        private string _playerShipName;
 
 
         public void Initialize()
@@ -18,27 +19,45 @@ namespace Modules.Account
             Load();
         }
         
-        private void Save()
+        
+        
+        //Account parameters
+        public void Save()
         {
             _haveProgress = true;
         }
 
-        private void SetPremium()
+        public void SetPremium()
         {
             _isPremium = true;
         }
         
         private void Load()
         {
-            
+            if (_haveProgress)
+            {
+                
+            }
+            else
+            {
+                _playerShipName = "Falcon";
+            }
         }
 
-        private void Reset()
+        public void Reset()
         {
             _haveProgress = false;
         }
         
-        private void DepositToSave()
+        //Ship
+        public string GetPlayersShipName()
+        {
+            return _playerShipName;
+        }
+        
+        
+        //Resources actions
+        public void DepositToSave()
         {
             accountSavedAccountResources.AddCredits(onShipAccountResources.GetCredits());
             onShipAccountResources.ResetCredits();
@@ -46,19 +65,19 @@ namespace Modules.Account
             onShipAccountResources.ResetMaterials();
         }
 
-        private void TryRemoveCredits(GameObject target, int creditsValue)
+        public void TryRemoveCredits(int creditsValue, out bool success)
         {
-            accountSavedAccountResources.TryRemoveCredits(creditsValue, out var success);
+            accountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
         }
         
-        private void TryRemoveMaterials(GameObject target, int materialsValue)
+        public void TryRemoveMaterials(int materialsValue, out bool success)
         {
-            accountSavedAccountResources.TryRemoveMaterials(materialsValue, out var success);
+            accountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
         }
 
-        private void TryRemoveResources(GameObject target, int creditsValue, int materialsValue)
+        public void TryRemoveResources(int creditsValue, int materialsValue, out bool success)
         {
-            accountSavedAccountResources.TryRemoveCredits(creditsValue, out var success);
+            accountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
             accountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
         }
     }

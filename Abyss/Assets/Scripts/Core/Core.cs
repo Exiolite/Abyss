@@ -27,12 +27,16 @@ namespace Core
        
         #endregion
 
+        public Account PlayersAccount => _playersAccount;
+        public LevelManager.LevelManager LevelManager => _levelManager;
         
         
         private readonly Account _playersAccount = new Account();
         private readonly LevelManager.LevelManager _levelManager = new LevelManager.LevelManager();
         private Factory _factory;
 
+        
+        
         private void FirstInitialization()
         {
             InitializeCoreModules();
@@ -43,7 +47,7 @@ namespace Core
             _playersAccount.Initialize();
             _factory = gameObject.AddComponent<Factory>();
             _levelManager.Initialize(_factory);
-            _levelManager.CreateLevel();
+            _levelManager.ManageLevelCreation();
         }
     }
 }
