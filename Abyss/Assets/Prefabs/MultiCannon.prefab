@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7454ca6e82442b9d040fc01daf8662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 0.01
+  attackDelay: 0.001
+  movement:
+    speed: 0
+    angleSpeed: 0
   projectileBehaviour: {fileID: 6989442771255078612, guid: 116f05c2a09dfad439dcde738193b122,
     type: 3}
 --- !u!212 &6368302267476352592

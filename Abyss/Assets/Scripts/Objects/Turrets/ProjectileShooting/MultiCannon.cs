@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Objects.SpaceObjects;
+using UnityEngine;
 
 namespace Objects.Turrets.ProjectileShooting
 {
@@ -6,11 +7,10 @@ namespace Objects.Turrets.ProjectileShooting
     {
         [SerializeField] private ProjectileBehaviour projectileBehaviour;
         
-        protected override void AttackTarget()
+        protected override void AttackTarget(SpaceObject target)
         {
-            if (Target == null) return;
             var projectile = Instantiate(projectileBehaviour, transform);
-            projectile.SetTarget(Target);
+            projectile.SetTarget(target);
             projectile.transform.parent = null;
         }
     }

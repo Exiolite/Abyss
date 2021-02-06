@@ -39,7 +39,7 @@ namespace Objects.Turrets
 
         private void Update()
         {
-            movement.MoveShipForward(transform);
+            movement.HardMoveRandomSpeed(transform);
         }
 
         private IEnumerator Destroy()

@@ -33,6 +33,7 @@ namespace Objects.SpaceObjects
         private void DestroyObject(Ship player)
         {
             if (this == player) return;
+            NavigationEvent.RemoveArrow.Invoke(this);
             DestroyItSelf();
         }
 

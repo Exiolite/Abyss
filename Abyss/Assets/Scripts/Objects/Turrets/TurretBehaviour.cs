@@ -11,33 +11,23 @@ namespace Objects.Turrets
         [SerializeField] private Movement movement;
         
         
-        private protected SpaceObject Target;
         private bool isAttacking;
         
 
         public void SetTarget(SpaceObject target)
         {
-            Target = target;
+            movement.HardRotateToTarget(transform, target.transform);
+            StartCoroutine(AttackCoroutine(target));
         }
-
         
-        
-        private void Update()
-        {
-            if (Target != null)
-            {
-                movement.HardRotateToTarget(transform, Target.transform);
-                StartCoroutine(AttackCoroutine());
-            }
-        }
 
-        protected abstract void AttackTarget();
+        protected abstract void AttackTarget(SpaceObject target);
 
-        private IEnumerator AttackCoroutine()
+        private IEnumerator AttackCoroutine(SpaceObject target)
         {
             if (isAttacking) yield break;
             isAttacking = true;
-            AttackTarget();
+            AttackTarget(target);
             yield return new WaitForSeconds(attackDelay);
             isAttacking = false;
         }

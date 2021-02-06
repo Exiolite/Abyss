@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement:
-    speed: 300
+    speed: 150
     angleSpeed: 0
-  damage: 10
+  damage: 2
 --- !u!212 &4027001048496272995
 SpriteRenderer:
   m_ObjectHideFlags: 0

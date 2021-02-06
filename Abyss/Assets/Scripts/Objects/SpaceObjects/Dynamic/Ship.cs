@@ -1,6 +1,8 @@
 ﻿using Modules.HealthStats;
 using Modules.Movements;
+using Objects.NavigationCircle;
 using Objects.Turrets;
+using Statics;
 using UnityEngine;
 
 namespace Objects.SpaceObjects.Dynamic
@@ -15,7 +17,7 @@ namespace Objects.SpaceObjects.Dynamic
         [SerializeField] private TurretBehaviour[] turretBehaviours;
         [SerializeField] private HealthStats healthStats;
 
-        private SpaceObject _target;
+        public SpaceObject _target;
 
 
 
@@ -25,7 +27,11 @@ namespace Objects.SpaceObjects.Dynamic
             if (!success)
             {
                 healthStats.TryRemoveHitPoints(value, out var haveHp);
-                if (!haveHp) DestroyItSelf();
+                if (!haveHp)
+                {
+                    NavigationEvent.RemoveArrow.Invoke(this);
+                    DestroyItSelf();
+                }
             }
         }
 
@@ -38,8 +44,10 @@ namespace Objects.SpaceObjects.Dynamic
         {
             if (_target == null) return;
             movement.SmoothRotateToTarget(gameObject.transform, _target.transform);
-            movement.MoveShipForward(gameObject.transform);
+            movement.HardMoveForward(gameObject.transform);
             if (_target.GetType() != typeof(Ship)) return;
+            var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
+            if (distanceToTarget > 60) return;
             foreach (var turretBehaviour in turretBehaviours)
             {
                 turretBehaviour.SetTarget(_target);
