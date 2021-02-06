@@ -48,21 +48,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Crawler
+  maxDepth: 10
   movement:
-    speed: 20
-    angleSpeed: 15
+    speed: 15
+    angleSpeed: 10
   turretBehaviours:
   - {fileID: 1404456769695516042}
   healthStats:
     hitPoints:
-      statValue: 150
-      maxStatValue: 150
+      statValue: 250
+      maxStatValue: 250
       regenerateValue: 0
     shield:
-      statValue: 100
-      maxStatValue: 100
+      statValue: 150
+      maxStatValue: 150
       regenerateValue: 10
-  target: {fileID: 0}
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

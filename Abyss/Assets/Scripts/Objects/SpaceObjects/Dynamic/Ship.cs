@@ -7,11 +7,15 @@ namespace Objects.SpaceObjects.Dynamic
 {
     public class Ship : SpaceObject
     {
+        public int MaxDepth => maxDepth;
+        public HealthStats HealthStats => healthStats;
+        
+        [SerializeField] private int maxDepth;
         [SerializeField] private Movement movement;
         [SerializeField] private TurretBehaviour[] turretBehaviours;
         [SerializeField] private HealthStats healthStats;
 
-        public SpaceObject target;
+        private SpaceObject _target;
 
 
 
@@ -25,19 +29,20 @@ namespace Objects.SpaceObjects.Dynamic
             }
         }
 
-        protected override void Initialize()
+        public void SetTarget(SpaceObject target)
         {
-            
+            _target = target;
         }
-
+        
         protected override void Execute()
         {
-            if (target == null) return;
-            movement.SmoothRotateToTarget(gameObject.transform, target.transform);
+            if (_target == null) return;
+            movement.SmoothRotateToTarget(gameObject.transform, _target.transform);
             movement.MoveShipForward(gameObject.transform);
+            if (_target.GetType() != typeof(Ship)) return;
             foreach (var turretBehaviour in turretBehaviours)
             {
-                turretBehaviour.SetTarget(target);
+                turretBehaviour.SetTarget(_target);
             }
         }
     }

@@ -28,7 +28,12 @@ namespace Core.LevelManager
             if (_levelManager.InstancedPlayer != null) return;
             var playerShipName = Core.Instance.PlayersAccount.GetPlayersShipName();
             var playersShip = _levelManager.DataBase.TryFindPlayersShip(playerShipName, out var success);
-            if (success) _levelManager.SetPlayer(_levelManager.Factory.SpawnPlayer(playersShip));
+            if (success)
+            {
+                _levelManager.SetPlayer(_levelManager.Factory.SpawnPlayer(playersShip));
+                _levelManager.Factory.SpawnObject(_levelManager.DataBase.GetNavigationCircle());
+            }
+
         }
         
         private void CreateStation()
@@ -57,7 +62,13 @@ namespace Core.LevelManager
 
         private void CreateEnemies()
         {
-            
+            if (_levelManager.DepthCounter % 10 == 0 || _levelManager.DepthCounter % 5 == 0) return;
+            for (var i = 0; i <= _levelManager.DepthCounter; i++)
+            {
+                var enemyShip = _levelManager.DataBase.TryGetEnemyForDepth(_levelManager.DepthCounter, out var success);
+                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(enemyShip);
+                if (_levelManager.DepthCounter >= Random.Range(10,12)) break;
+            }
         }
 
         private void CreateAbyss()

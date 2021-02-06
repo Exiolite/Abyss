@@ -14,17 +14,17 @@ namespace Core
         private int objectId;
         
         
+        
         public void SpawnObject(GameObject target)
         {
             var spawnedObject = Instantiate(target);
-            SetObjectId(spawnedObject.gameObject);
         }
 
         public void SpawnObjectAtTransform(GameObject target, Transform parentTransform)
         {
             var spawnedObject = Instantiate(target, parentTransform);
-            SetObjectId(spawnedObject.gameObject);
         }
+        
         
         
         public void SpawnSpaceObject(SpaceObject target)

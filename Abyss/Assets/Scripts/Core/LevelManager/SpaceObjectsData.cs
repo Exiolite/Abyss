@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Objects.NavigationCircle;
 using Objects.SpaceObjects;
 using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
@@ -9,8 +10,8 @@ namespace Core.LevelManager
     public class SpaceObjectsData
     {
         private readonly List<SpaceObject> _allSpaceObjects = new List<SpaceObject>();
-        private SpaceObject[] _enemiesShips;
-        private SpaceObject[] _marketShips;
+        private Ship[] _enemiesShips;
+        private Ship[] _marketShips;
         private SpaceObject[] _abysses;
         private SpaceObject[] _containersSmall;
         private SpaceObject[] _containersMedium;
@@ -19,6 +20,7 @@ namespace Core.LevelManager
         private SpaceObject[] _shipYards;
         private SpaceObject[] _shops;
 
+        private NavigationCircle _navigationCircle;
 
 
         public void Initialize()
@@ -27,11 +29,30 @@ namespace Core.LevelManager
         }
         
         
+        //NavigationCircle
+        public GameObject GetNavigationCircle()
+        {
+            return _navigationCircle.gameObject;
+        }
         
         //Ships
         public Ship TryFindPlayersShip(string shipName, out bool success)
         {
             return (Ship)TryFindObjectByName(shipName, out success);
+        }
+
+        public Ship TryGetEnemyForDepth(int depth, out bool success)
+        {
+            foreach (var enemiesShip in _enemiesShips)
+            {
+                if (enemiesShip.MaxDepth > depth)
+                {
+                    success = true;
+                    return enemiesShip;
+                }
+            }
+            success = false;
+            return null;
         }
         
         
@@ -95,15 +116,17 @@ namespace Core.LevelManager
         
         private void LoadResources()
         {
-            _enemiesShips = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Dynamic/EnemiesShips/"));
-            _marketShips = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Dynamic/MarketShips/"));
-            _abysses = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Abysses/"));
-            _containersSmall = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Containers/Small/"));
-            _containersMedium = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Containers/Medium/"));
-            _containersBig = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Containers/Big/"));
-            _repairStations = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/RepairStations/"));
-            _shipYards = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/ShipYards/"));
-            _shops = (Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Shops/"));
+            _enemiesShips = Resources.LoadAll<Ship>("Prefabs/SpaceObjects/Dynamic/EnemiesShips/");
+            _marketShips = Resources.LoadAll<Ship>("Prefabs/SpaceObjects/Dynamic/MarketShips/");
+            _abysses = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Abysses/");
+            _containersSmall = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Containers/Small/");
+            _containersMedium = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Containers/Medium/");
+            _containersBig = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Containers/Big/");
+            _repairStations = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/RepairStations/");
+            _shipYards = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/ShipYards/");
+            _shops = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Shops/");
+            
+            _navigationCircle = Resources.Load<NavigationCircle>("Prefabs/NavigationCircle/NavigationCircle");
             
             
             //Crutch resource load to list //TODO: TBD Resource Load

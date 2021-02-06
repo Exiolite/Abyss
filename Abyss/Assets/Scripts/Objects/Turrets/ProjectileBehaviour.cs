@@ -12,7 +12,7 @@ namespace Objects.Turrets
         [SerializeField] private Movement movement;
         [SerializeField] private float damage;
         
-        private protected Ship Target;
+        private protected SpaceObject Target;
 
 
         
@@ -26,19 +26,19 @@ namespace Objects.Turrets
             if (Target == null) return;
             if (other.gameObject == Target.gameObject)
             {
-                Target.ApplyDamage(damage);
+                var dynamicTarget = (Ship)Target;
+                dynamicTarget.ApplyDamage(damage);
                 Destroy(gameObject);
             }
         }
 
         public void SetTarget(SpaceObject target)
         {
-            Target = (Ship)target;
+            Target = target;
         }
 
         private void Update()
         {
-            if (Target == null) return;
             movement.MoveShipForward(transform);
         }
 

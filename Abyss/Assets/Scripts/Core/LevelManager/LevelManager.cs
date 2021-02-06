@@ -31,5 +31,13 @@ namespace Core.LevelManager
         {
             InstancedPlayer = target;
         }
+
+        public void CreateNextLevel()
+        {
+            LevelEvent.DestoryAllExcludePlayer.Invoke(InstancedPlayer);
+            Factory.ResetId(true);
+            _levelCreator.CreateLevel();
+            DepthCounter++;
+        }
     }
 }

@@ -5,6 +5,9 @@ namespace Modules.HealthStats
     [System.Serializable]
     public class HealthStats
     {
+        public Stat HitPoints => hitPoints;
+        public Stat Shield => shield;
+        
         [SerializeField] private Stat hitPoints;
         [SerializeField] private Stat shield;
 

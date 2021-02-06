@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using Modules.Account;
+using UnityEngine;
 
 namespace Core
 {
     public abstract class ObjectBehaviour : MonoBehaviour
     {
-        protected Core Core;
+        protected Account PlayersAccount;
+        protected LevelManager.LevelManager LevelManager;
+
         
+
         private void Start()
         {
-            Core = Core.Instance;
+            LevelManager = Core.Instance.LevelManager;
+            PlayersAccount = Core.Instance.PlayersAccount;
             Initialize();
         }
 

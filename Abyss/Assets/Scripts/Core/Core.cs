@@ -28,7 +28,7 @@ namespace Core
         #endregion
 
         public Account PlayersAccount => _playersAccount;
-        
+        public LevelManager.LevelManager LevelManager => _levelManager;
         
         
         private readonly Account _playersAccount = new Account();

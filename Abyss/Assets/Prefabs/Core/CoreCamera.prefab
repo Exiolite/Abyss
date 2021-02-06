@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609787492125650582}
   - component: {fileID: -7687409609195246258}
+  - component: {fileID: 62202081104850573}
   m_Layer: 0
   m_Name: CoreCamera
   m_TagString: Untagged
@@ -128,6 +129,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632a5f219b5c2dc43a867a57c76dfbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &62202081104850573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445232296699171926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dea1b4ec69a40c7abb7bbf5ef31479a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 10
+  offset: {x: 0, y: 4, z: 0}
 --- !u!1 &8173274422871383195
 GameObject:
   m_ObjectHideFlags: 0

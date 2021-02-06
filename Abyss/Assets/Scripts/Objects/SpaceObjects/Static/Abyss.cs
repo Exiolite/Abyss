@@ -1,15 +1,17 @@
-﻿namespace Objects.SpaceObjects.Static
+﻿using UnityEngine;
+
+namespace Objects.SpaceObjects.Static
 {
     public class Abyss : SpaceObject
     {
-        protected override void Initialize()
-        {
-            
-        }
+        protected override void Execute(){}
 
-        protected override void Execute()
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            
+            if (other.gameObject == LevelManager.InstancedPlayer.gameObject)
+            {
+                LevelManager.CreateNextLevel();
+            }
         }
     }
 }

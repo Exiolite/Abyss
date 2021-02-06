@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Falcon Heavy
+  maxDepth: 20
   movement:
-    speed: 20
-    angleSpeed: 15
+    speed: 10
+    angleSpeed: 6
   turretBehaviours:
   - {fileID: 1404456769695516042}
   healthStats:
@@ -62,7 +63,6 @@ MonoBehaviour:
       statValue: 650
       maxStatValue: 650
       regenerateValue: 65
-  target: {fileID: 0}
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
