@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919ec7c5b92b4874826feb4d65645531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Roundy Repair Station
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

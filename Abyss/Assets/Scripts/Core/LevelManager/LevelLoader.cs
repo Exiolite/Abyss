@@ -2,14 +2,12 @@
 {
     public class LevelLoader
     {
-        private SpaceObjectsData _spaceObjects;
-        private Factory _factory;
+        private LevelManager _levelManager;
         
         
-        public void Initialize(SpaceObjectsData spaceObjects, Factory factory)
+        public void Initialize(LevelManager levelManager)
         {
-            _spaceObjects = spaceObjects;
-            _factory = factory;
+            _levelManager = levelManager;
         }
     }
 }

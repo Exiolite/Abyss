@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412160b4cb4d477a98922a6c26cae514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Nonstop Abyss Shop
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

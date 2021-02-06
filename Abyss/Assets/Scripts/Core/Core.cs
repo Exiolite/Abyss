@@ -27,12 +27,16 @@ namespace Core
        
         #endregion
 
+        public Account PlayersAccount => _playersAccount;
+        
         
         
         private readonly Account _playersAccount = new Account();
         private readonly LevelManager.LevelManager _levelManager = new LevelManager.LevelManager();
         private Factory _factory;
 
+        
+        
         private void FirstInitialization()
         {
             InitializeCoreModules();
