@@ -7,11 +7,13 @@ namespace Core
 {
     public class Factory : ObjectBehaviour
     {
-        protected override void Initialize(){}
-        protected override void Execute(){}
-
         private readonly string _objectPreIndex = "IO";
         private int objectId;
+        
+        
+        
+        protected override void Initialize(){}
+        protected override void Execute(){}
         
         
         
@@ -24,9 +26,13 @@ namespace Core
         {
             var spawnedObject = Instantiate(target, parentTransform);
         }
-        
-        
-        
+
+        public void SpawnParticlesAtTransform(Ship target, ParticleSystem targetParticles)
+        {
+            var particles = Instantiate(targetParticles, target.transform);
+            target.AddParticles(particles);
+        }
+
         public void SpawnSpaceObject(SpaceObject target)
         {
             var spawnedObject = Instantiate(target);
@@ -58,6 +64,7 @@ namespace Core
         {
             objectId = isPlayerAlive ? 1 : 0;
         }
+        
         
         
         private void SetObjectId(GameObject spawnedObject)

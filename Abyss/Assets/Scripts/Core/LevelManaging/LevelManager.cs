@@ -1,8 +1,7 @@
-﻿
-using Objects.SpaceObjects.Dynamic;
+﻿using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
 
-namespace Core.LevelManager
+namespace Core.LevelManaging
 {
     public class LevelManager
     {
@@ -15,6 +14,7 @@ namespace Core.LevelManager
         private readonly LevelCreator _levelCreator = new LevelCreator();
 
 
+        
         public void Initialize(Factory factory)
         {
             Factory = factory;
@@ -47,6 +47,12 @@ namespace Core.LevelManager
         {
             var container = DataBase.TryGetSmallContainer(out var success);
             if (success) Factory.SpawnSpaceObjectAtTransform(container, parent);
+        }
+
+        public void AddShieldParticle(Ship parent)
+        {
+            var shieldParticles = DataBase.TryGetShieldDamageEffect(out var success);
+            if (success) Factory.SpawnParticlesAtTransform(parent, shieldParticles);
         }
     }
 }

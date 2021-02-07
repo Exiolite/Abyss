@@ -3,13 +3,16 @@ using UnityEngine;
 
 namespace Objects.Turrets.ProjectileShooting
 {
-    public class MultiCannon : TurretBehaviour
+    public class MultiCannon : Turret
     {
-        [SerializeField] private ProjectileBehaviour projectileBehaviour;
+        //TurretAttributes
+        [SerializeField] private Projectile projectile;
+        
+        
         
         protected override void AttackTarget(SpaceObject target)
         {
-            var projectile = Instantiate(projectileBehaviour, transform);
+            var projectile = Instantiate(this.projectile, transform);
             projectile.SetTarget(target);
             projectile.transform.parent = null;
         }

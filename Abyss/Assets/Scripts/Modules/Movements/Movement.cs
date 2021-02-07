@@ -7,6 +7,7 @@ namespace Modules.Movements
     [System.Serializable]
     public class Movement
     {
+        //Movement attributes
         [SerializeField] private float velocity;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float angleSpeed;
@@ -46,11 +47,9 @@ namespace Modules.Movements
             transform.position += transform.right * (Time.deltaTime * Random.Range(maxSpeed-Random.Range(0,50),maxSpeed+Random.Range(0,50)));
         }
         
-        public static void MicroWarp(Transform transform, SpaceObject target)
+        public void MicroWarp(Transform transform, SpaceObject target)
         {
             transform.position += transform.right * (RangeFinder.CalculateDistance(transform, target)-50);
         }
-
-        
     }
 }

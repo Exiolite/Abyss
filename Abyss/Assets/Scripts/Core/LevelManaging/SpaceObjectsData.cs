@@ -5,7 +5,7 @@ using Objects.SpaceObjects;
 using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
 
-namespace Core.LevelManager
+namespace Core.LevelManaging
 {
     public class SpaceObjectsData
     {
@@ -22,6 +22,8 @@ namespace Core.LevelManager
 
         private NavigationCircle _navigationCircle;
 
+        private ParticleSystem _shieldDamage;
+
 
         public void Initialize()
         {
@@ -33,6 +35,18 @@ namespace Core.LevelManager
         public GameObject GetNavigationCircle()
         {
             return _navigationCircle.gameObject;
+        }
+        
+        //Effects
+        public ParticleSystem TryGetShieldDamageEffect(out bool success)
+        {
+            if (_shieldDamage != null)
+            {
+                success = true;
+                return _shieldDamage;
+            }
+            success = false;
+            return null;
         }
         
         //Ships
@@ -62,8 +76,6 @@ namespace Core.LevelManager
             success = false;
             return null;
         }
-        
-        
         
         //Stations
         public SpaceObject TryGetRandomRepairStation(out bool success)
@@ -135,6 +147,7 @@ namespace Core.LevelManager
             _shops = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Shops/");
             
             _navigationCircle = Resources.Load<NavigationCircle>("Prefabs/NavigationCircle/NavigationCircle");
+            _shieldDamage = Resources.Load<ParticleSystem>("Prefabs/Effects/ShieldDamage");
             
             
             //Crutch resource load to list //TODO: TBD Resource Load

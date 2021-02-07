@@ -1,6 +1,6 @@
 ﻿
 using Core;
-using Core.LevelManager;
+using Core.LevelManaging;
 using Objects.NavigationCircle;
 using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
@@ -11,8 +11,17 @@ namespace Objects.SpaceObjects
     {
         public string ObjName => objName;
         
+        
+        
         [SerializeField] private string objName;
 
+        
+        
+        protected override void Initialize()
+        {
+            NavigationEvent.AddArrow.Invoke(this);
+        }
+        
         
         
         public void DestroyItSelf()
@@ -20,15 +29,13 @@ namespace Objects.SpaceObjects
             Destroy(gameObject);
         }
         
+        
+        
         private void Awake()
         {
             LevelEvent.DestroyAllExcludePlayer.AddListener(DestroyObject);
         }
 
-        protected override void Initialize()
-        {
-            NavigationEvent.AddArrow.Invoke(this);
-        }
 
         private void DestroyObject(Ship player)
         {

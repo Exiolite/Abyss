@@ -1,5 +1,4 @@
-﻿
-using Modules.HealthStats;
+﻿using Modules.HealthStats;
 using Modules.Movements;
 using Objects.NavigationCircle;
 using Objects.Turrets;
@@ -12,21 +11,55 @@ namespace Objects.SpaceObjects.Dynamic
     {
         public int MaxDepth => maxDepth;
         public HealthStats HealthStats => healthStats;
-
-        [SerializeField] private ParticleSystem explosionParticles;
+        
+        
+        
+        //SpaceObject attributes
         [SerializeField] private int maxDepth;
+        [SerializeField] private Turret[] turretBehaviours;
+        
+        //Modules
         [SerializeField] private Movement movement;
-        [SerializeField] private TurretBehaviour[] turretBehaviours;
+        
+        //HealthStats
         [SerializeField] private HealthStats healthStats;
-
-        private SpaceObject _target;
         private float _damagedTime;
+        
+        //Particles
+        private readonly ParticlesPlayer _particlesPlayer = new ParticlesPlayer();
+        private ParticleSystem _shieldParticles;
+        
+        //Targeting
+        private SpaceObject _target;
+
+        
+        
+        protected override void Initialize()
+        {
+            base.Initialize();
+            LevelManager.AddShieldParticle(this);
+        }
+        
+        protected override void Execute()
+        {
+            UpdateBehaviour();
+        }
 
 
+        
+        public void SetTarget(SpaceObject target)
+        {
+            _target = target;
+        }
+        
+        public void AddParticles(ParticleSystem shieldParticles)
+        {
+            _shieldParticles = shieldParticles;
+        }
+        
         public void ApplyDamage(float value)
         {
-            explosionParticles.transform.localPosition = new Vector3(Random.Range(-1.5f,1.5f),Random.Range(-1.5f,1.5f), 0);
-            explosionParticles.Play();
+            _particlesPlayer.PlayShieldDamage(_shieldParticles);
             _damagedTime = Time.time;
             healthStats.TryApplyDamage(value, out var haveHp);
             if (!haveHp) return;
@@ -35,12 +68,9 @@ namespace Objects.SpaceObjects.Dynamic
             DestroyItSelf();
         }
 
-        public void SetTarget(SpaceObject target)
-        {
-            _target = target;
-        }
         
-        protected override void Execute()
+        
+        private void UpdateBehaviour()
         {
             movement.SmoothMoveForvard(gameObject.transform, _target != null);
             if (Time.time > _damagedTime + 3.0f)healthStats.RegenerateShield();
@@ -54,7 +84,7 @@ namespace Objects.SpaceObjects.Dynamic
                 turretBehaviour.SetTarget(_target);
             }
         }
-
+        
         private void MoveToTarget()
         {
             if (_target.GetType() == typeof(Ship))

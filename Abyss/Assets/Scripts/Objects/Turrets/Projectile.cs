@@ -7,14 +7,25 @@ using UnityEngine;
 
 namespace Objects.Turrets
 {
-    public class ProjectileBehaviour : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
-        [SerializeField] private Movement movement;
+        //Projectile attributes
         [SerializeField] private float damage;
         
+        //Modules
+        [SerializeField] private Movement movement;
+        
+        //Targeting
         private protected SpaceObject Target;
 
 
+        
+        public void SetTarget(SpaceObject target)
+        {
+            Target = target;
+        }
+        
+        
         
         private void Start()
         {
@@ -31,12 +42,7 @@ namespace Objects.Turrets
                 Destroy(gameObject);
             }
         }
-
-        public void SetTarget(SpaceObject target)
-        {
-            Target = target;
-        }
-
+        
         private void Update()
         {
             movement.HardMoveRandomSpeed(transform);

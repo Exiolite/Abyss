@@ -1,7 +1,7 @@
 ﻿using Objects.SpaceObjects.Dynamic;
 using UnityEngine.Events;
 
-namespace Core.LevelManager
+namespace Core.LevelManaging
 {
     public static class LevelEvent
     {

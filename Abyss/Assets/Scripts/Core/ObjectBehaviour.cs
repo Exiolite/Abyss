@@ -1,4 +1,5 @@
-﻿using Modules.Account;
+﻿using Core.LevelManaging;
+using Modules.Account;
 using UnityEngine;
 
 namespace Core
@@ -6,7 +7,7 @@ namespace Core
     public abstract class ObjectBehaviour : MonoBehaviour
     {
         protected Account PlayersAccount;
-        protected LevelManager.LevelManager LevelManager;
+        protected LevelManager LevelManager;
 
         
 
