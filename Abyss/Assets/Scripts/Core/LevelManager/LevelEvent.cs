@@ -5,7 +5,7 @@ namespace Core.LevelManager
 {
     public static class LevelEvent
     {
-        public static DestoryAllExcludePlayer DestoryAllExcludePlayer = new DestoryAllExcludePlayer();
+        public static readonly DestroyAllExcludePlayer DestroyAllExcludePlayer = new DestroyAllExcludePlayer();
     }
-    public class DestoryAllExcludePlayer : UnityEvent <Ship> {}
+    public class DestroyAllExcludePlayer : UnityEvent <Ship> {}
 }

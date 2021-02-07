@@ -10,7 +10,6 @@ namespace Modules.HealthStats
         
         [SerializeField] private Stat hitPoints;
         [SerializeField] private Stat shield;
-        [SerializeField] private float delayBeforeRegenerateShield;
 
 
         public void Add(float hitPointsValue, float shieldValue)
@@ -40,7 +39,7 @@ namespace Modules.HealthStats
             isLastShot = false;
         }
         
-        public void TryRemoveHitPoints(float value, out bool success)
+        private void TryRemoveHitPoints(float value, out bool success)
         {
             if (hitPoints.IsEnough(value))
             {
@@ -53,7 +52,7 @@ namespace Modules.HealthStats
             }
         }
         
-        public void TryRemoveShield(float value, out bool success)
+        private void TryRemoveShield(float value, out bool success)
         {
             if (shield.CheckUnderZero())
             {

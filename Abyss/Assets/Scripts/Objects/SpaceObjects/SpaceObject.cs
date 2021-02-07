@@ -22,7 +22,7 @@ namespace Objects.SpaceObjects
         
         private void Awake()
         {
-            LevelEvent.DestoryAllExcludePlayer.AddListener(DestroyObject);
+            LevelEvent.DestroyAllExcludePlayer.AddListener(DestroyObject);
         }
 
         protected override void Initialize()

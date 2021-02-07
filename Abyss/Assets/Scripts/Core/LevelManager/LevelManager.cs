@@ -1,4 +1,5 @@
 ﻿using Objects.SpaceObjects.Dynamic;
+using UnityEngine;
 
 namespace Core.LevelManager
 {
@@ -34,7 +35,8 @@ namespace Core.LevelManager
 
         public void CreateNextLevel()
         {
-            LevelEvent.DestoryAllExcludePlayer.Invoke(InstancedPlayer);
+            LevelEvent.DestroyAllExcludePlayer.Invoke(InstancedPlayer);
+            InstancedPlayer.transform.position = new Vector3(0,0,0);
             Factory.ResetId(true);
             _levelCreator.CreateLevel();
             DepthCounter++;
