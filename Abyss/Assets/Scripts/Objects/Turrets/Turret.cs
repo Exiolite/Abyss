@@ -5,15 +5,21 @@ using UnityEngine;
 
 namespace Objects.Turrets
 {
-    public abstract class TurretBehaviour : MonoBehaviour
+    public abstract class Turret : MonoBehaviour
     {
+        //Turret attributes
         [SerializeField] private float attackDelay;
+        private bool isAttacking;
+        
+        //Modules
         [SerializeField] private Movement movement;
         
         
-        private bool isAttacking;
-        
 
+        protected abstract void AttackTarget(SpaceObject target);
+        
+        
+        
         public void SetTarget(SpaceObject target)
         {
             movement.HardRotateToTarget(transform, target.transform);
@@ -21,7 +27,6 @@ namespace Objects.Turrets
         }
         
 
-        protected abstract void AttackTarget(SpaceObject target);
 
         private IEnumerator AttackCoroutine(SpaceObject target)
         {

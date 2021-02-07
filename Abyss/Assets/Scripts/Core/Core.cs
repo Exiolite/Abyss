@@ -1,4 +1,5 @@
-﻿using Modules.Account;
+﻿using Core.LevelManaging;
+using Modules.Account;
 using UnityEngine;
 
 namespace Core
@@ -28,11 +29,11 @@ namespace Core
         #endregion
 
         public Account PlayersAccount => _playersAccount;
-        public LevelManager.LevelManager LevelManager => _levelManager;
+        public LevelManager LevelManager => _levelManager;
         
         
         private readonly Account _playersAccount = new Account();
-        private readonly LevelManager.LevelManager _levelManager = new LevelManager.LevelManager();
+        private readonly LevelManager _levelManager = new LevelManager();
         private Factory _factory;
 
         

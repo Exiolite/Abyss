@@ -1,7 +1,7 @@
 ﻿using Objects.Bot;
 using UnityEngine;
 
-namespace Core.LevelManager
+namespace Core.LevelManaging
 {
     public class LevelCreator
     {
@@ -13,8 +13,6 @@ namespace Core.LevelManager
         {
             _levelManager = levelManager;
         }
-
-        
         
         public void CreateLevel()
         {
@@ -24,6 +22,8 @@ namespace Core.LevelManager
             CreateAbyss();
         }
 
+        
+        
         private void CreatePlayer()
         {
             if (_levelManager.InstancedPlayer != null) return;

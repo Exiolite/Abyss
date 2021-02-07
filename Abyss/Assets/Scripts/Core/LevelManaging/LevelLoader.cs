@@ -1,4 +1,4 @@
-﻿namespace Core.LevelManager
+﻿namespace Core.LevelManaging
 {
     public class LevelLoader
     {
