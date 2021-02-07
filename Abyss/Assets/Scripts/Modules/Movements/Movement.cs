@@ -7,11 +7,13 @@ namespace Modules.Movements
     [System.Serializable]
     public class Movement
     {
-        [SerializeField] private float speed;
+        [SerializeField] private float velocity;
+        [SerializeField] private float maxSpeed;
         [SerializeField] private float angleSpeed;
-        
-        
-        
+        private float _speed;
+
+
+
         public void HardRotateToTarget(Transform transform, Transform target)
         {
             var deirectionToTarget = target.transform.position - transform.position;
@@ -29,17 +31,26 @@ namespace Modules.Movements
         
         public void HardMoveForward(Transform transform)
         {
-            transform.position += transform.right * (Time.deltaTime * speed);
+            transform.position += transform.right * (Time.deltaTime * maxSpeed);
+        }
+
+        public void SmoothMoveForvard(Transform transform, bool flag)
+        {
+            if (flag) _speed = Mathf.Clamp(_speed + (velocity * Time.deltaTime), 0, maxSpeed);
+            else _speed = Mathf.Clamp(_speed - (velocity * Time.deltaTime), 0, maxSpeed);
+            transform.position += transform.right * (Time.deltaTime * _speed);
         }
 
         public void HardMoveRandomSpeed(Transform transform)
         {
-            transform.position += transform.right * (Time.deltaTime * Random.Range(speed-Random.Range(0,50),speed+Random.Range(0,50)));
+            transform.position += transform.right * (Time.deltaTime * Random.Range(maxSpeed-Random.Range(0,50),maxSpeed+Random.Range(0,50)));
         }
         
         public static void MicroWarp(Transform transform, SpaceObject target)
         {
             transform.position += transform.right * (RangeFinder.CalculateDistance(transform, target)-50);
         }
+
+        
     }
 }

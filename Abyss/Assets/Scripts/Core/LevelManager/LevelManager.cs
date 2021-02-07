@@ -1,4 +1,5 @@
-﻿using Objects.SpaceObjects.Dynamic;
+﻿
+using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
 
 namespace Core.LevelManager
@@ -40,6 +41,12 @@ namespace Core.LevelManager
             Factory.ResetId(true);
             _levelCreator.CreateLevel();
             DepthCounter++;
+        }
+
+        public void SpawnSmallContainer(Transform parent)
+        {
+            var container = DataBase.TryGetSmallContainer(out var success);
+            if (success) Factory.SpawnSpaceObjectAtTransform(container, parent);
         }
     }
 }

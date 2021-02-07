@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿
 using Modules.HealthStats;
 using Modules.Movements;
 using Objects.NavigationCircle;
@@ -31,6 +31,7 @@ namespace Objects.SpaceObjects.Dynamic
             healthStats.TryApplyDamage(value, out var haveHp);
             if (!haveHp) return;
             NavigationEvent.RemoveArrow.Invoke(this);
+            LevelManager.SpawnSmallContainer(transform);
             DestroyItSelf();
         }
 
@@ -41,16 +42,42 @@ namespace Objects.SpaceObjects.Dynamic
         
         protected override void Execute()
         {
+            movement.SmoothMoveForvard(gameObject.transform, _target != null);
             if (Time.time > _damagedTime + 3.0f)healthStats.RegenerateShield();
             if (_target == null) return;
             movement.SmoothRotateToTarget(gameObject.transform, _target.transform);
-            movement.HardMoveForward(gameObject.transform);
             if (_target.GetType() != typeof(Ship)) return;
             var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
             if (distanceToTarget > 60) return;
             foreach (var turretBehaviour in turretBehaviours)
             {
                 turretBehaviour.SetTarget(_target);
+            }
+        }
+
+        private void MoveToTarget()
+        {
+            if (_target.GetType() == typeof(Ship))
+            {
+                movement.SmoothMoveForvard(gameObject.transform, true);
+            }
+            else
+            {
+                if (RangeFinder.CalculateDistance(transform, _target)>10)
+                {
+                    movement.SmoothMoveForvard(gameObject.transform, true);
+                }
+                else
+                {
+                    if (RangeFinder.CalculateDistance(transform, _target)<1)
+                    {
+                        
+                    }
+                    else
+                    {
+                        movement.SmoothMoveForvard(gameObject.transform, false);
+                    }
+                }
             }
         }
     }

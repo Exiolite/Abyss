@@ -54,6 +54,14 @@ namespace Core.LevelManager
             success = false;
             return null;
         }
+
+        public SpaceObject TryGetSmallContainer(out bool success)
+        {
+            var spaceObject = TryGetRandomObject(_containersSmall, out success);
+            if (success) return spaceObject;
+            success = false;
+            return null;
+        }
         
         
         
