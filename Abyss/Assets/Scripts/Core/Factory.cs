@@ -36,6 +36,7 @@ namespace Core
         public void SpawnSpaceObjectAtTransform(SpaceObject target, Transform parentTransform)
         {
             var spawnedObject = Instantiate(target, parentTransform);
+            spawnedObject.transform.parent = null;
             SetObjectId(spawnedObject.gameObject);
         }
         

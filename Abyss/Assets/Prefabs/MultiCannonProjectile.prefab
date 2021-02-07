@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement:
-    speed: 250
+    velocity: 0
+    maxSpeed: 250
     angleSpeed: 0
   damage: 2
 --- !u!212 &4027001048496272995

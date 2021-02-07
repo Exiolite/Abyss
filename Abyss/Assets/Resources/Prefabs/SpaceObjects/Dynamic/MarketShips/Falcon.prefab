@@ -55,7 +55,8 @@ MonoBehaviour:
   explosionParticles: {fileID: 7858733466678741982}
   maxDepth: 10
   movement:
-    speed: 14
+    velocity: 3
+    maxSpeed: 20
     angleSpeed: 9
   turretBehaviours:
   - {fileID: 1404456769695516042}
