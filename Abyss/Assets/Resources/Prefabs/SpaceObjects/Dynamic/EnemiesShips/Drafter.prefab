@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Drafter
+  explosionParticles: {fileID: 0}
   maxDepth: 5
   movement:
     speed: 25
@@ -91,14 +92,13 @@ MonoBehaviour:
   - {fileID: 1404456769695516042}
   healthStats:
     hitPoints:
-      statValue: 250
-      maxStatValue: 250
+      statValue: 500
+      maxStatValue: 500
       regenerateValue: 0
     shield:
-      statValue: 150
-      maxStatValue: 150
-      regenerateValue: 10
-    delayBeforeRegenerateShield: 4
+      statValue: 450
+      maxStatValue: 450
+      regenerateValue: 45
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

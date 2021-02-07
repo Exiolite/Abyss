@@ -1,4 +1,5 @@
-﻿using Modules.HealthStats;
+﻿using System.Collections;
+using Modules.HealthStats;
 using Modules.Movements;
 using Objects.NavigationCircle;
 using Objects.Turrets;
@@ -11,7 +12,8 @@ namespace Objects.SpaceObjects.Dynamic
     {
         public int MaxDepth => maxDepth;
         public HealthStats HealthStats => healthStats;
-        
+
+        [SerializeField] private ParticleSystem explosionParticles;
         [SerializeField] private int maxDepth;
         [SerializeField] private Movement movement;
         [SerializeField] private TurretBehaviour[] turretBehaviours;
@@ -23,6 +25,8 @@ namespace Objects.SpaceObjects.Dynamic
 
         public void ApplyDamage(float value)
         {
+            explosionParticles.transform.localPosition = new Vector3(Random.Range(-1.5f,1.5f),Random.Range(-1.5f,1.5f), 0);
+            explosionParticles.Play();
             _damagedTime = Time.time;
             healthStats.TryApplyDamage(value, out var haveHp);
             if (!haveHp) return;

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Objects.SpaceObjects;
+using Statics;
+using UnityEngine;
 
 namespace Modules.Movements
 {
@@ -33,6 +35,11 @@ namespace Modules.Movements
         public void HardMoveRandomSpeed(Transform transform)
         {
             transform.position += transform.right * (Time.deltaTime * Random.Range(speed-Random.Range(0,50),speed+Random.Range(0,50)));
+        }
+        
+        public static void MicroWarp(Transform transform, SpaceObject target)
+        {
+            transform.position += transform.right * (RangeFinder.CalculateDistance(transform, target)-50);
         }
     }
 }
