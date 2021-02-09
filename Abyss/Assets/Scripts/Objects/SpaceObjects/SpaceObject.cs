@@ -26,6 +26,7 @@ namespace Objects.SpaceObjects
         
         public void DestroyItSelf()
         {
+            NavigationEvent.RemoveArrow.Invoke(this);
             Destroy(gameObject);
         }
         
@@ -40,7 +41,6 @@ namespace Objects.SpaceObjects
         private void DestroyObject(Ship player)
         {
             if (this == player) return;
-            NavigationEvent.RemoveArrow.Invoke(this);
             DestroyItSelf();
         }
 

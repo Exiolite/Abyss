@@ -49,11 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: Falcon Heavy
   maxDepth: 20
-  movement:
-    speed: 13
-    angleSpeed: 8
   turretBehaviours:
   - {fileID: 1404456769695516042}
+  movement:
+    velocity: 0
+    maxSpeed: 0
+    angleSpeed: 8
   healthStats:
     hitPoints:
       statValue: 1650
@@ -63,7 +64,6 @@ MonoBehaviour:
       statValue: 1100
       maxStatValue: 1100
       regenerateValue: 55
-    delayBeforeRegenerateShield: 3
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,8 +100,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1653728805
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3955315786042260600, guid: c60915f824808994db1637ac16b6b5c4,
     type: 3}

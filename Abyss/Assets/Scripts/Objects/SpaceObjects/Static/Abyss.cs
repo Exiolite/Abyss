@@ -6,7 +6,7 @@ namespace Objects.SpaceObjects.Static
     {
         protected override void Execute()
         {
-            transform.eulerAngles = new Vector3(0,0, transform.eulerAngles.z - (Time.deltaTime * 4));
+            transform.eulerAngles = new Vector3(0,0, transform.eulerAngles.z - (Time.deltaTime * 8));
         }
 
         private void OnTriggerEnter2D(Collider2D other)

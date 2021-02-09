@@ -1,4 +1,5 @@
 ﻿using Objects.SpaceObjects;
+using Objects.SpaceObjects.Dynamic;
 using Statics;
 using UnityEngine;
 
@@ -21,7 +22,12 @@ namespace Modules.Movements
             var angleToTarget = Mathf.Atan2(deirectionToTarget.y, deirectionToTarget.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angleToTarget);
         }
-        
+
+        public float GetSpeed()
+        {
+            return _speed * Time.deltaTime;
+        }
+
         public void SmoothRotateToTarget(Transform transform, Transform target)
         {
             var deirectionToTarget = target.transform.position - transform.position;
@@ -34,12 +40,66 @@ namespace Modules.Movements
         {
             transform.position += transform.right * (Time.deltaTime * maxSpeed);
         }
-
-        public void SmoothMoveForvard(Transform transform, bool flag)
+        
+        public void HardMoveForwardWithCurrentSpeed(Transform transform)
         {
-            if (flag) _speed = Mathf.Clamp(_speed + (velocity * Time.deltaTime), 0, maxSpeed);
-            else _speed = Mathf.Clamp(_speed - (velocity * Time.deltaTime), 0, maxSpeed);
             transform.position += transform.right * (Time.deltaTime * _speed);
+        }
+
+        public void HardMoveForwardWithMinSpeed(Transform transform)
+        {
+            transform.position += transform.right * (Time.deltaTime * 1);
+        }
+
+        public void SmoothMoveForward(Transform transform, bool flag)
+        {
+            if (flag)
+            {
+                _speed = Mathf.Clamp(_speed + (velocity * Time.deltaTime), 0, maxSpeed);
+            }
+            else
+            {
+                _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 0, maxSpeed);
+            }
+            transform.position += transform.right * (Time.deltaTime * _speed);
+        }
+
+        public void MoveSlowDownToMinSpeed(Transform transform)
+        {
+            _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 4, maxSpeed);
+            transform.position += transform.right * (Time.deltaTime * _speed);
+        }
+
+        public void MoveShipToTarget(Transform transform, SpaceObject target)
+        {
+            if (target == null)
+            {
+                SmoothMoveForward(transform, false);
+                return;
+            }
+            SmoothRotateToTarget(transform, target.transform);
+            if (target.GetType() == typeof(Ship))
+            {
+                SmoothMoveForward(transform, true);
+            }
+            else
+            {
+                if (RangeFinder.CalculateDistance(transform, target)>20)
+                {
+                    SmoothMoveForward(transform, true);
+                }
+                else
+                {
+                    if (RangeFinder.CalculateDistance(transform, target)<0.2f)
+                    {
+                        _speed = 0;
+                    }
+                    else
+                    {
+                        MoveSlowDownToMinSpeed(transform);
+                    }
+                }
+            }
         }
 
         public void HardMoveRandomSpeed(Transform transform)

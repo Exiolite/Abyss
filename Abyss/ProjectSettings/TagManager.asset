@@ -41,3 +41,33 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: New Layer
+    uniqueID: 466427373
+    locked: 0
+  - name: New Layer
+    uniqueID: 1801598383
+    locked: 0
+  - name: New Layer
+    uniqueID: 4212974705
+    locked: 0
+  - name: Abyss
+    uniqueID: 2402200127
+    locked: 0
+  - name: Station
+    uniqueID: 4006503505
+    locked: 0
+  - name: Contariner
+    uniqueID: 38036497
+    locked: 0
+  - name: Ship
+    uniqueID: 1653728805
+    locked: 0
+  - name: Turret
+    uniqueID: 2543577131
+    locked: 0
+  - name: EngineParticles
+    uniqueID: 4070624811
+    locked: 0
+  - name: NavUI
+    uniqueID: 3733429195
+    locked: 0

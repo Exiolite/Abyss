@@ -57,11 +57,19 @@ namespace Modules.Account
         
         
         //Resources actions
+
+        public void AddResourcesToShip(int creditsValue, int materialsValue)
+        {
+            onShipAccountResources.AddCredits(creditsValue);
+            onShipAccountResources.AddMaterials(materialsValue);
+            Debug.Log(onShipAccountResources.GetCredits() + " " + onShipAccountResources.GetMaterials());
+        }
+        
         public void DepositToSave()
         {
             accountSavedAccountResources.AddCredits(onShipAccountResources.GetCredits());
             onShipAccountResources.ResetCredits();
-            accountSavedAccountResources.AddCredits(onShipAccountResources.GetMaterials());
+            accountSavedAccountResources.AddMaterials(onShipAccountResources.GetMaterials());
             onShipAccountResources.ResetMaterials();
         }
 

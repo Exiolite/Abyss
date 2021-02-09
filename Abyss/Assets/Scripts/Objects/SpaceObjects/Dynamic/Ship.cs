@@ -11,7 +11,7 @@ namespace Objects.SpaceObjects.Dynamic
     {
         public int MaxDepth => maxDepth;
         public HealthStats HealthStats => healthStats;
-        
+        public Movement Movement => movement;
         
         
         //SpaceObject attributes
@@ -72,42 +72,21 @@ namespace Objects.SpaceObjects.Dynamic
         
         private void UpdateBehaviour()
         {
-            movement.SmoothMoveForvard(gameObject.transform, _target != null);
-            if (Time.time > _damagedTime + 3.0f)healthStats.RegenerateShield();
+            if (Time.time > _damagedTime + 1.0f)
+            {
+                healthStats.RegenerateShield();
+            }
+            movement.MoveShipToTarget(transform, _target);
+            
             if (_target == null) return;
-            movement.SmoothRotateToTarget(gameObject.transform, _target.transform);
+            
             if (_target.GetType() != typeof(Ship)) return;
+            
             var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
             if (distanceToTarget > 60) return;
             foreach (var turretBehaviour in turretBehaviours)
             {
                 turretBehaviour.SetTarget(_target);
-            }
-        }
-        
-        private void MoveToTarget()
-        {
-            if (_target.GetType() == typeof(Ship))
-            {
-                movement.SmoothMoveForvard(gameObject.transform, true);
-            }
-            else
-            {
-                if (RangeFinder.CalculateDistance(transform, _target)>10)
-                {
-                    movement.SmoothMoveForvard(gameObject.transform, true);
-                }
-                else
-                {
-                    if (RangeFinder.CalculateDistance(transform, _target)<1)
-                    {
-                        
-                    }
-                    else
-                    {
-                        movement.SmoothMoveForvard(gameObject.transform, false);
-                    }
-                }
             }
         }
     }

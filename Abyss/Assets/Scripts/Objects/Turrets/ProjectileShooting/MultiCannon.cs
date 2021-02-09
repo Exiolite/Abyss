@@ -14,7 +14,6 @@ namespace Objects.Turrets.ProjectileShooting
         {
             var projectile = Instantiate(this.projectile, transform);
             projectile.SetTarget(target);
-            projectile.transform.parent = null;
         }
     }
 }
