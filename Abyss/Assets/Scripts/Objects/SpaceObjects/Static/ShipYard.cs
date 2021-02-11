@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Objects.Gui;
+using UnityEngine;
 
 namespace Objects.SpaceObjects.Static
 {

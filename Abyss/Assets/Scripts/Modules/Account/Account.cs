@@ -77,6 +77,11 @@ namespace Modules.Account
         {
             accountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
         }
+
+        public bool HaveEnoughCredits(int value)
+        {
+            return accountSavedAccountResources.GetCredits() > value;
+        }
         
         public void TryRemoveMaterials(int materialsValue, out bool success)
         {

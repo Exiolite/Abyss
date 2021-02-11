@@ -66,7 +66,7 @@ namespace Modules.Movements
 
         public void MoveSlowDownToMinSpeed(Transform transform)
         {
-            _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 4, maxSpeed);
+            _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 2, maxSpeed);
             transform.position += transform.right * (Time.deltaTime * _speed);
         }
 
@@ -90,7 +90,7 @@ namespace Modules.Movements
                 }
                 else
                 {
-                    if (RangeFinder.CalculateDistance(transform, target)<0.2f)
+                    if (RangeFinder.CalculateDistance(transform, target) < 1)
                     {
                         _speed = 0;
                     }

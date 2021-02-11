@@ -16,6 +16,11 @@ namespace Modules.HealthStats
             statValue = Mathf.Clamp(statValue + value, 0, maxStatValue);
         }
 
+        public int GetDifference()
+        {
+            return (int)maxStatValue - (int)statValue;
+        }
+        
         public void Remove(float value)
         {
             statValue = Mathf.Clamp(statValue - value, 0, maxStatValue);

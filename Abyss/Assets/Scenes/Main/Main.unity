@@ -183,6 +183,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6006113755563415692, guid: 5ce6582b2b0f17a4c80e6dbc80f929ce,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059224044288264649, guid: 5ce6582b2b0f17a4c80e6dbc80f929ce,
+        type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7445232296699171926, guid: 5ce6582b2b0f17a4c80e6dbc80f929ce,
         type: 3}
       propertyPath: m_Name

@@ -56,6 +56,9 @@ TagManager:
   - name: Station
     uniqueID: 4006503505
     locked: 0
+  - name: StationUI
+    uniqueID: 1657259477
+    locked: 0
   - name: Contariner
     uniqueID: 38036497
     locked: 0

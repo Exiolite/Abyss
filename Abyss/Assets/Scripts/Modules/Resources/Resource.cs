@@ -1,4 +1,6 @@
-﻿namespace Modules.Resources
+﻿using UnityEngine;
+
+namespace Modules.Resources
 {
     public class Resource
     {
@@ -21,7 +23,7 @@
 
         public bool IsEnough(int value)
         {
-            return value >= _resource;
+            return value <= _resource;
         }
         
         public void Reset()

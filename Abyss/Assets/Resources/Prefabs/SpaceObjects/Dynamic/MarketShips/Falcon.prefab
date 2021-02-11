@@ -60,7 +60,7 @@ MonoBehaviour:
     angleSpeed: 15
   healthStats:
     hitPoints:
-      statValue: 450
+      statValue: 150
       maxStatValue: 450
       regenerateValue: 0
     shield:
