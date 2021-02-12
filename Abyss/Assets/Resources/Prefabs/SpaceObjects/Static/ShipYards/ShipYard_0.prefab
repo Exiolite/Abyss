@@ -32,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8794501556953715203}
+  - {fileID: 6627303203462222438}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Dalton's ShipYard
+  stationGui: {fileID: 1320598169569672236}
+  spawnPosition: {fileID: 6627303203462222438}
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -135,6 +138,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &4211843903575440437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6627303203462222438}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6627303203462222438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211843903575440437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 17.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6924271753532874872}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8261976133418761251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,11 +285,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 108960898404352722}
+    - target: {fileID: 5072702981215153116, guid: 29d13dcafaffc29468a2d4990d78e7b5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBuyShip
+      objectReference: {fileID: 0}
     - target: {fileID: 5503601926460186500, guid: 29d13dcafaffc29468a2d4990d78e7b5,
         type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6988419546643496975, guid: 29d13dcafaffc29468a2d4990d78e7b5,
+        type: 3}
+      propertyPath: buyImage
+      value: 
+      objectReference: {fileID: 4789577976806404071}
+    - target: {fileID: 6988419546643496975, guid: 29d13dcafaffc29468a2d4990d78e7b5,
+        type: 3}
+      propertyPath: parentSpaceObject
+      value: 
+      objectReference: {fileID: 108960898404352722}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d13dcafaffc29468a2d4990d78e7b5, type: 3}
 --- !u!224 &8794501556953715203 stripped
@@ -265,3 +313,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8261976133418761251}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1320598169569672236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6988419546643496975, guid: 29d13dcafaffc29468a2d4990d78e7b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8261976133418761251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a74822752f447aa97bd1aa7f5e0a47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4789577976806404071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3521692106172814276, guid: 29d13dcafaffc29468a2d4990d78e7b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8261976133418761251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

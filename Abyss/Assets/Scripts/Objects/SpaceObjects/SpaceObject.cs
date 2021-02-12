@@ -1,5 +1,4 @@
-﻿
-using Core;
+﻿using Core;
 using Core.LevelManaging;
 using Objects.NavigationCircle;
 using Objects.SpaceObjects.Dynamic;
@@ -11,16 +10,8 @@ namespace Objects.SpaceObjects
     {
         public string ObjName => objName;
         
-        
-        
-        [SerializeField] private string objName;
 
-        
-        
-        protected override void Initialize()
-        {
-            NavigationEvent.AddArrow.Invoke(this);
-        }
+        [SerializeField] private string objName;
         
         
         
@@ -28,6 +19,21 @@ namespace Objects.SpaceObjects
         {
             NavigationEvent.RemoveArrow.Invoke(this);
             Destroy(gameObject);
+        }
+        
+        
+        
+        protected override void Initialize()
+        {
+            if (this is Ship)
+            {
+                var ship = (Ship)this;
+                if (ship.ShipPriceCredits == 0) NavigationEvent.AddArrow.Invoke(this);
+            }
+            else
+            {
+                NavigationEvent.AddArrow.Invoke(this);
+            }
         }
         
         

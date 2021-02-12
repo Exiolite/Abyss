@@ -52,9 +52,11 @@ MonoBehaviour:
   turretBehaviours:
   - {fileID: 1404456769695516042}
   movement:
-    velocity: 0
-    maxSpeed: 0
+    velocity: 5
+    maxSpeed: 15
     angleSpeed: 8
+  shipPriceCredits: 500
+  shipPriceMaterials: 5
   healthStats:
     hitPoints:
       statValue: 1650
@@ -101,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1653728805
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -3955315786042260600, guid: c60915f824808994db1637ac16b6b5c4,
     type: 3}

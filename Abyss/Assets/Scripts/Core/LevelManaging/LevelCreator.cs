@@ -9,10 +9,11 @@ namespace Core.LevelManaging
 
 
 
-        public void Initialize(LevelManager levelManager)
+        public LevelCreator(LevelManager levelManager)
         {
             _levelManager = levelManager;
         }
+        
         
         public void CreateLevel()
         {

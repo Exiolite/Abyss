@@ -13,6 +13,9 @@ namespace Objects.SpaceObjects.Dynamic
         public HealthStats HealthStats => healthStats;
         public Movement Movement => movement;
         
+        public int ShipPriceCredits => shipPriceCredits;
+        public int ShipPriceMaterials => shipPriceMaterials;
+        
         
         //SpaceObject attributes
         [SerializeField] private int maxDepth;
@@ -20,6 +23,10 @@ namespace Objects.SpaceObjects.Dynamic
         
         //Modules
         [SerializeField] private Movement movement;
+        
+        //Pricing
+        [SerializeField] private int shipPriceCredits;
+        [SerializeField] private int shipPriceMaterials;
         
         //HealthStats
         [SerializeField] private HealthStats healthStats;
@@ -33,19 +40,6 @@ namespace Objects.SpaceObjects.Dynamic
         private SpaceObject _target;
 
         
-        
-        protected override void Initialize()
-        {
-            base.Initialize();
-            LevelManager.AddShieldParticle(this);
-        }
-        
-        protected override void Execute()
-        {
-            UpdateBehaviour();
-        }
-
-
         
         public void SetTarget(SpaceObject target)
         {
@@ -67,8 +61,26 @@ namespace Objects.SpaceObjects.Dynamic
             LevelManager.SpawnSmallContainer(transform);
             DestroyItSelf();
         }
-
         
+        
+        
+        protected override void Initialize()
+        {
+            base.Initialize();
+            LevelManager.AddShieldParticle(this);
+        }
+        
+        protected override void Execute()
+        {
+            UpdateBehaviour();
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                PlayersAccount.AddResourcesToShip(10000,10000);
+            }
+        }
+
+
         
         private void UpdateBehaviour()
         {

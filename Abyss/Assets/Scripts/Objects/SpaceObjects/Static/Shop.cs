@@ -2,7 +2,7 @@
 
 namespace Objects.SpaceObjects.Static
 {
-    public class Shop : SpaceObject
+    public class Shop : Station
     {
         private void OnTriggerEnter2D(Collider2D other)
         {

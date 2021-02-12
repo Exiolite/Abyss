@@ -14,13 +14,12 @@ namespace Modules.Account
         private string _playerShipName;
 
 
-        public void Initialize()
+        public Account()
         {
             Load();
         }
-        
-        
-        
+
+
         //Account parameters
         public void Save()
         {
@@ -44,6 +43,11 @@ namespace Modules.Account
             }
         }
 
+        public void SetPlayerShipName(string name)
+        {
+            _playerShipName = name;
+        }
+        
         public void Reset()
         {
             _haveProgress = false;
@@ -86,6 +90,11 @@ namespace Modules.Account
         public void TryRemoveMaterials(int materialsValue, out bool success)
         {
             accountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
+        }
+        
+        public bool HaveEnoughMaterials(int value)
+        {
+            return accountSavedAccountResources.GetMaterials() > value;
         }
 
         public void TryRemoveResources(int creditsValue, int materialsValue, out bool success)

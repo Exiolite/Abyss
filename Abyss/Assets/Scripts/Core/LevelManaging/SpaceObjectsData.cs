@@ -25,7 +25,7 @@ namespace Core.LevelManaging
         private ParticleSystem _shieldDamage;
 
 
-        public void Initialize()
+        public SpaceObjectsData()
         {
             LoadResources();
         }
@@ -67,6 +67,14 @@ namespace Core.LevelManaging
             }
             success = false;
             return null;
+        }
+
+        public Ship GetRandomMarketShip()
+        {
+            if (_marketShips.Length == 0) throw new System.Exception("There is no ships in marketShips array");
+
+            var randomShip = _marketShips[Random.Range(0, _marketShips.Length)];
+            return randomShip;
         }
 
         public SpaceObject TryGetSmallContainer(out bool success)

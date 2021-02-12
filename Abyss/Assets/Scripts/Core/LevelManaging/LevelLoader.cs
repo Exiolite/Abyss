@@ -5,7 +5,7 @@
         private LevelManager _levelManager;
         
         
-        public void Initialize(LevelManager levelManager)
+        public LevelLoader(LevelManager levelManager)
         {
             _levelManager = levelManager;
         }

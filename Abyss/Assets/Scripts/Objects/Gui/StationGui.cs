@@ -28,9 +28,9 @@ namespace Objects.Gui
             UpdateCreditsCounter();
         }
         
-        public void SetMaterials(int credits)
+        public void SetMaterials(int materials)
         {
-            _credits = credits;
+            _materials = materials;
             UpdateMaterialsCounter();
         }
 
