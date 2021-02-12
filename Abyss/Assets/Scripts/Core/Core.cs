@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.LevelManaging;
+using Events;
 using Modules.Account;
 using UnityEngine;
 
@@ -54,6 +55,7 @@ namespace Core
 
         private void GameStart()
         {
+            LevelEvent.PlayerDeath.AddListener(_levelManager.ResetLevels);
             _levelManager.ManageLevelCreation();
         }
 

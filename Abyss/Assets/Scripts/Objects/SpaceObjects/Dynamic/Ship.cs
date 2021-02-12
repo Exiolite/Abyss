@@ -60,6 +60,12 @@ namespace Objects.SpaceObjects.Dynamic
             if (!haveHp) return;
             NavigationEvent.RemoveArrow.Invoke(this);
             LevelManager.SpawnSmallContainer(transform);
+            if (this == LevelManager.InstancedPlayer)
+            {    
+                PlayersAccount.OnShipAccountResources.ResetCredits();
+                PlayersAccount.OnShipAccountResources.ResetMaterials();
+                LevelEvent.PlayerDeath.Invoke();
+            }
             DestroyItSelf();
         }
         

@@ -66,9 +66,9 @@ MonoBehaviour:
       maxStatValue: 450
       regenerateValue: 0
     shield:
-      statValue: 600
-      maxStatValue: 600
-      regenerateValue: 80
+      statValue: 300
+      maxStatValue: 300
+      regenerateValue: 40
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

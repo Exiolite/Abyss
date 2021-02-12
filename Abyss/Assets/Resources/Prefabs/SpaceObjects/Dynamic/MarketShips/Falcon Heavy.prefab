@@ -59,13 +59,13 @@ MonoBehaviour:
   shipPriceMaterials: 146
   healthStats:
     hitPoints:
-      statValue: 1650
-      maxStatValue: 1650
+      statValue: 1200
+      maxStatValue: 1200
       regenerateValue: 0
     shield:
-      statValue: 1100
-      maxStatValue: 1100
-      regenerateValue: 55
+      statValue: 650
+      maxStatValue: 650
+      regenerateValue: 65
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

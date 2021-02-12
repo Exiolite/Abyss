@@ -49,6 +49,7 @@ namespace Objects.SpaceObjects
         {
             if (this == player) return;
             DestroyItSelf();
+            
         }
     }
 }

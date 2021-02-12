@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Small Container
-  credits: 1200
-  materials: 12
+  credits: 600
+  materials: 6
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

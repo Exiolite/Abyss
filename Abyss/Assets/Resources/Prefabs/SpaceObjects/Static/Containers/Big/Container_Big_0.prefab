@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Big Container
-  credits: 4800
-  materials: 48
+  credits: 2400
+  materials: 24
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
