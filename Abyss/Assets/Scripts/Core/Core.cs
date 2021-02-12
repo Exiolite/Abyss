@@ -1,4 +1,5 @@
-﻿using Core.LevelManaging;
+﻿using System;
+using Core.LevelManaging;
 using Modules.Account;
 using UnityEngine;
 
@@ -54,6 +55,16 @@ namespace Core
         private void GameStart()
         {
             _levelManager.ManageLevelCreation();
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            _playersAccount.Save();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _playersAccount.Save();
         }
     }
 }

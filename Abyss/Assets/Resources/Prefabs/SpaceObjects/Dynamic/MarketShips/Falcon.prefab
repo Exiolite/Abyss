@@ -58,7 +58,7 @@ MonoBehaviour:
     velocity: 10
     maxSpeed: 25
     angleSpeed: 15
-  shipPriceCredits: 6000
+  shipPriceCredits: 2400
   shipPriceMaterials: 36
   healthStats:
     hitPoints:

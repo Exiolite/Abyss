@@ -57,13 +57,19 @@ namespace Core.LevelManaging
 
         public Ship TryGetEnemyForDepth(int depth, out bool success)
         {
+            var depthShips = new List<Ship>();
             foreach (var enemiesShip in _enemiesShips)
             {
                 if (enemiesShip.MaxDepth > depth)
                 {
-                    success = true;
-                    return enemiesShip;
+                    depthShips.Add(enemiesShip);
                 }
+            }
+
+            if (depthShips.Count > 0)
+            {
+                success = true;
+                return depthShips[Random.Range(0, depthShips.Count)];
             }
             success = false;
             return null;

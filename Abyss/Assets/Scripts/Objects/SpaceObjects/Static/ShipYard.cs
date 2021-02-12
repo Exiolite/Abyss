@@ -1,4 +1,5 @@
-﻿using Objects.SpaceObjects.Dynamic;
+﻿using Events;
+using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
 
 namespace Objects.SpaceObjects.Static
@@ -52,6 +53,7 @@ namespace Objects.SpaceObjects.Static
             if (LevelManager.InstancedPlayer == null) return;
             if (other.gameObject != LevelManager.InstancedPlayer.gameObject) return;
             PlayersAccount.DepositToSave();
+            GuiEvent.UpdateNavCircleResources.Invoke();
             
             UpdateCreditsUi(_marketShip.ShipPriceCredits);
             UpdateMaterialsUi(_marketShip.ShipPriceMaterials);

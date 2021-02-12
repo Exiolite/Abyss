@@ -4,9 +4,10 @@ namespace Modules.Account
 {
     public class Account
     {
-        private readonly AccountResources accountSavedAccountResources = new AccountResources();
-        private readonly AccountResources onShipAccountResources = new AccountResources();
+        public AccountResources AccountSavedAccountResources { get; } = new AccountResources();
+        public AccountResources OnShipAccountResources { get; } = new AccountResources();
 
+        
         private bool _isPremium;
         private bool _haveProgress;
         private bool _isPlayerAlive;
@@ -24,6 +25,10 @@ namespace Modules.Account
         public void Save()
         {
             _haveProgress = true;
+            PlayerPrefs.SetInt("PlayersCredits", AccountSavedAccountResources.GetCredits());
+            PlayerPrefs.SetInt("PlayerMaterials", AccountSavedAccountResources.GetMaterials());
+            PlayerPrefs.SetString("PlayerShip", _playerShipName);
+            PlayerPrefs.SetInt("HaveProgress", 1);
         }
 
         public void SetPremium()
@@ -33,13 +38,16 @@ namespace Modules.Account
         
         private void Load()
         {
-            if (_haveProgress)
+            if (PlayerPrefs.HasKey("HaveProgress"))
             {
-                
+                AccountSavedAccountResources.SetCredits(PlayerPrefs.GetInt("PlayersCredits"));
+                AccountSavedAccountResources.SetMaterials(PlayerPrefs.GetInt("PlayerMaterials"));
+                _playerShipName = PlayerPrefs.GetString("PlayerShip");
             }
             else
             {
                 _playerShipName = "Falcon";
+                Save();
             }
         }
 
@@ -64,43 +72,43 @@ namespace Modules.Account
 
         public void AddResourcesToShip(int creditsValue, int materialsValue)
         {
-            onShipAccountResources.AddCredits(creditsValue);
-            onShipAccountResources.AddMaterials(materialsValue);
-            Debug.Log(onShipAccountResources.GetCredits() + " " + onShipAccountResources.GetMaterials());
+            OnShipAccountResources.AddCredits(creditsValue);
+            OnShipAccountResources.AddMaterials(materialsValue);
+            Debug.Log(OnShipAccountResources.GetCredits() + " " + OnShipAccountResources.GetMaterials());
         }
         
         public void DepositToSave()
         {
-            accountSavedAccountResources.AddCredits(onShipAccountResources.GetCredits());
-            onShipAccountResources.ResetCredits();
-            accountSavedAccountResources.AddMaterials(onShipAccountResources.GetMaterials());
-            onShipAccountResources.ResetMaterials();
+            AccountSavedAccountResources.AddCredits(OnShipAccountResources.GetCredits());
+            OnShipAccountResources.ResetCredits();
+            AccountSavedAccountResources.AddMaterials(OnShipAccountResources.GetMaterials());
+            OnShipAccountResources.ResetMaterials();
         }
 
         public void TryRemoveCredits(int creditsValue, out bool success)
         {
-            accountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
+            AccountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
         }
 
         public bool HaveEnoughCredits(int value)
         {
-            return accountSavedAccountResources.GetCredits() > value;
+            return AccountSavedAccountResources.GetCredits() > value;
         }
         
         public void TryRemoveMaterials(int materialsValue, out bool success)
         {
-            accountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
+            AccountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
         }
         
         public bool HaveEnoughMaterials(int value)
         {
-            return accountSavedAccountResources.GetMaterials() > value;
+            return AccountSavedAccountResources.GetMaterials() > value;
         }
 
         public void TryRemoveResources(int creditsValue, int materialsValue, out bool success)
         {
-            accountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
-            accountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
+            AccountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
+            AccountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
         }
     }
 }

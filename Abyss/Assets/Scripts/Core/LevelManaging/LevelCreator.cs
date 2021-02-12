@@ -42,12 +42,9 @@ namespace Core.LevelManaging
         {
             if (_levelManager.DepthCounter % 10 == 0)
             {
-                var shop = _levelManager.DataBase.TryGetRandomShop(out var success);
-                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(shop);
-                var shipYard = _levelManager.DataBase.TryGetRandomShipYard(out var success2);
-                if (success2) _levelManager.Factory.SpawnSpaceObjectAtRange(shipYard);
-                var repairStation = _levelManager.DataBase.TryGetRandomRepairStation(out var success3);
-                if (success3) _levelManager.Factory.SpawnSpaceObjectAtRange(repairStation);
+                //TODO: Shop
+                var shipYard = _levelManager.DataBase.TryGetRandomShipYard(out var success);
+                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(shipYard);
             }
 
             if (_levelManager.DepthCounter % 5 != 0 || _levelManager.DepthCounter == 0) return;

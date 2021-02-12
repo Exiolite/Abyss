@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Events;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Objects.SpaceObjects.Static
@@ -14,6 +15,7 @@ namespace Objects.SpaceObjects.Static
             if (LevelManager.InstancedPlayer == null) return;
             if (other.gameObject != LevelManager.InstancedPlayer.gameObject) return;
             PlayersAccount.AddResourcesToShip(Random.Range(0, credits), Random.Range(0, materials));
+            GuiEvent.UpdateNavCircleResources.Invoke();
             DestroyItSelf();
         }
 

@@ -1,19 +1,18 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Globalization;
 using Core;
 using Events;
 using TMPro;
 using UnityEngine;
 
-namespace Objects.Gui
+namespace Objects.NavigationCircle
 {
-    public class Gui : ObjectBehaviour
+    public class NavigationCircleCanvas : ObjectBehaviour
     {
         [SerializeField] private GameObject resourcesPanel;
         [SerializeField] private TextMeshProUGUI creditsText;
         [SerializeField] private TextMeshProUGUI materialsText;
-        
+
         private bool _isResourcePanelActive;
 
 
@@ -33,8 +32,8 @@ namespace Objects.Gui
         {
             _isResourcePanelActive = true;
             resourcesPanel.SetActive(_isResourcePanelActive);
-            creditsText.text = PlayersAccount.AccountSavedAccountResources.GetCredits().ToString(CultureInfo.InvariantCulture);
-            materialsText.text = PlayersAccount.AccountSavedAccountResources.GetMaterials().ToString(CultureInfo.InvariantCulture);
+            creditsText.text = PlayersAccount.OnShipAccountResources.GetCredits().ToString(CultureInfo.InvariantCulture);
+            materialsText.text = PlayersAccount.OnShipAccountResources.GetMaterials().ToString(CultureInfo.InvariantCulture);
             StartCoroutine(DisableResourcesPanel());
         }
 

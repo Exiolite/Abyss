@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.LevelManaging;
+using Events;
 using Objects.NavigationCircle;
 using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
@@ -48,11 +49,6 @@ namespace Objects.SpaceObjects
         {
             if (this == player) return;
             DestroyItSelf();
-        }
-
-        private void OnMouseDown()
-        {
-            LevelManager.InstancedPlayer.SetTarget(this == LevelManager.InstancedPlayer ? null : this);
         }
     }
 }

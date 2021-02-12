@@ -1,4 +1,5 @@
 ﻿using Core;
+using Events;
 using Objects.SpaceObjects;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ namespace Objects.NavigationCircle
         [SerializeField] private Image hitPoints;
         [SerializeField] private Image shield;
 
-        
+
         private void AddArrow(SpaceObject target)
         {
             if(target == LevelManager.InstancedPlayer) return;

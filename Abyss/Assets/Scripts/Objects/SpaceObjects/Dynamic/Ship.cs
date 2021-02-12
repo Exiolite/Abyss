@@ -1,4 +1,5 @@
-﻿using Modules.HealthStats;
+﻿using Events;
+using Modules.HealthStats;
 using Modules.Movements;
 using Objects.NavigationCircle;
 using Objects.Turrets;
@@ -73,11 +74,6 @@ namespace Objects.SpaceObjects.Dynamic
         protected override void Execute()
         {
             UpdateBehaviour();
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                PlayersAccount.AddResourcesToShip(10000,10000);
-            }
         }
 
 

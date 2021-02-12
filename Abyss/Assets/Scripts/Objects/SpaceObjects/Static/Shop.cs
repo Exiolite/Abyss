@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Events;
+using UnityEngine;
 
 namespace Objects.SpaceObjects.Static
 {
@@ -9,6 +10,7 @@ namespace Objects.SpaceObjects.Static
             if (LevelManager.InstancedPlayer == null) return;
             if (other.gameObject != LevelManager.InstancedPlayer.gameObject) return;
             PlayersAccount.DepositToSave();
+            GuiEvent.UpdateNavCircleResources.Invoke();
         }
         
         protected override void Execute()

@@ -1,4 +1,5 @@
-﻿using Modules.HealthStats;
+﻿using Events;
+using Modules.HealthStats;
 using UnityEngine;
 
 namespace Objects.SpaceObjects.Static
@@ -31,6 +32,7 @@ namespace Objects.SpaceObjects.Static
             if (LevelManager.InstancedPlayer == null) return;
             if (other.gameObject != LevelManager.InstancedPlayer.gameObject) return;
             PlayersAccount.DepositToSave();
+            GuiEvent.UpdateNavCircleResources.Invoke();
 
             _playerHitPointsDifference = ReadPlayerHitPointsDifference();
             _creditsForRepair = _playerHitPointsDifference * repairTax;
