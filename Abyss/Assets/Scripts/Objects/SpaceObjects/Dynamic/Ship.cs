@@ -5,6 +5,7 @@ using Objects.NavigationCircle;
 using Objects.Turrets;
 using Statics;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Objects.SpaceObjects.Dynamic
 {
@@ -62,6 +63,10 @@ namespace Objects.SpaceObjects.Dynamic
             LevelManager.SpawnSmallContainer(transform);
             if (this == LevelManager.InstancedPlayer)
             {    
+                if (Advertisement.IsReady())
+                {
+                    Advertisement.Show();
+                }
                 PlayersAccount.OnShipAccountResources.ResetCredits();
                 PlayersAccount.OnShipAccountResources.ResetMaterials();
                 LevelEvent.PlayerDeath.Invoke();

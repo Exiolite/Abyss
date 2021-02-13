@@ -3,6 +3,7 @@ using Core.LevelManaging;
 using Events;
 using Modules.Account;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Core
 {
@@ -42,6 +43,7 @@ namespace Core
         
         private void FirstInitialization()
         {
+            Advertisement.Initialize("4012389");
             InitializeCoreModules();
             GameStart();
         }
