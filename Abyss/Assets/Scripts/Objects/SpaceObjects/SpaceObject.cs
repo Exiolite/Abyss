@@ -39,12 +39,16 @@ namespace Objects.SpaceObjects
         
         
         
+        private void OnMouseDown()
+        {
+            LevelManager.InstancedPlayer.SetTarget(this == LevelManager.InstancedPlayer ? null : this);
+        }
+        
         private void Awake()
         {
             LevelEvent.DestroyAllExcludePlayer.AddListener(DestroyObject);
         }
-
-
+        
         private void DestroyObject(Ship player)
         {
             if (this == player) return;

@@ -1,6 +1,7 @@
 ﻿using Core;
 using Events;
 using Objects.SpaceObjects;
+using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ namespace Objects.NavigationCircle
         protected override void Initialize()
         {
             NavigationEvent.AddArrow.AddListener(AddArrow);
+            LevelEvent.PlayerDeath.AddListener(DestroyItSelf);
         }
         
         protected override void Execute()
@@ -33,6 +35,13 @@ namespace Objects.NavigationCircle
             var playerShip = LevelManager.InstancedPlayer;
             hitPoints.fillAmount = playerShip.HealthStats.HitPoints.GetPercent();
             shield.fillAmount = playerShip.HealthStats.Shield.GetPercent();
+        }
+
+
+
+        private void DestroyItSelf()
+        {
+            Destroy(gameObject);
         }
     }
 }
