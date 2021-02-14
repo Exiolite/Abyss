@@ -37,10 +37,10 @@ namespace Core
         
         private Account _playersAccount;
         private LevelManager _levelManager;
+        
         private Factory _factory;
 
-        
-        
+
         private void FirstInitialization()
         {
             Advertisement.Initialize("4012389");
@@ -51,6 +51,7 @@ namespace Core
         private void InitializeCoreModules()
         {
             _factory = gameObject.AddComponent<Factory>();
+            gameObject.AddComponent<SwipeInput>();
             _playersAccount = new Account();
             _levelManager = new LevelManager(_factory);
         }

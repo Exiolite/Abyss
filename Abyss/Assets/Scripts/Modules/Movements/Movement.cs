@@ -109,7 +109,10 @@ namespace Modules.Movements
         
         public void MicroWarp(Transform transform, SpaceObject target)
         {
-            transform.position += transform.right * (RangeFinder.CalculateDistance(transform, target)-50);
+            if (RangeFinder.CalculateDistance(transform, target) > 50.0f)
+            {
+                transform.position += transform.right * (RangeFinder.CalculateDistance(transform, target)-50);
+            }
         }
     }
 }

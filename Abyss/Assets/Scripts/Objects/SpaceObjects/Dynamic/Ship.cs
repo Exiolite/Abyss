@@ -70,6 +70,7 @@ namespace Objects.SpaceObjects.Dynamic
                 PlayersAccount.OnShipAccountResources.ResetCredits();
                 PlayersAccount.OnShipAccountResources.ResetMaterials();
                 LevelEvent.PlayerDeath.Invoke();
+                SwipeEvent.SwipedUp.RemoveListener(DoMicroWarp);
             }
             DestroyItSelf();
         }
@@ -80,6 +81,10 @@ namespace Objects.SpaceObjects.Dynamic
         {
             base.Initialize();
             LevelManager.AddShieldParticle(this);
+            if (this == LevelManager.InstancedPlayer)
+            {
+                SwipeEvent.SwipedUp.AddListener(DoMicroWarp);
+            }
         }
         
         protected override void Execute()
@@ -107,6 +112,11 @@ namespace Objects.SpaceObjects.Dynamic
             {
                 turretBehaviour.SetTarget(_target);
             }
+        }
+
+        private void DoMicroWarp()
+        {
+            movement.MicroWarp(transform, _target);
         }
     }
 }
