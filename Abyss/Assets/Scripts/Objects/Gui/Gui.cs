@@ -1,10 +1,10 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Globalization;
 using Core;
 using Events;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Objects.Gui
 {
@@ -13,9 +13,19 @@ namespace Objects.Gui
         [SerializeField] private GameObject resourcesPanel;
         [SerializeField] private TextMeshProUGUI creditsText;
         [SerializeField] private TextMeshProUGUI materialsText;
+
+        [SerializeField] private Slider zoomSlider;
         
         private bool _isResourcePanelActive;
 
+
+
+        public void OnZoomSliderChanged()
+        {
+            GuiEvent.OnZoomSliderChanged.Invoke(zoomSlider.value);
+        }
+        
+        
 
         protected override void Initialize()
         {
@@ -24,11 +34,10 @@ namespace Objects.Gui
             GuiEvent.UpdateNavCircleResources.AddListener(UpdateText);
         }
 
-        protected override void Execute()
-        {
-        }
+        protected override void Execute(){}
 
-
+        
+        
         private void UpdateText()
         {
             _isResourcePanelActive = true;
@@ -37,8 +46,7 @@ namespace Objects.Gui
             materialsText.text = PlayersAccount.AccountSavedAccountResources.GetMaterials().ToString(CultureInfo.InvariantCulture);
             StartCoroutine(DisableResourcesPanel());
         }
-
-
+        
         private IEnumerator DisableResourcesPanel()
         {
             yield return new WaitForSeconds(2);

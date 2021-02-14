@@ -61,7 +61,7 @@ namespace Modules.Movements
             {
                 _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 0, maxSpeed);
             }
-            transform.position += transform.right * (Time.deltaTime * _speed);
+            transform.Translate(transform.right * (Time.deltaTime * _speed), Space.World);
         }
 
         public void MoveSlowDownToMinSpeed(Transform transform)
