@@ -1,15 +1,21 @@
-﻿namespace Objects.SpaceObjects.Static
-{
-    public class Shop : SpaceObject
-    {
-        protected override void Initialize()
-        {
-            throw new System.NotImplementedException();
-        }
+﻿using Events;
+using UnityEngine;
 
+namespace Objects.SpaceObjects.Static
+{
+    public class Shop : Station
+    {
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (LevelManager.InstancedPlayer == null) return;
+            if (other.gameObject != LevelManager.InstancedPlayer.gameObject) return;
+            PlayersAccount.DepositToSave();
+            GuiEvent.UpdateNavCircleResources.Invoke();
+        }
+        
         protected override void Execute()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

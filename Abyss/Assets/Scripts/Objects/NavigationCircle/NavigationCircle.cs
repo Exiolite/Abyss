@@ -1,18 +1,47 @@
 ﻿using Core;
+using Events;
+using Objects.SpaceObjects;
+using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Objects.NavigationCircle
 {
     public class NavigationCircle : ObjectBehaviour
     {
+        [SerializeField] private NavigationArrow navigationArrow;
+
+        [SerializeField] private Image hitPoints;
+        [SerializeField] private Image shield;
+
+
+        private void AddArrow(SpaceObject target)
+        {
+            if(target == LevelManager.InstancedPlayer) return;
+            var arrow = Instantiate(navigationArrow, transform);
+            arrow.SetTarget(target);
+        }
+        
         protected override void Initialize()
         {
-            throw new System.NotImplementedException();
+            NavigationEvent.AddArrow.AddListener(AddArrow);
+            LevelEvent.PlayerDeath.AddListener(DestroyItSelf);
         }
-
+        
         protected override void Execute()
         {
-            throw new System.NotImplementedException();
+            if (LevelManager.InstancedPlayer == null) return;
+            transform.position = LevelManager.InstancedPlayer.transform.position; //TODO: Fix motionlag
+            var playerShip = LevelManager.InstancedPlayer;
+            hitPoints.fillAmount = playerShip.HealthStats.HitPoints.GetPercent();
+            shield.fillAmount = playerShip.HealthStats.Shield.GetPercent();
+        }
+
+
+
+        private void DestroyItSelf()
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -1,13 +1,14 @@
-﻿using Modules.Account;
-using Modules.LevelManager;
-using Modules.LevelManager.Factory;
+﻿using System;
+using Core.LevelManaging;
+using Events;
+using Modules.Account;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Core
 {
     public class Core : MonoBehaviour
     {
-        //Запуск ядра. НЕ ТРОГАТЬ!!!
         #region Singleton
 
         private static Core _instance;
@@ -29,28 +30,45 @@ namespace Core
 
        
         #endregion
+
+        public Account PlayersAccount => _playersAccount;
+        public LevelManager LevelManager => _levelManager;
         
         
-        [SerializeField] private SpaceObjectsDataBase spaceObjectsDataBase;
-        
-        private readonly Account _playersAccount = new Account();
-        private readonly LevelManager _levelManager = new LevelManager();
-        
-        
+        private Account _playersAccount;
+        private LevelManager _levelManager;
+        private Factory _factory;
+
         
         
         private void FirstInitialization()
         {
+            Advertisement.Initialize("4012389");
             InitializeCoreModules();
+            GameStart();
         }
 
         private void InitializeCoreModules()
         {
-            EventCore.CallForDataBase.AddListener(spaceObjectsDataBase.CallBackDataBase);
-            
-            _playersAccount.Initialize();
-            gameObject.AddComponent<Factory>();
-            _levelManager.Initialize();
+            _factory = gameObject.AddComponent<Factory>();
+            _playersAccount = new Account();
+            _levelManager = new LevelManager(_factory);
+        }
+
+        private void GameStart()
+        {
+            LevelEvent.PlayerDeath.AddListener(_levelManager.ResetLevels);
+            _levelManager.ManageLevelCreation();
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            _playersAccount.Save();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _playersAccount.Save();
         }
     }
 }

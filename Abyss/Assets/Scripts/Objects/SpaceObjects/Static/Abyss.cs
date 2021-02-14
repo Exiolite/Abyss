@@ -1,15 +1,20 @@
-﻿namespace Objects.SpaceObjects.Static
+﻿using UnityEngine;
+
+namespace Objects.SpaceObjects.Static
 {
     public class Abyss : SpaceObject
     {
-        protected override void Initialize()
-        {
-            throw new System.NotImplementedException();
-        }
-
         protected override void Execute()
         {
-            throw new System.NotImplementedException();
+            transform.eulerAngles = new Vector3(0,0, transform.eulerAngles.z - (Time.deltaTime * 8));
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject == LevelManager.InstancedPlayer.gameObject)
+            {
+                LevelManager.CreateNextLevel();
+            }
         }
     }
 }
