@@ -25,7 +25,7 @@ namespace Core.LevelManaging
         private ParticleSystem _shieldDamage;
 
 
-        public void Initialize()
+        public SpaceObjectsData()
         {
             LoadResources();
         }
@@ -57,16 +57,30 @@ namespace Core.LevelManaging
 
         public Ship TryGetEnemyForDepth(int depth, out bool success)
         {
+            var depthShips = new List<Ship>();
             foreach (var enemiesShip in _enemiesShips)
             {
                 if (enemiesShip.MaxDepth > depth)
                 {
-                    success = true;
-                    return enemiesShip;
+                    depthShips.Add(enemiesShip);
                 }
+            }
+
+            if (depthShips.Count > 0)
+            {
+                success = true;
+                return depthShips[Random.Range(0, depthShips.Count)];
             }
             success = false;
             return null;
+        }
+
+        public Ship GetRandomMarketShip()
+        {
+            if (_marketShips.Length == 0) throw new System.Exception("There is no ships in marketShips array");
+
+            var randomShip = _marketShips[Random.Range(0, _marketShips.Length)];
+            return randomShip;
         }
 
         public SpaceObject TryGetSmallContainer(out bool success)

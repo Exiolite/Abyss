@@ -1,9 +1,11 @@
-﻿using Modules.HealthStats;
+﻿using Events;
+using Modules.HealthStats;
 using Modules.Movements;
 using Objects.NavigationCircle;
 using Objects.Turrets;
 using Statics;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Objects.SpaceObjects.Dynamic
 {
@@ -11,7 +13,10 @@ namespace Objects.SpaceObjects.Dynamic
     {
         public int MaxDepth => maxDepth;
         public HealthStats HealthStats => healthStats;
+        public Movement Movement => movement;
         
+        public int ShipPriceCredits => shipPriceCredits;
+        public int ShipPriceMaterials => shipPriceMaterials;
         
         
         //SpaceObject attributes
@@ -20,6 +25,10 @@ namespace Objects.SpaceObjects.Dynamic
         
         //Modules
         [SerializeField] private Movement movement;
+        
+        //Pricing
+        [SerializeField] private int shipPriceCredits;
+        [SerializeField] private int shipPriceMaterials;
         
         //HealthStats
         [SerializeField] private HealthStats healthStats;
@@ -33,19 +42,6 @@ namespace Objects.SpaceObjects.Dynamic
         private SpaceObject _target;
 
         
-        
-        protected override void Initialize()
-        {
-            base.Initialize();
-            LevelManager.AddShieldParticle(this);
-        }
-        
-        protected override void Execute()
-        {
-            UpdateBehaviour();
-        }
-
-
         
         public void SetTarget(SpaceObject target)
         {
@@ -65,49 +61,51 @@ namespace Objects.SpaceObjects.Dynamic
             if (!haveHp) return;
             NavigationEvent.RemoveArrow.Invoke(this);
             LevelManager.SpawnSmallContainer(transform);
+            if (this == LevelManager.InstancedPlayer)
+            {    
+                if (Advertisement.IsReady())
+                {
+                    Advertisement.Show();
+                }
+                PlayersAccount.OnShipAccountResources.ResetCredits();
+                PlayersAccount.OnShipAccountResources.ResetMaterials();
+                LevelEvent.PlayerDeath.Invoke();
+            }
             DestroyItSelf();
         }
-
         
+        
+        
+        protected override void Initialize()
+        {
+            base.Initialize();
+            LevelManager.AddShieldParticle(this);
+        }
+        
+        protected override void Execute()
+        {
+            UpdateBehaviour();
+        }
+
+
         
         private void UpdateBehaviour()
         {
-            movement.SmoothMoveForvard(gameObject.transform, _target != null);
-            if (Time.time > _damagedTime + 3.0f)healthStats.RegenerateShield();
+            if (Time.time > _damagedTime + 1.0f)
+            {
+                healthStats.RegenerateShield();
+            }
+            movement.MoveShipToTarget(transform, _target);
+            
             if (_target == null) return;
-            movement.SmoothRotateToTarget(gameObject.transform, _target.transform);
+            
             if (_target.GetType() != typeof(Ship)) return;
+            
             var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
             if (distanceToTarget > 60) return;
             foreach (var turretBehaviour in turretBehaviours)
             {
                 turretBehaviour.SetTarget(_target);
-            }
-        }
-        
-        private void MoveToTarget()
-        {
-            if (_target.GetType() == typeof(Ship))
-            {
-                movement.SmoothMoveForvard(gameObject.transform, true);
-            }
-            else
-            {
-                if (RangeFinder.CalculateDistance(transform, _target)>10)
-                {
-                    movement.SmoothMoveForvard(gameObject.transform, true);
-                }
-                else
-                {
-                    if (RangeFinder.CalculateDistance(transform, _target)<1)
-                    {
-                        
-                    }
-                    else
-                    {
-                        movement.SmoothMoveForvard(gameObject.transform, false);
-                    }
-                }
             }
         }
     }

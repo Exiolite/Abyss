@@ -17,6 +17,17 @@ namespace Modules.Account
             _materials.Add(value);       
         }
 
+        public void SetCredits(int value)
+        {
+            _credits.Add(value);
+        }
+
+        public void SetMaterials(int value)
+        {
+            _materials.Add(value);
+        }
+        
+        
         public int GetCredits()
         {
             return _credits.Get();

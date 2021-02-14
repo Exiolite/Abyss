@@ -9,10 +9,11 @@ namespace Core.LevelManaging
 
 
 
-        public void Initialize(LevelManager levelManager)
+        public LevelCreator(LevelManager levelManager)
         {
             _levelManager = levelManager;
         }
+        
         
         public void CreateLevel()
         {
@@ -41,8 +42,9 @@ namespace Core.LevelManaging
         {
             if (_levelManager.DepthCounter % 10 == 0)
             {
-                var shop = _levelManager.DataBase.TryGetRandomShop(out var success);
-                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(shop);
+                //TODO: Shop
+                var shipYard = _levelManager.DataBase.TryGetRandomShipYard(out var success);
+                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(shipYard);
             }
 
             if (_levelManager.DepthCounter % 5 != 0 || _levelManager.DepthCounter == 0) return;

@@ -1,6 +1,9 @@
-﻿using Core.LevelManaging;
+﻿using System;
+using Core.LevelManaging;
+using Events;
 using Modules.Account;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Core
 {
@@ -32,23 +35,40 @@ namespace Core
         public LevelManager LevelManager => _levelManager;
         
         
-        private readonly Account _playersAccount = new Account();
-        private readonly LevelManager _levelManager = new LevelManager();
+        private Account _playersAccount;
+        private LevelManager _levelManager;
         private Factory _factory;
 
         
         
         private void FirstInitialization()
         {
+            Advertisement.Initialize("4012389");
             InitializeCoreModules();
+            GameStart();
         }
 
         private void InitializeCoreModules()
         {
-            _playersAccount.Initialize();
             _factory = gameObject.AddComponent<Factory>();
-            _levelManager.Initialize(_factory);
+            _playersAccount = new Account();
+            _levelManager = new LevelManager(_factory);
+        }
+
+        private void GameStart()
+        {
+            LevelEvent.PlayerDeath.AddListener(_levelManager.ResetLevels);
             _levelManager.ManageLevelCreation();
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            _playersAccount.Save();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _playersAccount.Save();
         }
     }
 }

@@ -436,7 +436,8 @@ MonoBehaviour:
   hitPoints: {fileID: 6124323873779071487}
   shield: {fileID: 7081122459928422716}
   movement:
-    speed: 0
+    velocity: 0
+    maxSpeed: 0
     angleSpeed: 0
 --- !u!1 &8250594742245493841
 GameObject:
@@ -483,8 +484,8 @@ GameObject:
   - component: {fileID: 3605679181436071422}
   - component: {fileID: 8494061395287477395}
   - component: {fileID: 2574294908323184861}
-  - component: {fileID: 3804079746420184981}
   - component: {fileID: 3753932756832944525}
+  - component: {fileID: 2044898170133360335}
   m_Layer: 0
   m_Name: ArrowCollider
   m_TagString: Untagged
@@ -544,7 +545,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -561538101
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3605679181436071422
@@ -611,22 +612,6 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
---- !u!58 &3804079746420184981
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451644778635170119}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!50 &3753932756832944525
 Rigidbody2D:
   serializedVersion: 4
@@ -648,3 +633,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &2044898170133360335
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451644778635170119}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 7, y: 4}
+  m_Direction: 1

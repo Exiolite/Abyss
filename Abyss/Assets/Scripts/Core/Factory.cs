@@ -39,18 +39,19 @@ namespace Core
             SetObjectId(spawnedObject.gameObject);
         }
         
-        public void SpawnSpaceObjectAtTransform(SpaceObject target, Transform parentTransform)
+        public SpaceObject SpawnSpaceObjectAtTransform(SpaceObject target, Transform parentTransform)
         {
             var spawnedObject = Instantiate(target, parentTransform);
             spawnedObject.transform.parent = null;
             SetObjectId(spawnedObject.gameObject);
+            return spawnedObject;
         }
         
         public void SpawnSpaceObjectAtRange(SpaceObject target)
         {
             var spawnedObject = Instantiate(target);
             SetObjectId(spawnedObject.gameObject);
-            spawnedObject.transform.position = Randomizer.GenerateDotOfInterest(60);
+            spawnedObject.transform.position = Randomizer.GenerateDotOfInterest(120);
         }
 
         public Ship SpawnPlayer(Ship ship)

@@ -1,4 +1,6 @@
-﻿using Objects.SpaceObjects.Dynamic;
+﻿using Events;
+using Objects.SpaceObjects;
+using Objects.SpaceObjects.Dynamic;
 using UnityEngine;
 
 namespace Core.LevelManaging
@@ -6,23 +8,25 @@ namespace Core.LevelManaging
     public class LevelManager
     {
         public int DepthCounter { get; private set; }
-        public SpaceObjectsData DataBase { get; } = new SpaceObjectsData();
+        public SpaceObjectsData DataBase { get; }
         public Ship InstancedPlayer { get; private set; }
-        public Factory Factory { get; private set; }
+        public Factory Factory { get; }
         
-        private readonly LevelLoader _levelLoader = new LevelLoader();
-        private readonly LevelCreator _levelCreator = new LevelCreator();
+        private readonly LevelLoader _levelLoader;
+        private readonly LevelCreator _levelCreator;
 
 
         
-        public void Initialize(Factory factory)
+        public LevelManager(Factory factory)
         {
             Factory = factory;
-            DataBase.Initialize();
-            _levelLoader.Initialize(this);
-            _levelCreator.Initialize(this);
+            DataBase = new SpaceObjectsData();
+            _levelLoader = new LevelLoader(this);
+            _levelCreator = new LevelCreator(this);
         }
 
+        
+        
         public void ManageLevelCreation()
         {
             _levelCreator.CreateLevel();
@@ -43,6 +47,16 @@ namespace Core.LevelManaging
             DepthCounter++;
         }
 
+        public void ResetLevels()
+        {
+            InstancedPlayer = null;
+            DepthCounter = 0;
+            LevelEvent.DestroyAllExcludePlayer.Invoke(InstancedPlayer);
+            Factory.ResetId(true);
+            _levelCreator.CreateLevel();
+            DepthCounter++;
+        }
+
         public void SpawnSmallContainer(Transform parent)
         {
             var container = DataBase.TryGetSmallContainer(out var success);
@@ -53,6 +67,19 @@ namespace Core.LevelManaging
         {
             var shieldParticles = DataBase.TryGetShieldDamageEffect(out var success);
             if (success) Factory.SpawnParticlesAtTransform(parent, shieldParticles);
+        }
+
+        public Ship SpawnRandomShipOnShipYard(Transform transform)
+        {
+            var marketShip = DataBase.GetRandomMarketShip();
+            return (Ship)Factory.SpawnSpaceObjectAtTransform(marketShip, transform);
+        }
+
+        public void SetPlayersShip(Ship target)
+        {
+            var previousShip = (SpaceObject)InstancedPlayer;
+            InstancedPlayer = target;
+            previousShip.DestroyItSelf();
         }
     }
 }
