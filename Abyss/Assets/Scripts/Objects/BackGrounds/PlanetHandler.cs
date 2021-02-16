@@ -60,11 +60,21 @@ namespace Objects.BackGrounds
 
             UpdateAsteroidsField();
         }
-
+        
         private void UpdateTest(Ship test)
         {
-            UpdateAsteroidsField();
+            var randomX = Random.Range(-500, 500);
+            var randomY = Random.Range(-500, 500);
+            var randomZ = Random.Range(4000, 5000);
+            transform.position = new Vector3(randomX,randomY,randomZ);
+            
             _spriteRenderer.sprite = GetRandomPlanetSprite(_spriteRenderer.sprite);
+            _spriteRenderer.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+
+            var asteroidsFieldChance = Random.Range(0.0f, 10);
+            asteroidFieldHolder.gameObject.SetActive(true);
+            UpdateAsteroidsField();
+            if (asteroidsFieldChance < 2.5) asteroidFieldHolder.gameObject.SetActive(false);
         }
 
         private void UpdateAsteroidsField()
@@ -84,7 +94,7 @@ namespace Objects.BackGrounds
 
         private void SetAsteroid(AsteroidHandler target)
         {
-            target.transform.localPosition = Randomizer.GenerateAsteroids(MinDistance, maxDistance + MinDistance);
+            target.transform.localPosition = Randomizer.GenerateAsteroids(MinDistance + Random.Range(0, 100), maxDistance + MinDistance + Random.Range(0, 500));
             target.transform.eulerAngles = new Vector3(0,0, 0);
         }
     }

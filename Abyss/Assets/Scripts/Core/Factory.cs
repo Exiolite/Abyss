@@ -51,7 +51,7 @@ namespace Core
         {
             var spawnedObject = Instantiate(target);
             SetObjectId(spawnedObject.gameObject);
-            spawnedObject.transform.position = Randomizer.GenerateDotOfInterest(120);
+            spawnedObject.transform.position = Randomizer.GenerateDotOfInterest(200,1000);
         }
 
         public Ship SpawnPlayer(Ship ship)

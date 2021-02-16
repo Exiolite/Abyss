@@ -15,6 +15,9 @@ namespace Objects.Gui
         [SerializeField] private TextMeshProUGUI materialsText;
 
         [SerializeField] private Slider zoomSlider;
+
+        [SerializeField] private GameObject helpPanel;
+        private bool _isHelpPanelActive;
         
         private bool _isResourcePanelActive;
 
@@ -24,7 +27,12 @@ namespace Objects.Gui
         {
             GuiEvent.OnZoomSliderChanged.Invoke(zoomSlider.value);
         }
-        
+
+        public void SwitchHelpPanel()
+        {
+            _isHelpPanelActive = !_isHelpPanelActive;
+            helpPanel.SetActive(_isHelpPanelActive);
+        }
         
 
         protected override void Initialize()
@@ -32,6 +40,7 @@ namespace Objects.Gui
             _isResourcePanelActive = false;
             resourcesPanel.SetActive(_isResourcePanelActive);
             GuiEvent.UpdateNavCircleResources.AddListener(UpdateText);
+            helpPanel.SetActive(_isHelpPanelActive);
         }
 
         protected override void Execute(){}

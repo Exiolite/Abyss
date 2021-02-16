@@ -54,8 +54,8 @@ MonoBehaviour:
   turretBehaviours:
   - {fileID: 1404456769695516042}
   movement:
-    velocity: 10
-    maxSpeed: 50
+    velocity: 25
+    maxSpeed: 30
     angleSpeed: 15
   shipPriceCredits: 0
   shipPriceMaterials: 0

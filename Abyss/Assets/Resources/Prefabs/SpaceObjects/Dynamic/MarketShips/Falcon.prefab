@@ -56,8 +56,8 @@ MonoBehaviour:
   - {fileID: 1404456769695516042}
   movement:
     velocity: 10
-    maxSpeed: 30
-    angleSpeed: 20
+    maxSpeed: 25
+    angleSpeed: 15
   shipPriceCredits: 2400
   shipPriceMaterials: 36
   healthStats:
