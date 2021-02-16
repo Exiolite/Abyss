@@ -294,8 +294,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291348680
-  m_fontColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
+    rgba: 4292269782
+  m_fontColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6511509201712436127}
   m_Layer: 0
-  m_Name: OnTargetSpring
+  m_Name: ToTargetSpring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,16 +429,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27f71159026462fa672a2d65e75dcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toTargetSpring: {fileID: 4924704500119647332}
-  canvasRotator: {fileID: 8250594742245493841}
-  arrowCollider: {fileID: 1816910644064491923}
-  objectName: {fileID: 965086658132776115}
-  hitPoints: {fileID: 6124323873779071487}
-  shield: {fileID: 7081122459928422716}
-  movement:
-    velocity: 0
-    maxSpeed: 0
-    angleSpeed: 0
+  _toTargetSpring: {fileID: 4924704500119647332}
+  _canvasRotator: {fileID: 8250594742245493841}
+  _arrowCollider: {fileID: 1816910644064491923}
+  _objectName: {fileID: 965086658132776115}
+  _hitPoints: {fileID: 6124323873779071487}
+  _shield: {fileID: 7081122459928422716}
+  _movement:
+    _velocity: 0
+    _maxSpeed: 0
+    _angleSpeed: 0
 --- !u!1 &8250594742245493841
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38be0baca1c4f4282921480fa290fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationArrow: {fileID: 2567540145060603902}
+  _navigationArrow: {fileID: 2567540145060603902}
 --- !u!223 &9165572484102082196
 Canvas:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ namespace Objects.SpaceObjects
 {
     public class Station : SpaceObject
     {
-        [SerializeField] protected StationGui stationGui;
+        [SerializeField] protected StationGui _stationGui;
 
         protected int PlayersCredits;
         protected int PlayersMaterials;
@@ -19,14 +19,14 @@ namespace Objects.SpaceObjects
         
         protected void UpdateCreditsUi(int value)
         {
-            stationGui.SetCredits(value);
-            stationGui.SetButtonColor(PlayersAccount.HaveEnoughCredits(value));
+            _stationGui.SetCredits(value);
+            _stationGui.SetButtonColor(PlayersAccount.HaveEnoughCredits(value));
         }
         
         protected void UpdateMaterialsUi(int value)
         {
-            stationGui.SetMaterials(value);
-            stationGui.SetButtonColor(PlayersAccount.HaveEnoughMaterials(value));
+            _stationGui.SetMaterials(value);
+            _stationGui.SetButtonColor(PlayersAccount.HaveEnoughMaterials(value));
         }
 
         protected void TryRemoveCredits(int value ,out bool success)

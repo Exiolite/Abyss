@@ -6,7 +6,7 @@ namespace Objects.SpaceObjects.Static
 {
     public class ShipYard : Station
     {
-        [SerializeField] private Transform spawnPosition;
+        [SerializeField] private Transform _spawnPosition;
         
         private Ship _marketShip;
         
@@ -45,7 +45,7 @@ namespace Objects.SpaceObjects.Static
 
         private void SpawnShip()
         {
-            _marketShip = LevelManager.SpawnRandomShipOnShipYard(spawnPosition);
+            _marketShip = LevelManager.SpawnRandomShipOnShipYard(_spawnPosition);
         }
         
         private void OnTriggerEnter2D(Collider2D other)

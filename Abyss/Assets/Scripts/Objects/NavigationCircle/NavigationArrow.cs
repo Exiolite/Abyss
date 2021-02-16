@@ -3,6 +3,7 @@ using Events;
 using Modules.Movements;
 using Objects.SpaceObjects;
 using Objects.SpaceObjects.Dynamic;
+using Objects.SpaceObjects.Static;
 using Statics;
 using TMPro;
 using UnityEngine;
@@ -13,15 +14,15 @@ namespace Objects.NavigationCircle
     public class NavigationArrow : ObjectBehaviour
     {
         //Arrow
-        [SerializeField] private GameObject toTargetSpring;
-        [SerializeField] private GameObject canvasRotator;
-        [SerializeField] private ArrowCollider arrowCollider;
+        [SerializeField] private GameObject _toTargetSpring;
+        [SerializeField] private GameObject _canvasRotator;
+        [SerializeField] private ArrowCollider _arrowCollider;
         //TargetCanvas
-        [SerializeField] private TextMeshProUGUI objectName;
-        [SerializeField] private Image hitPoints;
-        [SerializeField] private Image shield;
+        [SerializeField] private TextMeshProUGUI _objectName;
+        [SerializeField] private Image _hitPoints;
+        [SerializeField] private Image _shield;
         
-        [SerializeField, HideInInspector] private Movement movement;
+        [SerializeField, HideInInspector] private Movement _movement;
         
         private SpaceObject _target;
 
@@ -30,7 +31,12 @@ namespace Objects.NavigationCircle
         public void SetTarget(SpaceObject target)
         {
             _target = target;
-            objectName.text = _target.ObjName;
+            _objectName.text = _target.ObjName;
+            if (target is Ship) _objectName.color = Color.red;
+            else if (target is Station) _objectName.color = Color.white;
+            else if (target is Abyss) _objectName.color = Color.magenta;
+            else if (target is Container) _objectName.color = Color.yellow;
+            else _objectName.color = Color.white;
         }
 
         public void SetPlayersTarget()
@@ -48,7 +54,7 @@ namespace Objects.NavigationCircle
         protected override void Execute()
         {
             if (_target == null) return;
-            movement.HardRotateToTarget(transform, _target.transform);
+            _movement.HardRotateToTarget(transform, _target.transform);
             UpdateArrow();
         }
 
@@ -65,29 +71,29 @@ namespace Objects.NavigationCircle
             if (_target.GetType() == typeof(Ship))
             {
                 var targetShip = (Ship) _target;
-                shield.fillAmount = targetShip.HealthStats.Shield.GetPercent();
-                hitPoints.fillAmount = targetShip.HealthStats.HitPoints.GetPercent();
+                _shield.fillAmount = targetShip.HealthStats.Shield.GetPercent();
+                _hitPoints.fillAmount = targetShip.HealthStats.HitPoints.GetPercent();
             }
             else
             {
-                shield.fillAmount = 0;
-                hitPoints.fillAmount = 0;
+                _shield.fillAmount = 0;
+                _hitPoints.fillAmount = 0;
             }
         }
 
         private void UpdateSpring()
         {
-            canvasRotator.transform.eulerAngles = new Vector3(0,0,0);
+            _canvasRotator.transform.eulerAngles = new Vector3(0,0,0);
             var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
             if (distanceToTarget < 17.5f)
             {
-                toTargetSpring.transform.localPosition = new Vector3(distanceToTarget, 0,0);
-                arrowCollider.transform.localPosition = new Vector3(0,4,0);
+                _toTargetSpring.transform.localPosition = new Vector3(distanceToTarget, 0,0);
+                _arrowCollider.transform.localPosition = new Vector3(0,4,0);
             }
             else
             {
-                toTargetSpring.transform.localPosition = new Vector3(17.5f, 0,0);
-                arrowCollider.transform.localPosition = new Vector3(0,0,0);
+                _toTargetSpring.transform.localPosition = new Vector3(17.5f, 0,0);
+                _arrowCollider.transform.localPosition = new Vector3(0,0,0);
             }
         }
 

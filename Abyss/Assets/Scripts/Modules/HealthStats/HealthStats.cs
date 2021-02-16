@@ -5,23 +5,23 @@ namespace Modules.HealthStats
     [System.Serializable]
     public class HealthStats
     {
-        public Stat HitPoints => hitPoints;
-        public Stat Shield => shield;
+        public Stat HitPoints => _hitPoints;
+        public Stat Shield => _shield;
         
-        [SerializeField] private Stat hitPoints;
-        [SerializeField] private Stat shield;
+        [SerializeField] private Stat _hitPoints;
+        [SerializeField] private Stat _shield;
 
 
 
         public void Add(float hitPointsValue, float shieldValue)
         {
-            hitPoints.Add(hitPointsValue);
-            shield.Add(shieldValue);
+            _hitPoints.Add(hitPointsValue);
+            _shield.Add(shieldValue);
         }
 
         public void RegenerateShield()
         {
-            shield.RegenerateStat();
+            _shield.RegenerateStat();
         }
 
         public void TryApplyDamage(float value, out bool isLastShot)
@@ -42,9 +42,9 @@ namespace Modules.HealthStats
         
         private void TryRemoveHitPoints(float value, out bool success)
         {
-            if (hitPoints.IsEnough(value))
+            if (_hitPoints.IsEnough(value))
             {
-                hitPoints.Remove(value);
+                _hitPoints.Remove(value);
                 success = true;
             }
             else
@@ -55,9 +55,9 @@ namespace Modules.HealthStats
         
         private void TryRemoveShield(float value, out bool success)
         {
-            if (shield.CheckUnderZero())
+            if (_shield.CheckUnderZero())
             {
-                shield.Remove(value);
+                _shield.Remove(value);
                 success = true;
             }
             else

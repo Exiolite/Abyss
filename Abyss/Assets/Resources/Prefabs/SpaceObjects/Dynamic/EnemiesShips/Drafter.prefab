@@ -49,25 +49,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852a32df303462eb2fcb88bbcf6bfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: Drafter
-  maxDepth: 5
-  turretBehaviours:
+  _objName: Drafter
+  _maxDepth: 5
+  _turretBehaviours:
   - {fileID: 1404456769695516042}
-  movement:
-    velocity: 4
-    maxSpeed: 8
-    angleSpeed: 8
-  shipPriceCredits: 0
-  shipPriceMaterials: 0
-  healthStats:
-    hitPoints:
-      statValue: 100
-      maxStatValue: 100
-      regenerateValue: 0
-    shield:
-      statValue: 150
-      maxStatValue: 150
-      regenerateValue: 15
+  _movement:
+    _velocity: 5
+    _maxSpeed: 10
+    _angleSpeed: 4
+  _shipPriceCredits: 0
+  _shipPriceMaterials: 0
+  _healthStats:
+    _hitPoints:
+      _statValue: 300
+      _maxStatValue: 300
+      _regenerateValue: 0
+    _shield:
+      _statValue: 50
+      _maxStatValue: 50
+      _regenerateValue: 5
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

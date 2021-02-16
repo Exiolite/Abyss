@@ -81,5 +81,11 @@ namespace Core.LevelManaging
             InstancedPlayer = target;
             previousShip.DestroyItSelf();
         }
+
+        public void SpawnExplosion(Transform transform)
+        {
+            var explosion = DataBase.GetExplosionObject();
+            Factory.SpawnObjectAtTransformDetached(explosion, transform);
+        }
     }
 }

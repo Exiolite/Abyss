@@ -11,27 +11,27 @@ namespace Objects.SpaceObjects.Dynamic
 {
     public class Ship : SpaceObject
     {
-        public int MaxDepth => maxDepth;
-        public HealthStats HealthStats => healthStats;
-        public Movement Movement => movement;
+        public int MaxDepth => _maxDepth;
+        public HealthStats HealthStats => _healthStats;
+        public Movement Movement => _movement;
         
-        public int ShipPriceCredits => shipPriceCredits;
-        public int ShipPriceMaterials => shipPriceMaterials;
+        public int ShipPriceCredits => _shipPriceCredits;
+        public int ShipPriceMaterials => _shipPriceMaterials;
         
         
         //SpaceObject attributes
-        [SerializeField] private int maxDepth;
-        [SerializeField] private Turret[] turretBehaviours;
+        [SerializeField] private int _maxDepth;
+        [SerializeField] private Turret[] _turretBehaviours;
         
         //Modules
-        [SerializeField] private Movement movement;
+        [SerializeField] private Movement _movement;
         
         //Pricing
-        [SerializeField] private int shipPriceCredits;
-        [SerializeField] private int shipPriceMaterials;
+        [SerializeField] private int _shipPriceCredits;
+        [SerializeField] private int _shipPriceMaterials;
         
         //HealthStats
-        [SerializeField] private HealthStats healthStats;
+        [SerializeField] private HealthStats _healthStats;
         private float _damagedTime;
         
         //Particles
@@ -41,8 +41,7 @@ namespace Objects.SpaceObjects.Dynamic
         //Targeting
         private SpaceObject _target;
 
-        
-        
+
         public void SetTarget(SpaceObject target)
         {
             _target = target;
@@ -57,18 +56,13 @@ namespace Objects.SpaceObjects.Dynamic
         {
             _particlesPlayer.PlayShieldDamage(_shieldParticles);
             _damagedTime = Time.time;
-            healthStats.TryApplyDamage(value, out var haveHp);
+            _healthStats.TryApplyDamage(value, out var haveHp);
             if (!haveHp) return;
             NavigationEvent.RemoveArrow.Invoke(this);
+            LevelManager.SpawnExplosion(transform);
             LevelManager.SpawnSmallContainer(transform);
             if (this == LevelManager.InstancedPlayer)
-            {    
-                if (Advertisement.IsReady())
-                {
-                    Advertisement.Show();
-                }
-                PlayersAccount.OnShipAccountResources.ResetCredits();
-                PlayersAccount.OnShipAccountResources.ResetMaterials();
+            {
                 LevelEvent.PlayerDeath.Invoke();
                 SwipeEvent.SwipedUp.RemoveListener(DoMicroWarp);
             }
@@ -98,9 +92,9 @@ namespace Objects.SpaceObjects.Dynamic
         {
             if (Time.time > _damagedTime + 1.0f)
             {
-                healthStats.RegenerateShield();
+                _healthStats.RegenerateShield();
             }
-            movement.MoveShipToTarget(transform, _target);
+            _movement.MoveShipToTarget(transform, _target);
             
             if (_target == null) return;
             
@@ -108,7 +102,7 @@ namespace Objects.SpaceObjects.Dynamic
             
             var distanceToTarget = RangeFinder.CalculateDistance(transform, _target);
             if (distanceToTarget > 60) return;
-            foreach (var turretBehaviour in turretBehaviours)
+            foreach (var turretBehaviour in _turretBehaviours)
             {
                 turretBehaviour.SetTarget(_target);
             }
@@ -116,7 +110,7 @@ namespace Objects.SpaceObjects.Dynamic
 
         private void DoMicroWarp()
         {
-            movement.MicroWarp(transform, _target);
+            _movement.MicroWarp(transform, _target);
         }
     }
 }

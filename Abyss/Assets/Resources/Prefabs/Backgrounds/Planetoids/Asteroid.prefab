@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc1cf5d35704f92b3546b6d3db80453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidsSprites:
+  _asteroidsSprites:
   - {fileID: 473713003981839595, guid: 12ae6ab301829db45bb96f15a037d7f2, type: 3}
   - {fileID: 7551590348979208788, guid: 12ae6ab301829db45bb96f15a037d7f2, type: 3}
   - {fileID: 6657864339238834416, guid: 12ae6ab301829db45bb96f15a037d7f2, type: 3}

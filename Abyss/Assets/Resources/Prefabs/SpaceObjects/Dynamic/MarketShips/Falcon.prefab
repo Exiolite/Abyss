@@ -50,25 +50,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852a32df303462eb2fcb88bbcf6bfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: Falcon
-  maxDepth: 10
-  turretBehaviours:
+  _objName: Falcon
+  _maxDepth: 10
+  _turretBehaviours:
   - {fileID: 1404456769695516042}
-  movement:
-    velocity: 10
-    maxSpeed: 25
-    angleSpeed: 15
-  shipPriceCredits: 2400
-  shipPriceMaterials: 36
-  healthStats:
-    hitPoints:
-      statValue: 450
-      maxStatValue: 450
-      regenerateValue: 0
-    shield:
-      statValue: 300
-      maxStatValue: 300
-      regenerateValue: 40
+  _movement:
+    _velocity: 15
+    _maxSpeed: 30
+    _angleSpeed: 15
+  _shipPriceCredits: 2500
+  _shipPriceMaterials: 30
+  _healthStats:
+    _hitPoints:
+      _statValue: 750
+      _maxStatValue: 750
+      _regenerateValue: 0
+    _shield:
+      _statValue: 450
+      _maxStatValue: 450
+      _regenerateValue: 25
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

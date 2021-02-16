@@ -9,16 +9,16 @@ namespace Objects.NavigationCircle
 {
     public class NavigationCircle : ObjectBehaviour
     {
-        [SerializeField] private NavigationArrow navigationArrow;
+        [SerializeField] private NavigationArrow _navigationArrow;
 
-        [SerializeField] private Image hitPoints;
-        [SerializeField] private Image shield;
+        [SerializeField] private Image _hitPoints;
+        [SerializeField] private Image _shield;
 
 
         private void AddArrow(SpaceObject target)
         {
             if(target == LevelManager.InstancedPlayer) return;
-            var arrow = Instantiate(navigationArrow, transform);
+            var arrow = Instantiate(_navigationArrow, transform);
             arrow.SetTarget(target);
         }
         
@@ -33,8 +33,8 @@ namespace Objects.NavigationCircle
             if (LevelManager.InstancedPlayer == null) return;
             transform.position = LevelManager.InstancedPlayer.transform.position; //TODO: Fix motionlag
             var playerShip = LevelManager.InstancedPlayer;
-            hitPoints.fillAmount = playerShip.HealthStats.HitPoints.GetPercent();
-            shield.fillAmount = playerShip.HealthStats.Shield.GetPercent();
+            _hitPoints.fillAmount = playerShip.HealthStats.HitPoints.GetPercent();
+            _shield.fillAmount = playerShip.HealthStats.Shield.GetPercent();
         }
 
 

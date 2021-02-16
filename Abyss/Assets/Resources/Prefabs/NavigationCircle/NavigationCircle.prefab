@@ -802,9 +802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fcc15fec6644388ee166ae3dc32470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourcesPanel: {fileID: 2575717475086117587}
-  creditsText: {fileID: 5406765245455765555}
-  materialsText: {fileID: 6468049380292083298}
+  _resourcesPanel: {fileID: 2575717475086117587}
+  _creditsText: {fileID: 5406765245455765555}
+  _materialsText: {fileID: 6468049380292083298}
 --- !u!1 &7354565134886842402
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,10 +849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387faf675c894bdca41821b8428fe69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationArrow: {fileID: 2567540145060603902, guid: 02a9d8dc00d2b6f48b8367afa88a23ca,
+  _navigationArrow: {fileID: 2567540145060603902, guid: 02a9d8dc00d2b6f48b8367afa88a23ca,
     type: 3}
-  hitPoints: {fileID: 8568377928832214621}
-  shield: {fileID: 7998347844357014817}
+  _hitPoints: {fileID: 8568377928832214621}
+  _shield: {fileID: 7998347844357014817}
 --- !u!1 &8152237527452572292
 GameObject:
   m_ObjectHideFlags: 0

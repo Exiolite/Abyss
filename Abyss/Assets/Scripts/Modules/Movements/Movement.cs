@@ -9,9 +9,9 @@ namespace Modules.Movements
     public class Movement
     {
         //Movement attributes
-        [SerializeField] private float velocity;
-        [SerializeField] private float maxSpeed;
-        [SerializeField] private float angleSpeed;
+        [SerializeField] private float _velocity;
+        [SerializeField] private float _maxSpeed;
+        [SerializeField] private float _angleSpeed;
         private float _speed;
 
 
@@ -33,12 +33,12 @@ namespace Modules.Movements
             var deirectionToTarget = target.transform.position - transform.position;
             var angleToTarget = Mathf.Atan2(deirectionToTarget.y, deirectionToTarget.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0,0, angleToTarget);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * angleSpeed / 10);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _angleSpeed / 10);
         }
         
         public void HardMoveForward(Transform transform)
         {
-            transform.position += transform.right * (Time.deltaTime * maxSpeed);
+            transform.Translate(transform.right * (Time.deltaTime * _maxSpeed), Space.World);
         }
         
         public void HardMoveForwardWithCurrentSpeed(Transform transform)
@@ -48,25 +48,25 @@ namespace Modules.Movements
 
         public void HardMoveForwardWithMinSpeed(Transform transform)
         {
-            transform.position += transform.right * (Time.deltaTime * 1);
+            transform.position += transform.right * (Time.deltaTime * 3);
         }
 
         public void SmoothMoveForward(Transform transform, bool flag)
         {
             if (flag)
             {
-                _speed = Mathf.Clamp(_speed + (velocity * Time.deltaTime), 0, maxSpeed);
+                _speed = Mathf.Clamp(_speed + (_velocity * Time.deltaTime), 0, _maxSpeed);
             }
             else
             {
-                _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 0, maxSpeed);
+                _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 0, _maxSpeed);
             }
             transform.Translate(transform.right * (Time.deltaTime * _speed), Space.World);
         }
 
         public void MoveSlowDownToMinSpeed(Transform transform)
         {
-            _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 2, maxSpeed);
+            _speed = Mathf.Clamp(_speed - (_speed * Time.deltaTime), 3, _maxSpeed);
             transform.position += transform.right * (Time.deltaTime * _speed);
         }
 
@@ -104,7 +104,7 @@ namespace Modules.Movements
 
         public void HardMoveRandomSpeed(Transform transform)
         {
-            transform.position += transform.right * (Time.deltaTime * Random.Range(maxSpeed-Random.Range(0,50),maxSpeed+Random.Range(0,50)));
+            transform.position += transform.right * (Time.deltaTime * Random.Range(_maxSpeed-Random.Range(0,50),_maxSpeed+Random.Range(0,50)));
         }
         
         public void MicroWarp(Transform transform, SpaceObject target)

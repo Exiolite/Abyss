@@ -9,23 +9,21 @@ namespace Objects.Turrets
     public class Projectile : MonoBehaviour
     {
         //Projectile attributes
-        [SerializeField] private float damage;
-        
+        [SerializeField] private float _damage;
+
         //Modules
-        [SerializeField] private Movement movement;
-        
+        [SerializeField] private Movement _movement;
+
         //Targeting
         private protected SpaceObject Target;
 
 
-        
         public void SetTarget(SpaceObject target)
         {
             Target = target;
         }
-        
-        
-        
+
+
         private void Start()
         {
             StartCoroutine(Destroy());
@@ -36,15 +34,15 @@ namespace Objects.Turrets
             if (Target == null) return;
             if (other.gameObject == Target.gameObject)
             {
-                var dynamicTarget = (Ship)Target;
-                dynamicTarget.ApplyDamage(damage);
+                var dynamicTarget = (Ship) Target;
+                dynamicTarget.ApplyDamage(_damage);
                 Destroy(gameObject);
             }
         }
-        
+
         private void Update()
         {
-            movement.HardMoveRandomSpeed(transform);
+            _movement.HardMoveRandomSpeed(transform);
         }
 
         private IEnumerator Destroy()

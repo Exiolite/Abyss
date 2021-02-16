@@ -9,10 +9,10 @@ namespace Objects.SpaceObjects
 {
     public abstract class SpaceObject : ObjectBehaviour
     {
-        public string ObjName => objName;
+        public string ObjName => _objName;
         
 
-        [SerializeField] private string objName;
+        [SerializeField] private string _objName;
         
         
         

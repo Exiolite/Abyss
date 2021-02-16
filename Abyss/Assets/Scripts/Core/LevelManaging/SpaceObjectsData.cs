@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Objects;
+using Objects.Effects;
 using Objects.NavigationCircle;
 using Objects.SpaceObjects;
 using Objects.SpaceObjects.Dynamic;
@@ -23,6 +25,7 @@ namespace Core.LevelManaging
         private NavigationCircle _navigationCircle;
 
         private ParticleSystem _shieldDamage;
+        private ShipExplode _shipExplode;
 
 
         public SpaceObjectsData()
@@ -124,6 +127,11 @@ namespace Core.LevelManaging
             return null;
         }
 
+        public GameObject GetExplosionObject()
+        {
+            return _shipExplode.gameObject;
+        }
+
 
 
         private SpaceObject TryGetRandomObject(SpaceObject[] spaceObjects, out bool success)
@@ -147,7 +155,7 @@ namespace Core.LevelManaging
             success = false;
             return null;
         }
-        
+
         private void LoadResources()
         {
             _enemiesShips = Resources.LoadAll<Ship>("Prefabs/SpaceObjects/Dynamic/EnemiesShips/");
@@ -161,9 +169,11 @@ namespace Core.LevelManaging
             _shops = Resources.LoadAll<SpaceObject>("Prefabs/SpaceObjects/Static/Shops/");
             
             _navigationCircle = Resources.Load<NavigationCircle>("Prefabs/NavigationCircle/NavigationCircle");
-            _shieldDamage = Resources.Load<ParticleSystem>("Prefabs/Effects/ShieldDamage");
             
-            
+            _shieldDamage = Resources.Load<ParticleSystem>("Prefabs/Effects/Particles/ShieldDamage");
+            _shipExplode = Resources.Load<ShipExplode>("Prefabs/Effects/Particles/ShipExplosion");
+
+
             //Crutch resource load to list //TODO: TBD Resource Load
             foreach (var enemiesShip in _enemiesShips)
             {

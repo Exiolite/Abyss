@@ -11,11 +11,11 @@ namespace Objects.Gui
 {
     public class StationGui : ObjectBehaviour
     {
-        [SerializeField] private SpaceObject parentSpaceObject;
+        [SerializeField] private SpaceObject _parentSpaceObject;
         
-        [SerializeField] private Image buyImage;
-        [SerializeField] private TextMeshProUGUI creditsPriceText;
-        [SerializeField] private TextMeshProUGUI materialsPriceText;
+        [SerializeField] private Image _buyImage;
+        [SerializeField] private TextMeshProUGUI _creditsPriceText;
+        [SerializeField] private TextMeshProUGUI _materialsPriceText;
 
         private int _credits;
         private int _materials;
@@ -36,8 +36,8 @@ namespace Objects.Gui
 
         public void SetButtonColor(bool flag)
         {
-            if (flag) buyImage.color = Color.green;
-            else buyImage.color = Color.red;
+            if (flag) _buyImage.color = Color.green;
+            else _buyImage.color = Color.red;
         }
 
 
@@ -55,12 +55,12 @@ namespace Objects.Gui
 
         private void UpdateCreditsCounter()
         {
-            creditsPriceText.text = _credits.ToString(CultureInfo.InvariantCulture);
+            _creditsPriceText.text = _credits.ToString(CultureInfo.InvariantCulture);
         }
 
         private void UpdateMaterialsCounter()
         {
-            materialsPriceText.text = _materials.ToString(CultureInfo.InvariantCulture);
+            _materialsPriceText.text = _materials.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

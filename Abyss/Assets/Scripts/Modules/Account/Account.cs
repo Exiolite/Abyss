@@ -84,6 +84,14 @@ namespace Modules.Account
             AccountSavedAccountResources.AddMaterials(OnShipAccountResources.GetMaterials());
             OnShipAccountResources.ResetMaterials();
         }
+        
+        public void DepositQuadToSave()
+        {
+            AccountSavedAccountResources.AddCredits(OnShipAccountResources.GetCredits()/4);
+            OnShipAccountResources.ResetCredits();
+            AccountSavedAccountResources.AddMaterials(OnShipAccountResources.GetMaterials()/4);
+            OnShipAccountResources.ResetMaterials();
+        }
 
         public void TryRemoveCredits(int creditsValue, out bool success)
         {

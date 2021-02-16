@@ -359,9 +359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919ec7c5b92b4874826feb4d65645531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: Roundy Repair Station
-  stationGui: {fileID: 1438402711315684733}
-  repairTax: 2
+  _objName: Repair Station
+  _stationGui: {fileID: 1438402711315684733}
+  _repairTax: 2
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -563,10 +563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a74822752f447aa97bd1aa7f5e0a47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentSpaceObject: {fileID: 3296449027729479129}
-  buyImage: {fileID: 4887093236675464886}
-  creditsPriceText: {fileID: 799891367983866634}
-  materialsPriceText: {fileID: 0}
+  _parentSpaceObject: {fileID: 3296449027729479129}
+  _buyImage: {fileID: 4887093236675464886}
+  _creditsPriceText: {fileID: 799891367983866634}
+  _materialsPriceText: {fileID: 0}
 --- !u!1 &6642730714768234096
 GameObject:
   m_ObjectHideFlags: 0

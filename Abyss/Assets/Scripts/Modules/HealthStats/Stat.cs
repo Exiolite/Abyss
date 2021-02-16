@@ -5,55 +5,55 @@ namespace Modules.HealthStats
     [System.Serializable]
     public class Stat
     {
-        [SerializeField] private float statValue;
-        [SerializeField] private float maxStatValue;
-        [SerializeField] private float regenerateValue;
+        [SerializeField] private float _statValue;
+        [SerializeField] private float _maxStatValue;
+        [SerializeField] private float _regenerateValue;
 
 
         
         public void Add(float value)
         {
-            statValue = Mathf.Clamp(statValue + value, 0, maxStatValue);
+            _statValue = Mathf.Clamp(_statValue + value, 0, _maxStatValue);
         }
 
         public int GetDifference()
         {
-            return (int)maxStatValue - (int)statValue;
+            return (int)_maxStatValue - (int)_statValue;
         }
         
         public void Remove(float value)
         {
-            statValue = Mathf.Clamp(statValue - value, 0, maxStatValue);
+            _statValue = Mathf.Clamp(_statValue - value, 0, _maxStatValue);
         }
         
         public void SetStat(float value)
         {
-            statValue = value;
+            _statValue = value;
         }
 
         public float GetPercent()
         {
-            return statValue / maxStatValue;
+            return _statValue / _maxStatValue;
         }
         
         public void RegenerateStat()
         {
-            statValue = Mathf.Clamp(statValue + (regenerateValue * Time.deltaTime), 0, maxStatValue);
+            _statValue = Mathf.Clamp(_statValue + (_regenerateValue * Time.deltaTime), 0, _maxStatValue);
         }
         
         public bool IsEnough(float value)
         {
-            return statValue > value;
+            return _statValue > value;
         }
         
         public bool CheckUnderZero()
         {
-            return statValue > 0;
+            return _statValue > 0;
         }
 
         public bool CheckStatRegenerated()
         {
-            return statValue == maxStatValue;
+            return _statValue == _maxStatValue;
         }
     }
 }

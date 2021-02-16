@@ -8,11 +8,11 @@ namespace Objects.Turrets
     public abstract class Turret : MonoBehaviour
     {
         //Turret attributes
-        [SerializeField] private float attackDelay;
-        private bool isAttacking;
+        [SerializeField] private float _attackDelay;
+        private bool _isAttacking;
         
         //Modules
-        [SerializeField] private Movement movement;
+        [SerializeField] private Movement _movement;
         
         
 
@@ -22,7 +22,7 @@ namespace Objects.Turrets
         
         public void SetTarget(SpaceObject target)
         {
-            movement.HardRotateToTarget(transform, target.transform);
+            _movement.HardRotateToTarget(transform, target.transform);
             StartCoroutine(AttackCoroutine(target));
         }
         
@@ -30,11 +30,11 @@ namespace Objects.Turrets
 
         private IEnumerator AttackCoroutine(SpaceObject target)
         {
-            if (isAttacking) yield break;
-            isAttacking = true;
+            if (_isAttacking) yield break;
+            _isAttacking = true;
             AttackTarget(target);
-            yield return new WaitForSeconds(attackDelay);
-            isAttacking = false;
+            yield return new WaitForSeconds(_attackDelay);
+            _isAttacking = false;
         }
     }
 }

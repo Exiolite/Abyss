@@ -102,16 +102,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6578029921566799198, guid: a94b2390360e1a34aa7dd7402497cd22,
+  m_Sprite: {fileID: -4214973979709282202, guid: a94b2390360e1a34aa7dd7402497cd22,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 640, y: 640}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4938887131178292069
@@ -126,14 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63db284cb2be4d188aa4b4bb1673c9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetsSprites:
+  _planetsSprites:
   - {fileID: -4214973979709282202, guid: a94b2390360e1a34aa7dd7402497cd22, type: 3}
   - {fileID: -4279924306816040256, guid: a94b2390360e1a34aa7dd7402497cd22, type: 3}
   - {fileID: 4067841863882447332, guid: a94b2390360e1a34aa7dd7402497cd22, type: 3}
   - {fileID: -3030650870757212511, guid: a94b2390360e1a34aa7dd7402497cd22, type: 3}
   - {fileID: 2715010388870108313, guid: a94b2390360e1a34aa7dd7402497cd22, type: 3}
   - {fileID: 5017093421344364532, guid: a94b2390360e1a34aa7dd7402497cd22, type: 3}
-  asteroidFieldHolder: {fileID: 167523731}
-  maxDistance: 400
-  asteroidHandler: {fileID: 8525619111763308605, guid: c52367b06926707409608dfee264c287,
+  _asteroidFieldHolder: {fileID: 167523731}
+  _maxDistance: 1000
+  _asteroidHandler: {fileID: 8525619111763308605, guid: c52367b06926707409608dfee264c287,
     type: 3}

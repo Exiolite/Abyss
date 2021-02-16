@@ -7,9 +7,9 @@ namespace Objects.BackGrounds
 {
     public class StarsHandler : MonoBehaviour
     {
-        [SerializeField] private Transform star;
+        [SerializeField] private Transform _star;
 
-        private Transform[] _masStars = new Transform[120];
+        private readonly Transform[] _masStars = new Transform[120];
 
 
         private void Start()
@@ -23,7 +23,7 @@ namespace Objects.BackGrounds
         {
             for (int i = 0; i < 120; i++)
             {
-                _masStars[i] = Instantiate(star, transform);
+                _masStars[i] = Instantiate(_star, transform);
             }
         }
 

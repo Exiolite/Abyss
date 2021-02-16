@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dae5bb34a38426cb95da436837aeb98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: Abyss FT34G9T12
+  _objName: Abyss
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

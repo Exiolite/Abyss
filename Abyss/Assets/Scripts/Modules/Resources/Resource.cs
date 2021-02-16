@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Modules.Resources
+﻿namespace Modules.Resources
 {
     public class Resource
     {

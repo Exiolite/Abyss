@@ -6,7 +6,7 @@ namespace Objects.SpaceObjects.Static
 {
     public class RepairStation : Station
     {
-        [SerializeField] private int repairTax = 1;
+        [SerializeField] private int _repairTax = 1;
         
         private int _playerHitPointsDifference;
         private Stat _playerHitPoints;
@@ -35,7 +35,7 @@ namespace Objects.SpaceObjects.Static
             GuiEvent.UpdateNavCircleResources.Invoke();
 
             _playerHitPointsDifference = ReadPlayerHitPointsDifference();
-            _creditsForRepair = _playerHitPointsDifference * repairTax;
+            _creditsForRepair = _playerHitPointsDifference * _repairTax;
             UpdateCreditsUi(_creditsForRepair);
         }
         

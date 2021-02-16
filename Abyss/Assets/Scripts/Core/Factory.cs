@@ -8,7 +8,7 @@ namespace Core
     public class Factory : ObjectBehaviour
     {
         private readonly string _objectPreIndex = "IO";
-        private int objectId;
+        private int _objectId;
         
         
         
@@ -25,6 +25,12 @@ namespace Core
         public void SpawnObjectAtTransform(GameObject target, Transform parentTransform)
         {
             var spawnedObject = Instantiate(target, parentTransform);
+        }
+        
+        public void SpawnObjectAtTransformDetached(GameObject target, Transform parentTransform)
+        {
+            var spawnedObject = Instantiate(target, parentTransform);
+            spawnedObject.transform.parent = null;
         }
 
         public void SpawnParticlesAtTransform(Ship target, ParticleSystem targetParticles)
@@ -63,15 +69,15 @@ namespace Core
 
         public void ResetId(bool isPlayerAlive)
         {
-            objectId = isPlayerAlive ? 1 : 0;
+            _objectId = isPlayerAlive ? 1 : 0;
         }
         
         
         
         private void SetObjectId(GameObject spawnedObject)
         {
-            spawnedObject.name = _objectPreIndex + objectId;
-            objectId++;
+            spawnedObject.name = _objectPreIndex + _objectId;
+            _objectId++;
         }
     }
 }

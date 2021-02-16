@@ -5,16 +5,15 @@ namespace Core.LevelManaging
 {
     public class LevelCreator
     {
-        private LevelManager _levelManager;
-
+        private readonly LevelManager _levelManager;
 
 
         public LevelCreator(LevelManager levelManager)
         {
             _levelManager = levelManager;
         }
-        
-        
+
+
         public void CreateLevel()
         {
             CreatePlayer();
@@ -23,8 +22,7 @@ namespace Core.LevelManaging
             CreateAbyss();
         }
 
-        
-        
+
         private void CreatePlayer()
         {
             if (_levelManager.InstancedPlayer != null) return;
@@ -35,9 +33,8 @@ namespace Core.LevelManaging
                 _levelManager.SetPlayer(_levelManager.Factory.SpawnPlayer(playersShip));
                 _levelManager.Factory.SpawnObject(_levelManager.DataBase.GetNavigationCircle());
             }
-
         }
-        
+
         private void CreateStation()
         {
             if (_levelManager.DepthCounter % 10 == 0)
@@ -49,17 +46,11 @@ namespace Core.LevelManaging
 
             if (_levelManager.DepthCounter % 5 != 0 || _levelManager.DepthCounter == 0) return;
             {
-                var shipyardOrRepairStationChance = Random.Range(0, 100);
-                if (shipyardOrRepairStationChance > 50)
-                {
-                    var shipYard = _levelManager.DataBase.TryGetRandomShipYard(out var success);
-                    if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(shipYard);
-                }
-                else
-                {
-                    var repairStation = _levelManager.DataBase.TryGetRandomRepairStation(out var success);
-                    if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(repairStation);
-                }
+                var shipYard = _levelManager.DataBase.TryGetRandomShipYard(out var success);
+                if (success) _levelManager.Factory.SpawnSpaceObjectAtRange(shipYard);
+                
+                var repairStation = _levelManager.DataBase.TryGetRandomRepairStation(out var success2);
+                if (success2) _levelManager.Factory.SpawnSpaceObjectAtRange(repairStation);
             }
         }
 
@@ -73,7 +64,8 @@ namespace Core.LevelManaging
                 {
                     _levelManager.Factory.SpawnSpaceObjectAtRange(enemyShip);
                 }
-                if (_levelManager.DepthCounter >= Random.Range(10,12)) break;
+
+                if (_levelManager.DepthCounter >= Random.Range(10, 12)) break;
             }
         }
 

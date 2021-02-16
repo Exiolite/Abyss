@@ -5,12 +5,12 @@ namespace Objects.NavigationCircle
 {
     public class ArrowCollider : ObjectBehaviour
     {
-        [SerializeField] private NavigationArrow navigationArrow;
+        [SerializeField] private NavigationArrow _navigationArrow;
 
 
         private void OnMouseDown()
         {
-            navigationArrow.SetPlayersTarget();
+            _navigationArrow.SetPlayersTarget();
         }
 
         protected override void Initialize(){}

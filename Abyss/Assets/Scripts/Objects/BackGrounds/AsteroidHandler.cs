@@ -5,7 +5,7 @@ namespace Objects.BackGrounds
 {
     public class AsteroidHandler : BackGroundBehaviour
     {
-        [SerializeField] private Sprite[] asteroidsSprites;
+        [SerializeField] private Sprite[] _asteroidsSprites;
 
         private SpriteRenderer _spriteRenderer;
 
@@ -13,7 +13,7 @@ namespace Objects.BackGrounds
         {
             base.Initialize();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _spriteRenderer.sprite = asteroidsSprites[Random.Range(0, asteroidsSprites.Length)];
+            _spriteRenderer.sprite = _asteroidsSprites[Random.Range(0, _asteroidsSprites.Length)];
         }
     }
 }

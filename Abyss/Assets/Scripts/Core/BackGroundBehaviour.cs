@@ -13,8 +13,8 @@ namespace Core
         {
             
         }
-        
-        public void DestroyItSelf()
+
+        private void DestroyItSelf()
         {
             BackGroundEvents.DestroyBackground.RemoveListener(DestroyItSelf);
             Destroy(gameObject);

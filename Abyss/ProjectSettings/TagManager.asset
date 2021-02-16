@@ -71,6 +71,9 @@ TagManager:
   - name: EngineParticles
     uniqueID: 4070624811
     locked: 0
+  - name: Projectiles
+    uniqueID: 1264408457
+    locked: 0
   - name: NavUI
     uniqueID: 3733429195
     locked: 0

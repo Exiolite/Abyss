@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a683b8dad78f4569af6448ba61621e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: Big Container
-  credits: 2400
-  materials: 24
+  _objName: Container B
+  _credits: 2400
+  _materials: 24
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 5
 --- !u!50 &6819314240838115459
 Rigidbody2D:
   serializedVersion: 4

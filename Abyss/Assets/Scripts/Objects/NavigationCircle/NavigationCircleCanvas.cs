@@ -9,9 +9,9 @@ namespace Objects.NavigationCircle
 {
     public class NavigationCircleCanvas : ObjectBehaviour
     {
-        [SerializeField] private GameObject resourcesPanel;
-        [SerializeField] private TextMeshProUGUI creditsText;
-        [SerializeField] private TextMeshProUGUI materialsText;
+        [SerializeField] private GameObject _resourcesPanel;
+        [SerializeField] private TextMeshProUGUI _creditsText;
+        [SerializeField] private TextMeshProUGUI _materialsText;
 
         private bool _isResourcePanelActive;
 
@@ -19,7 +19,7 @@ namespace Objects.NavigationCircle
         protected override void Initialize()
         {
             _isResourcePanelActive = false;
-            resourcesPanel.SetActive(_isResourcePanelActive);
+            _resourcesPanel.SetActive(_isResourcePanelActive);
             GuiEvent.UpdateNavCircleResources.AddListener(UpdateText);
         }
 
@@ -31,9 +31,9 @@ namespace Objects.NavigationCircle
         private void UpdateText()
         {
             _isResourcePanelActive = true;
-            resourcesPanel.SetActive(_isResourcePanelActive);
-            creditsText.text = PlayersAccount.OnShipAccountResources.GetCredits().ToString(CultureInfo.InvariantCulture);
-            materialsText.text = PlayersAccount.OnShipAccountResources.GetMaterials().ToString(CultureInfo.InvariantCulture);
+            _resourcesPanel.SetActive(_isResourcePanelActive);
+            _creditsText.text = PlayersAccount.OnShipAccountResources.GetCredits().ToString(CultureInfo.InvariantCulture);
+            _materialsText.text = PlayersAccount.OnShipAccountResources.GetMaterials().ToString(CultureInfo.InvariantCulture);
             StartCoroutine(DisableResourcesPanel());
         }
 
@@ -43,7 +43,7 @@ namespace Objects.NavigationCircle
             yield return new WaitForSeconds(2);
             if (_isResourcePanelActive)
             {
-                resourcesPanel.SetActive(false);
+                _resourcesPanel.SetActive(false);
             }
         }
     }

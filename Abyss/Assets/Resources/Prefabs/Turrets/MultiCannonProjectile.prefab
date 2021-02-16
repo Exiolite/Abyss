@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5962a751f7414f5bbbc6ad0e397e5e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  movement:
-    velocity: 0
-    maxSpeed: 200
-    angleSpeed: 0
+  _damage: 2
+  _movement:
+    _velocity: 0
+    _maxSpeed: 150
+    _angleSpeed: 0
 --- !u!212 &4027001048496272995
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -224342485
-  m_SortingLayer: 10
+  m_SortingLayerID: 1264408457
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 1252243683051303324, guid: 94b7157f93345e849bbe719480ef344b,
     type: 3}

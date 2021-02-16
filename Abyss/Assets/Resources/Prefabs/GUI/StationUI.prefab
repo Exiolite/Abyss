@@ -444,8 +444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a74822752f447aa97bd1aa7f5e0a47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsPriceText: {fileID: 8652586818609315448}
-  materialsPriceText: {fileID: 2201806076148060821}
+  _parentSpaceObject: {fileID: 0}
+  _buyImage: {fileID: 3521692106172814276}
+  _creditsPriceText: {fileID: 8652586818609315448}
+  _materialsPriceText: {fileID: 2201806076148060821}
 --- !u!1 &6081120264617553296
 GameObject:
   m_ObjectHideFlags: 0
