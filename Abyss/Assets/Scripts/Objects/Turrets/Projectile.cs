@@ -8,19 +8,17 @@ namespace Objects.Turrets
 {
     public class Projectile : MonoBehaviour
     {
-        //Projectile attributes
         [SerializeField] private float _damage;
-
-        //Modules
         [SerializeField] private Movement _movement;
 
-        //Targeting
-        private protected SpaceObject Target;
+        public float Damage => _damage;
+
+        private SpaceObject _target;
 
 
         public void SetTarget(SpaceObject target)
         {
-            Target = target;
+            _target = target;
         }
 
 
@@ -31,10 +29,10 @@ namespace Objects.Turrets
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (Target == null) return;
-            if (other.gameObject == Target.gameObject)
+            if (_target == null) return;
+            if (other.gameObject == _target.gameObject)
             {
-                var dynamicTarget = (Ship) Target;
+                var dynamicTarget = (Ship) _target;
                 dynamicTarget.ApplyDamage(_damage);
                 Destroy(gameObject);
             }
@@ -42,7 +40,7 @@ namespace Objects.Turrets
 
         private void Update()
         {
-            _movement.HardMoveRandomSpeed(transform);
+            _movement.HardMoveForward(transform);
         }
 
         private IEnumerator Destroy()

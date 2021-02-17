@@ -1,50 +1,34 @@
-﻿using System.Collections;
-using System.Globalization;
-using Core;
+﻿using Core;
 using Events;
-using TMPro;
+using Objects.Gui;
 using UnityEngine;
 
 namespace Objects.NavigationCircle
 {
     public class NavigationCircleCanvas : ObjectBehaviour
     {
-        [SerializeField] private GameObject _resourcesPanel;
-        [SerializeField] private TextMeshProUGUI _creditsText;
-        [SerializeField] private TextMeshProUGUI _materialsText;
+        [SerializeField] private ResourcesGui _resourcesGui;
+        [SerializeField] private PanelFlipFlopper _panelFlipFlopper;
 
-        private bool _isResourcePanelActive;
-
+        
 
         protected override void Initialize()
         {
-            _isResourcePanelActive = false;
-            _resourcesPanel.SetActive(_isResourcePanelActive);
+            _panelFlipFlopper.Activate();
             GuiEvent.UpdateNavCircleResources.AddListener(UpdateText);
+            _panelFlipFlopper.Deactivate();
         }
 
         protected override void Execute()
         {
+            
         }
 
 
         private void UpdateText()
         {
-            _isResourcePanelActive = true;
-            _resourcesPanel.SetActive(_isResourcePanelActive);
-            _creditsText.text = PlayersAccount.OnShipAccountResources.GetCredits().ToString(CultureInfo.InvariantCulture);
-            _materialsText.text = PlayersAccount.OnShipAccountResources.GetMaterials().ToString(CultureInfo.InvariantCulture);
-            StartCoroutine(DisableResourcesPanel());
-        }
-
-
-        private IEnumerator DisableResourcesPanel()
-        {
-            yield return new WaitForSeconds(2);
-            if (_isResourcePanelActive)
-            {
-                _resourcesPanel.SetActive(false);
-            }
+            _panelFlipFlopper.ActivateCoroutineDisable();
+            _resourcesGui.SetResources(PlayersAccount.OnShipAccountResources);
         }
     }
 }

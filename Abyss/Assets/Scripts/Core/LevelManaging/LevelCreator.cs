@@ -1,5 +1,4 @@
-﻿using Objects.Bot;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Core.LevelManaging
 {

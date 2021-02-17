@@ -74,7 +74,6 @@ namespace Modules.Account
         {
             OnShipAccountResources.AddCredits(creditsValue);
             OnShipAccountResources.AddMaterials(materialsValue);
-            Debug.Log(OnShipAccountResources.GetCredits() + " " + OnShipAccountResources.GetMaterials());
         }
         
         public void DepositToSave()

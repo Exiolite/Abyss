@@ -1,6 +1,5 @@
 ﻿using Events;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Objects.SpaceObjects.Static
 {

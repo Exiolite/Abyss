@@ -17,8 +17,7 @@ namespace Objects.SpaceObjects.Dynamic
         
         public int ShipPriceCredits => _shipPriceCredits;
         public int ShipPriceMaterials => _shipPriceMaterials;
-        
-        
+
         //SpaceObject attributes
         [SerializeField] private int _minDepth;
         [SerializeField] private int _maxDepth;
@@ -43,6 +42,7 @@ namespace Objects.SpaceObjects.Dynamic
         private SpaceObject _target;
 
 
+        
         public void SetTarget(SpaceObject target)
         {
             _target = target;
@@ -59,19 +59,33 @@ namespace Objects.SpaceObjects.Dynamic
             _damagedTime = Time.time;
             _healthStats.TryApplyDamage(value, out var haveHp);
             if (!haveHp) return;
-            NavigationEvent.RemoveArrow.Invoke(this);
-            LevelManager.SpawnExplosion(transform);
-            LevelManager.SpawnSmallContainer(transform);
+            
             if (this == LevelManager.InstancedPlayer)
             {
                 LevelEvent.PlayerDeath.Invoke();
                 SwipeEvent.SwipedUp.RemoveListener(DoMicroWarp);
             }
+            
+            NavigationEvent.RemoveArrow.Invoke(this);
+            LevelManager.SpawnExplosion(transform);
+            LevelManager.SpawnSmallContainer(transform);
             DestroyItSelf();
         }
-        
-        
-        
+
+        public float GetDps()
+        {
+            float dps = 0;
+            
+            foreach (var turretBehaviour in _turretBehaviours)
+            {
+                dps += turretBehaviour.GetDps();
+            }
+
+            return dps;
+        }
+
+
+
         protected override void Initialize()
         {
             base.Initialize();

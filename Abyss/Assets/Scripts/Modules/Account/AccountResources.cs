@@ -67,5 +67,11 @@ namespace Modules.Account
         {
             _materials.Reset();
         }
+
+        public void Reset()
+        {
+            ResetCredits();
+            ResetMaterials();
+        }
     }
 }
