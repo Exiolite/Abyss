@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objName: Falcon
-  _maxDepth: 10
+  _minDepth: 0
+  _maxDepth: 15
   _turretBehaviours:
   - {fileID: 1404456769695516042}
   _movement:
@@ -62,12 +63,12 @@ MonoBehaviour:
   _shipPriceMaterials: 30
   _healthStats:
     _hitPoints:
-      _statValue: 750
-      _maxStatValue: 750
+      _statValue: 550
+      _maxStatValue: 550
       _regenerateValue: 0
     _shield:
-      _statValue: 450
-      _maxStatValue: 450
+      _statValue: 250
+      _maxStatValue: 250
       _regenerateValue: 25
 --- !u!212 &7417966786929729339
 SpriteRenderer:

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8398590698190268462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13287917, y: -0.12553501, z: -1.7088411}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
     _velocity: 0
     _maxSpeed: 0
     _angleSpeed: 0
+  _shotClip: {fileID: 8300000, guid: f044fcae742fac9409fcc5dff401c988, type: 3}
   _projectile: {fileID: 6989442771255078612, guid: 116f05c2a09dfad439dcde738193b122,
     type: 3}
 --- !u!212 &6368302267476352592

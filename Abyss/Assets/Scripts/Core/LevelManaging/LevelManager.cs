@@ -69,9 +69,9 @@ namespace Core.LevelManaging
             if (success) Factory.SpawnParticlesAtTransform(parent, shieldParticles);
         }
 
-        public Ship SpawnRandomShipOnShipYard(Transform transform)
+        public Ship SpawnShipOnShipYard(Transform transform, Ship ship)
         {
-            var marketShip = DataBase.GetRandomMarketShip();
+            var marketShip = DataBase.TryFindPlayersShip(ship.ObjName, out var success);
             return (Ship)Factory.SpawnSpaceObjectAtTransform(marketShip, transform);
         }
 

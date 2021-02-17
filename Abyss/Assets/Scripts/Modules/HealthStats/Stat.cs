@@ -5,6 +5,8 @@ namespace Modules.HealthStats
     [System.Serializable]
     public class Stat
     {
+        public float StatValue => _statValue;
+        
         [SerializeField] private float _statValue;
         [SerializeField] private float _maxStatValue;
         [SerializeField] private float _regenerateValue;

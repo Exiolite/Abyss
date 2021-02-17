@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objName: Falcon Heavy
-  _maxDepth: 25
+  _minDepth: 0
+  _maxDepth: 35
   _turretBehaviours:
   - {fileID: 1404456769695516042}
   _movement:

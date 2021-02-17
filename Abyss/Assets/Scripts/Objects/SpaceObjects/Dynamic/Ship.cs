@@ -1,17 +1,17 @@
 ﻿using Events;
 using Modules.HealthStats;
 using Modules.Movements;
-using Objects.NavigationCircle;
 using Objects.Turrets;
 using Statics;
 using UnityEngine;
-using UnityEngine.Advertisements;
 
 namespace Objects.SpaceObjects.Dynamic
 {
     public class Ship : SpaceObject
     {
+        public int MinDepth => _minDepth;
         public int MaxDepth => _maxDepth;
+        
         public HealthStats HealthStats => _healthStats;
         public Movement Movement => _movement;
         
@@ -20,6 +20,7 @@ namespace Objects.SpaceObjects.Dynamic
         
         
         //SpaceObject attributes
+        [SerializeField] private int _minDepth;
         [SerializeField] private int _maxDepth;
         [SerializeField] private Turret[] _turretBehaviours;
         

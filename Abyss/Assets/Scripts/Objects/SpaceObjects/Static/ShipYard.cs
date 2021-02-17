@@ -7,29 +7,26 @@ namespace Objects.SpaceObjects.Static
     public class ShipYard : Station
     {
         [SerializeField] private Transform _spawnPosition;
-        
-        private Ship _marketShip;
-        
-        
-        
-        public void OnBuyShip() // GUI Button Event.
+
+
+
+        public void ButtonShowMarketUi()
         {
-            TryRemoveCredits(_marketShip.ShipPriceCredits , out var successRemovedCredits);
-            TryRemoveMaterials(_marketShip.ShipPriceMaterials, out var successRemovedMaterials);
+            GuiEvent.ShowMarket.Invoke();
+            LevelEvent.SetShipYard.Invoke(this);
+        }
+        
+        public void OnBuyShip(Ship target) // GUI Button Event.
+        {
+            TryRemoveCredits(target.ShipPriceCredits , out var successRemovedCredits);
+            TryRemoveMaterials(target.ShipPriceMaterials, out var successRemovedMaterials);
             if (successRemovedCredits && successRemovedMaterials)
             {
-                SwitchPlayerToShip();
+                SwitchPlayerToShip(target);
             }
         }
         
         
-
-        protected override void Initialize()
-        {
-            base.Initialize();
-            SpawnShip();
-        }
-
         protected override void Execute()
         {
             
@@ -37,16 +34,13 @@ namespace Objects.SpaceObjects.Static
 
 
 
-        private void SwitchPlayerToShip()
+        private void SwitchPlayerToShip(Ship target)
         {
-            LevelManager.SetPlayersShip(_marketShip);
-            PlayersAccount.SetPlayerShipName(_marketShip.ObjName);
+            var newShip = LevelManager.SpawnShipOnShipYard(transform, target);
+            LevelManager.SetPlayersShip(newShip);
+            PlayersAccount.SetPlayerShipName(newShip.ObjName);
         }
 
-        private void SpawnShip()
-        {
-            _marketShip = LevelManager.SpawnRandomShipOnShipYard(_spawnPosition);
-        }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -54,9 +48,6 @@ namespace Objects.SpaceObjects.Static
             if (other.gameObject != LevelManager.InstancedPlayer.gameObject) return;
             PlayersAccount.DepositToSave();
             GuiEvent.UpdateNavCircleResources.Invoke();
-            
-            UpdateCreditsUi(_marketShip.ShipPriceCredits);
-            UpdateMaterialsUi(_marketShip.ShipPriceMaterials);
         }
     }
 }

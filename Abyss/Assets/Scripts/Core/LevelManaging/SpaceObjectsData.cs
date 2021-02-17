@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Objects;
 using Objects.Effects;
 using Objects.NavigationCircle;
 using Objects.SpaceObjects;
@@ -11,6 +10,8 @@ namespace Core.LevelManaging
 {
     public class SpaceObjectsData
     {
+        public Ship[] MarketShips => _marketShips;
+        
         private readonly List<SpaceObject> _allSpaceObjects = new List<SpaceObject>();
         private Ship[] _enemiesShips;
         private Ship[] _marketShips;
@@ -63,7 +64,7 @@ namespace Core.LevelManaging
             var depthShips = new List<Ship>();
             foreach (var enemiesShip in _enemiesShips)
             {
-                if (enemiesShip.MaxDepth > depth)
+                if (enemiesShip.MaxDepth >= depth && depth >= enemiesShip.MinDepth)
                 {
                     depthShips.Add(enemiesShip);
                 }

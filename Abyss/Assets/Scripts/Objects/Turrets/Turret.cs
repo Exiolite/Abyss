@@ -13,11 +13,10 @@ namespace Objects.Turrets
         
         //Modules
         [SerializeField] private Movement _movement;
-        
-        
+
 
         protected abstract void AttackTarget(SpaceObject target);
-        
+
         
         
         public void SetTarget(SpaceObject target)

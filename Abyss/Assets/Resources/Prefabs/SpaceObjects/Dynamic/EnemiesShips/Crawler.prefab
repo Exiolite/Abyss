@@ -50,24 +50,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objName: Crawler
-  _maxDepth: 10
+  _minDepth: 5
+  _maxDepth: 15
   _turretBehaviours:
   - {fileID: 1404456769695516042}
   _movement:
     _velocity: 10
     _maxSpeed: 20
-    _angleSpeed: 8
+    _angleSpeed: 5
   _shipPriceCredits: 0
   _shipPriceMaterials: 0
   _healthStats:
     _hitPoints:
-      _statValue: 150
-      _maxStatValue: 150
+      _statValue: 50
+      _maxStatValue: 50
       _regenerateValue: 0
     _shield:
-      _statValue: 100
-      _maxStatValue: 100
-      _regenerateValue: 10
+      _statValue: 250
+      _maxStatValue: 250
+      _regenerateValue: 25
 --- !u!212 &7417966786929729339
 SpriteRenderer:
   m_ObjectHideFlags: 0

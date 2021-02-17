@@ -357,10 +357,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4232598166269793305, guid: a6dc7c27ee88e1a448442b9e90fda42b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32.000122
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875945563569651322, guid: a6dc7c27ee88e1a448442b9e90fda42b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7119871492489271958, guid: a6dc7c27ee88e1a448442b9e90fda42b,
         type: 3}
       propertyPath: m_Name
       value: GUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059516964282215674, guid: a6dc7c27ee88e1a448442b9e90fda42b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6dc7c27ee88e1a448442b9e90fda42b, type: 3}

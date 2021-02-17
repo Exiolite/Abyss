@@ -185,7 +185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Abyss 1.0.1
+  m_text: Abyss 1.0.2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e94d2cea4b80554cb7b8baf383d0ff5, type: 2}
   m_sharedMaterial: {fileID: -694817212385754262, guid: 3e94d2cea4b80554cb7b8baf383d0ff5,
