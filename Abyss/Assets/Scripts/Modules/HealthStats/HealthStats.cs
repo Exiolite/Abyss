@@ -21,7 +21,7 @@ namespace Modules.HealthStats
 
         public void RegenerateShield()
         {
-            _shield.RegenerateStat();
+            _shield.Regenerate();
         }
 
         public void TryApplyDamage(float value, out bool isLastShot)
@@ -55,7 +55,7 @@ namespace Modules.HealthStats
         
         private void TryRemoveShield(float value, out bool success)
         {
-            if (_shield.CheckUnderZero())
+            if (_shield.CheckMoreThanZero())
             {
                 _shield.Remove(value);
                 success = true;

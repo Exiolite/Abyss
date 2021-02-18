@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7294785452149056281}
   - component: {fileID: 6090574557433382921}
   - component: {fileID: 5917168334604174605}
+  - component: {fileID: 4234079388524641596}
   m_Layer: 0
   m_Name: DeathPannel
   m_TagString: Untagged
@@ -58,8 +59,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4010a89ed94bf39c10b68432ed4ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathPanel: {fileID: 7720490199657205556}
   _resourcesGui: {fileID: 8658977189992014138}
+--- !u!114 &4234079388524641596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133867608263612199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c7d044d55946d28ff96f50e20a075c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panel: {fileID: 7720490199657205556}
 --- !u!1 &2866692992920574073
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +350,7 @@ GameObject:
   - component: {fileID: 7979975705904081171}
   - component: {fileID: 7837770489263824806}
   m_Layer: 0
-  m_Name: panel
+  m_Name: On/Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

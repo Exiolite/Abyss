@@ -7,36 +7,28 @@ namespace Modules.Account
         private readonly Resource _credits = new Resource();
         private readonly Resource _materials = new Resource();
         
-        public void AddCredits(int value)
-        {
-            _credits.Add(value);
-        }
 
-        public void AddMaterials(int value)
-        {
-            _materials.Add(value);       
-        }
 
-        public void SetCredits(int value)
-        {
-            _credits.Add(value);
-        }
 
-        public void SetMaterials(int value)
-        {
-            _materials.Add(value);
-        }
+        public int GetCredits() => _credits.Get();
+
+        public int GetMaterials() => _materials.Get();
         
         
-        public int GetCredits()
-        {
-            return _credits.Get();
-        }
+        public void SetCredits(int value) => _credits.Add(value);
         
-        public int GetMaterials()
-        {
-            return _materials.Get();
-        }
+        public void SetMaterials(int value) => _materials.Add(value);
+
+        
+        public void ResetCredits() => _credits.Reset();
+
+        public void ResetMaterials() => _materials.Reset();
+        
+        
+        public void AddCredits(int value) => _credits.Add(value);
+
+        public void AddMaterials(int value) => _materials.Add(value);
+
         
         public void TryRemoveCredits(int value, out bool flag)
         {
@@ -58,20 +50,6 @@ namespace Modules.Account
             else flag = false;
         }
         
-        public void ResetCredits()
-        {
-            _credits.Reset();
-        }
 
-        public void ResetMaterials()
-        {
-            _materials.Reset();
-        }
-
-        public void Reset()
-        {
-            ResetCredits();
-            ResetMaterials();
-        }
     }
 }

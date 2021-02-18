@@ -1,5 +1,6 @@
 ﻿using Core;
 using Events;
+using Objects.Gui.Components;
 using UnityEngine;
 
 namespace Objects.Gui
@@ -12,22 +13,22 @@ namespace Objects.Gui
 
         [SerializeField] private GameObject _marketContent;
         
-        private PanelFlipFlopper _marketFlipFlopper;
+        private PanelFlipper _marketFlipper;
 
         
 
         protected override void Initialize()
         {
-            _marketFlipFlopper = GetComponent<PanelFlipFlopper>();
+            _marketFlipper = GetComponent<PanelFlipper>();
             
             foreach (var marketShip in LevelManager.DataBase.MarketShips)
             {
                 var shipRepresentor = Instantiate(_shipRepresentor, _marketContent.transform);
-                shipRepresentor.SetRepresentor(marketShip, _marketFlipFlopper);
+                shipRepresentor.SetRepresentor(marketShip, _marketFlipper);
             }
 
             GuiEvent.ShowMarket.AddListener(SetPanelActive);
-            _marketFlipFlopper.Deactivate();
+            _marketFlipper.Deactivate();
         }
 
         protected override void Execute()
@@ -37,7 +38,7 @@ namespace Objects.Gui
 
         private void SetPanelActive()
         {
-            _marketFlipFlopper.Activate();
+            _marketFlipper.Activate();
             _resourcesGui.SetResources(PlayersAccount.AccountSavedAccountResources);
         }
     }

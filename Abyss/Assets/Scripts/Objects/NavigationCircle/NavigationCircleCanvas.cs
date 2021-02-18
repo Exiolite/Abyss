@@ -1,6 +1,7 @@
 ﻿using Core;
 using Events;
 using Objects.Gui;
+using Objects.Gui.Components;
 using UnityEngine;
 
 namespace Objects.NavigationCircle
@@ -8,15 +9,15 @@ namespace Objects.NavigationCircle
     public class NavigationCircleCanvas : ObjectBehaviour
     {
         [SerializeField] private ResourcesGui _resourcesGui;
-        [SerializeField] private PanelFlipFlopper _panelFlipFlopper;
+        [SerializeField] private PanelFlipper _panelFlipper;
 
         
 
         protected override void Initialize()
         {
-            _panelFlipFlopper.Activate();
+            _panelFlipper.Activate();
             GuiEvent.UpdateNavCircleResources.AddListener(UpdateText);
-            _panelFlipFlopper.Deactivate();
+            _panelFlipper.Deactivate();
         }
 
         protected override void Execute()
@@ -27,7 +28,7 @@ namespace Objects.NavigationCircle
 
         private void UpdateText()
         {
-            _panelFlipFlopper.ActivateCoroutineDisable();
+            _panelFlipper.ActivateWaitThenDisable();
             _resourcesGui.SetResources(PlayersAccount.OnShipAccountResources);
         }
     }

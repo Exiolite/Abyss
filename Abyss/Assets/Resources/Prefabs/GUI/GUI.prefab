@@ -163,10 +163,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5615977438921307442}
         m_MethodName: OnZoomSliderChanged
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 983577896431465815}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -396,12 +396,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7119871492489271958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71e49668ed824e4e816fa99c92a682b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 96f328bf27ae4a83835fabc1bc311b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _resourcesGui: {fileID: 1387222990614917465}
-  _resourcesFlipFlopper: {fileID: 5943308371996703695}
-  _zoomSlider: {fileID: 983577896431465815}
+  _resourcesFlipper: {fileID: 7245970552112827430}
 --- !u!1001 &146190547906228365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,15 +1048,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8698f3a8700b496584306caa032c45c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5943308371996703695 stripped
+--- !u!114 &7245970552112827430 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3449639232087016815, guid: 4b9d8bc17c861b943baf084caee86bab,
+  m_CorrespondingSourceObject: {fileID: 1813701814589846150, guid: 4b9d8bc17c861b943baf084caee86bab,
     type: 3}
   m_PrefabInstance: {fileID: 9053726065985044128}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde269fe675f4efcabc18587eede1f18, type: 3}
+  m_Script: {fileID: 11500000, guid: 80c7d044d55946d28ff96f50e20a075c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

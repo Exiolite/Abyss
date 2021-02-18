@@ -33,10 +33,7 @@ namespace Core.LevelManaging
             DepthCounter++;
         }
 
-        public void SetPlayer(Ship target)
-        {
-            InstancedPlayer = target;
-        }
+        public void SetPlayer(Ship target) => InstancedPlayer = target;
 
         public void CreateNextLevel()
         {

@@ -1,8 +1,8 @@
 ﻿using Core;
 using Events;
+using Objects.Gui.Components;
 using Objects.SpaceObjects;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Objects.NavigationCircle
 {
@@ -10,16 +10,9 @@ namespace Objects.NavigationCircle
     {
         [SerializeField] private NavigationArrow _navigationArrow;
 
-        [SerializeField] private Image _hitPoints;
-        [SerializeField] private Image _shield;
-
-
-        private void AddArrow(SpaceObject target)
-        {
-            if (target == LevelManager.InstancedPlayer) return;
-            var arrow = Instantiate(_navigationArrow, transform);
-            arrow.SetTarget(target);
-        }
+        [SerializeField] private GImageFiller _hitPoints;
+        [SerializeField] private GImageFiller _shield;
+        
 
         protected override void Initialize()
         {
@@ -30,13 +23,21 @@ namespace Objects.NavigationCircle
         protected override void Execute()
         {
             if (LevelManager.InstancedPlayer == null) return;
-            transform.position = LevelManager.InstancedPlayer.transform.position; //TODO: Fix motionlag
+            transform.position = LevelManager.InstancedPlayer.transform.position;
             var playerShip = LevelManager.InstancedPlayer;
-            _hitPoints.fillAmount = playerShip.HealthStats.HitPoints.GetPercent();
-            _shield.fillAmount = playerShip.HealthStats.Shield.GetPercent();
+            
+            _hitPoints.SetImageFill(playerShip.HealthStats.HitPoints.GetPercent());
+            _shield.SetImageFill(playerShip.HealthStats.Shield.GetPercent());
         }
 
 
+        private void AddArrow(SpaceObject target)
+        {
+            if (target == LevelManager.InstancedPlayer) return;
+            var arrow = Instantiate(_navigationArrow, transform);
+            arrow.SetTarget(target);
+        }
+        
         private void DestroyItSelf()
         {
             Destroy(gameObject);

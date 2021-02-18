@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 8418366171635502285}
   - component: {fileID: 1314913501898400160}
   - component: {fileID: 7990841589580746745}
-  - component: {fileID: 3449639232087016815}
+  - component: {fileID: 1813701814589846150}
   m_Layer: 0
   m_Name: Resources_Flip
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _credits: {fileID: 5036607446927501157}
   _materials: {fileID: 6286941575419533259}
---- !u!114 &3449639232087016815
+--- !u!114 &1813701814589846150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7570284545930868922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde269fe675f4efcabc18587eede1f18, type: 3}
+  m_Script: {fileID: 11500000, guid: 80c7d044d55946d28ff96f50e20a075c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _panel: {fileID: 4377974090084160129}
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b222ccffbe8b460994f8e2a92e94a3f6, type: 3}
+  m_Script: {fileID: 11500000, guid: f6239e33ce5b47529262fbc8dbec3f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7083045624425242032
@@ -396,6 +396,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b222ccffbe8b460994f8e2a92e94a3f6, type: 3}
+  m_Script: {fileID: 11500000, guid: f6239e33ce5b47529262fbc8dbec3f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -51,23 +51,15 @@ namespace Modules.Account
             }
         }
 
-        public void SetPlayerShipName(string name)
-        {
-            _playerShipName = name;
-        }
-        
-        public void Reset()
-        {
-            _haveProgress = false;
-        }
+        public void SetPlayerShipName(string name) => _playerShipName = name;
+
+        public void Reset() => _haveProgress = false;
+
         
         //Ship
-        public string GetPlayersShipName()
-        {
-            return _playerShipName;
-        }
-        
-        
+        public string GetPlayersShipName() => _playerShipName;
+
+
         //Resources actions
 
         public void AddResourcesToShip(int creditsValue, int materialsValue)
@@ -110,12 +102,6 @@ namespace Modules.Account
         public bool HaveEnoughMaterials(int value)
         {
             return AccountSavedAccountResources.GetMaterials() > value;
-        }
-
-        public void TryRemoveResources(int creditsValue, int materialsValue, out bool success)
-        {
-            AccountSavedAccountResources.TryRemoveCredits(creditsValue, out success);
-            AccountSavedAccountResources.TryRemoveMaterials(materialsValue, out success);
         }
     }
 }

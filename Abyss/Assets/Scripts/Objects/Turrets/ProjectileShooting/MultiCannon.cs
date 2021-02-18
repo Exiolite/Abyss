@@ -16,9 +16,6 @@ namespace Objects.Turrets.ProjectileShooting
             projectile.SetTarget(target);
         }
 
-        public override float GetDps()
-        {
-            return _projectile.Damage / _attackDelay;
-        }
+        public override float GetDps() => _projectile.Damage / _attackDelay;
     }
 }

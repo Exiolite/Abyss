@@ -21,7 +21,7 @@ namespace Statics
             {
                 position = new Vector3(Random.Range(-maxRange*2,maxRange*2),Random.Range(-5.0f,5.0f),Random.Range(-maxRange*2,maxRange*2));
 
-            } while (Vector3.Distance(Vector3.zero, position) < minRange || Vector3.Distance(Vector3.zero, position) > maxRange);
+            }while (Vector3.Distance(Vector3.zero, position) < minRange || Vector3.Distance(Vector3.zero, position) > maxRange);
             
             return position;
         }

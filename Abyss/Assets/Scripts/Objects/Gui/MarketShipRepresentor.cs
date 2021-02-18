@@ -1,6 +1,5 @@
-﻿using System;
-using System.Globalization;
-using Events;
+﻿using Events;
+using Objects.Gui.Components;
 using Objects.SpaceObjects.Dynamic;
 using Objects.SpaceObjects.Static;
 using TMPro;
@@ -24,7 +23,7 @@ namespace Objects.Gui
 
         private Ship _target;
         private ShipYard _targetShipYard;
-        private PanelFlipFlopper _parentPanel;
+        private PanelFlipper _parentPanel;
         
 
         private void Awake()
@@ -32,7 +31,7 @@ namespace Objects.Gui
             LevelEvent.SetShipYard.AddListener(SetShipYard);
         }
 
-        public void SetRepresentor(Ship target, PanelFlipFlopper parentPanel)
+        public void SetRepresentor(Ship target, PanelFlipper parentPanel)
         {
             _target = target;
             _parentPanel = parentPanel;
@@ -42,7 +41,7 @@ namespace Objects.Gui
 
             _hitPointsGValueGUi.SetFloatText(_target.HealthStats.HitPoints.StatValue);
             _shieldGValue.SetFloatText(_target.HealthStats.Shield.StatValue);
-            _dpsGValueText.SetFloatText(_target.GetDps());
+            _dpsGValueText.SetFloatText(_target.GetShipDps());
             _depthGValueText.SetFloatText(_target.MaxDepth);
             
             _shipPriceCreditsText.SetIntText(_target.ShipPriceCredits);

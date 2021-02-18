@@ -16,11 +16,11 @@ namespace Modules.Movements
 
 
 
-        public void HardRotateToTarget(Transform transform, Transform target)
+        public void HardRotateToTarget(Transform parent, Transform target)
         {
-            var directionToTarget = target.transform.position - transform.position;
+            var directionToTarget = target.transform.position - parent.position;
             var angleToTarget = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angleToTarget);
+            parent.rotation = Quaternion.Euler(0f, 0f, angleToTarget);
         }
 
         public float GetSpeed()
@@ -28,32 +28,32 @@ namespace Modules.Movements
             return _speed * Time.deltaTime;
         }
 
-        public void SmoothRotateToTarget(Transform transform, Transform target)
+        public void SmoothRotateToTarget(Transform parent, Transform target)
         {
-            var directionToTarget = target.transform.position - transform.position;
+            var directionToTarget = target.transform.position - parent.position;
             var angleToTarget = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
             var targetRotation = Quaternion.Euler(0,0, angleToTarget);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _angleSpeed / 10);
+            parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.deltaTime * _angleSpeed / 10);
         }
         
-        public void HardMoveForward(Transform transform)
+        public void HardMoveForward(Transform parent)
         {
-            transform.Translate(transform.right * (Time.deltaTime * _maxSpeed), Space.World);
+            parent.Translate(parent.right * (Time.deltaTime * _maxSpeed), Space.World);
         }
         
-        public void HardMoveForwardWithCurrentSpeed(Transform transform)
+        public void HardMoveForwardWithCurrentSpeed(Transform parent)
         {
-            transform.position += transform.right * GetSpeed();
+            parent.position += parent.right * GetSpeed();
         }
 
-        public void HardMoveForwardWithMinSpeed(Transform transform)
+        public void HardMoveForwardWithMinSpeed(Transform parent)
         {
-            transform.position += transform.right * (Time.deltaTime * 3);
+            parent.position += parent.right * (Time.deltaTime * 3);
         }
 
-        public void SmoothMoveForward(Transform transform, bool flag)
+        public void SmoothMoveForward(Transform parent, bool isTargetNotNull)
         {
-            if (flag)
+            if (isTargetNotNull)
             {
                 _speed = Mathf.Clamp(_speed + (_velocity * Time.deltaTime), 0, _maxSpeed);
             }
@@ -61,52 +61,52 @@ namespace Modules.Movements
             {
                 _speed = Mathf.Clamp(_speed - GetSpeed(), 0, _maxSpeed);
             }
-            transform.Translate(transform.right * GetSpeed(), Space.World);
+            parent.Translate(parent.right * GetSpeed(), Space.World);
         }
 
-        public void MoveSlowDownToMinSpeed(Transform transform)
+        public void MoveSlowDownToMinSpeed(Transform parent)
         {
             _speed = Mathf.Clamp(_speed - GetSpeed(), 3, _maxSpeed);
-            transform.position += transform.right * GetSpeed();
+            parent.position += parent.right * GetSpeed();
         }
 
-        public void MoveShipToTarget(Transform transform, SpaceObject target)
+        public void MoveShipToTarget(Transform parent, SpaceObject target)
         {
             if (target == null)
             {
-                SmoothMoveForward(transform, false);
+                SmoothMoveForward(parent, false);
                 return;
             }
-            SmoothRotateToTarget(transform, target.transform);
+            SmoothRotateToTarget(parent, target.transform);
             if (target.GetType() == typeof(Ship))
             {
-                SmoothMoveForward(transform, true);
+                SmoothMoveForward(parent, true);
             }
             else
             {
-                if (RangeFinder.CalculateDistance(transform, target)>20)
+                if (RangeFinder.CalculateDistance(parent, target)>20)
                 {
-                    SmoothMoveForward(transform, true);
+                    SmoothMoveForward(parent, true);
                 }
                 else
                 {
-                    if (RangeFinder.CalculateDistance(transform, target) < 1)
+                    if (RangeFinder.CalculateDistance(parent, target) < 1)
                     {
                         _speed = 0;
                     }
                     else
                     {
-                        MoveSlowDownToMinSpeed(transform);
+                        MoveSlowDownToMinSpeed(parent);
                     }
                 }
             }
         }
         
-        public void MicroWarp(Transform transform, SpaceObject target)
+        public void MicroWarp(Transform parent, SpaceObject target)
         {
-            if (RangeFinder.CalculateDistance(transform, target) > 50.0f)
+            if (RangeFinder.CalculateDistance(parent, target) > 50.0f)
             {
-                transform.position += transform.right * (RangeFinder.CalculateDistance(transform, target)-50);
+                parent.position += parent.right * (RangeFinder.CalculateDistance(parent, target)-50);
             }
         }
     }

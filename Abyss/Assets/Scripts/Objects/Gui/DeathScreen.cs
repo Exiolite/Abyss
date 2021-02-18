@@ -7,33 +7,35 @@ namespace Objects.Gui
 {
     public class DeathScreen : ObjectBehaviour
     {
-        [SerializeField] private GameObject _deathPanel;
         [SerializeField] private ResourcesGui _resourcesGui;
+
+        private PanelFlipper _deathPanelFlipper;
 
 
         public void ButtonWatchAd()
         {
             if (Advertisement.IsReady())
                 Advertisement.Show();
-
+            
             PlayersAccount.DepositQuadToSave();
             LevelEvent.RestartGame.Invoke();
             PlayersAccount.Reset();
-            _deathPanel.SetActive(false);
+            _deathPanelFlipper.Deactivate();
         }
 
         public void ButtonRestart()
         {
             PlayersAccount.Reset();
             LevelEvent.RestartGame.Invoke();
-            _deathPanel.SetActive(false);
+            _deathPanelFlipper.Deactivate();
         }
 
 
         protected override void Initialize()
         {
-            _deathPanel.SetActive(false);
+            _deathPanelFlipper = GetComponent<PanelFlipper>();
             LevelEvent.PlayerDeath.AddListener(SetDeathPanelActive);
+            _deathPanelFlipper.Deactivate();
         }
 
         protected override void Execute()
@@ -43,7 +45,7 @@ namespace Objects.Gui
 
         private void SetDeathPanelActive()
         {
-            _deathPanel.SetActive(true);
+            _deathPanelFlipper.Activate();
             _resourcesGui.SetDividedResources(PlayersAccount.OnShipAccountResources);
         }
     }

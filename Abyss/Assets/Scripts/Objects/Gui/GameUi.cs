@@ -1,29 +1,25 @@
 ﻿using Core;
 using Events;
+using Objects.Gui.Components;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Objects.Gui
 {
-    public class Gui : ObjectBehaviour
+    public class GameUi : ObjectBehaviour
     {
         [SerializeField] private ResourcesGui _resourcesGui;
-        [SerializeField] private PanelFlipFlopper _resourcesFlipFlopper;
-
-        [SerializeField] private Slider _zoomSlider;
-
-
-
-        public void OnZoomSliderChanged()
-        {
-            GuiEvent.OnZoomSliderChanged.Invoke(_zoomSlider.value);
-        }
+        [SerializeField] private PanelFlipper _resourcesFlipper;
         
+
+
+        public void OnZoomSliderChanged(Slider slider) => GuiEvent.OnZoomSliderChanged.Invoke(slider.value);
+
         
 
         protected override void Initialize()
         {
-            _resourcesFlipFlopper.ActivateDisable();
+            _resourcesFlipper.ActivateThenDisable();
             GuiEvent.UpdateNavCircleResources.AddListener(UpdateResources);
         }
 
@@ -33,7 +29,7 @@ namespace Objects.Gui
         
         private void UpdateResources()
         {
-            _resourcesFlipFlopper.ActivateCoroutineDisable();
+            _resourcesFlipper.ActivateWaitThenDisable();
             _resourcesGui.SetResources(PlayersAccount.AccountSavedAccountResources);
         }
     }

@@ -16,10 +16,7 @@ namespace Objects.Turrets
         private SpaceObject _target;
 
 
-        public void SetTarget(SpaceObject target)
-        {
-            _target = target;
-        }
+        public void SetTarget(SpaceObject target) => _target = target;
 
 
         private void Start()

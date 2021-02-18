@@ -5,9 +5,6 @@
         private LevelManager _levelManager;
         
         
-        public LevelLoader(LevelManager levelManager)
-        {
-            _levelManager = levelManager;
-        }
+        public LevelLoader(LevelManager levelManager) => _levelManager = levelManager;
     }
 }

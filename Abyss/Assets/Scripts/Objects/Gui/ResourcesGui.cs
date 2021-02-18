@@ -1,4 +1,5 @@
 ﻿using Modules.Account;
+using Objects.Gui.Components;
 using UnityEngine;
 
 namespace Objects.Gui

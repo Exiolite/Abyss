@@ -8,11 +8,9 @@ namespace Objects.NavigationCircle
         [SerializeField] private NavigationArrow _navigationArrow;
 
 
-        private void OnMouseDown()
-        {
-            _navigationArrow.SetPlayersTarget();
-        }
+        private void OnMouseDown() => _navigationArrow.SetPlayersTarget();
 
+        
         protected override void Initialize(){}
         protected override void Execute(){}
     }

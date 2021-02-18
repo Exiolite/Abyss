@@ -43,19 +43,13 @@ namespace Objects.SpaceObjects.Dynamic
 
 
         
-        public void SetTarget(SpaceObject target)
-        {
-            _target = target;
-        }
-        
-        public void AddParticles(ParticleSystem shieldParticles)
-        {
-            _shieldParticles = shieldParticles;
-        }
+        public void SetTarget(SpaceObject target) => _target = target;
+
+        public void AddParticles(ParticleSystem shieldParticles) => _shieldParticles = shieldParticles;
         
         public void ApplyDamage(float value)
         {
-            _particlesPlayer.PlayShieldDamage(_shieldParticles);
+            _particlesPlayer.Play(_shieldParticles);
             _damagedTime = Time.time;
             _healthStats.TryApplyDamage(value, out var haveHp);
             if (!haveHp) return;
@@ -72,7 +66,7 @@ namespace Objects.SpaceObjects.Dynamic
             DestroyItSelf();
         }
 
-        public float GetDps()
+        public float GetShipDps()
         {
             float dps = 0;
             

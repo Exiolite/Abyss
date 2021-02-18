@@ -22,11 +22,6 @@ namespace Core
             var spawnedObject = Instantiate(target);
         }
 
-        public void SpawnObjectAtTransform(GameObject target, Transform parentTransform)
-        {
-            var spawnedObject = Instantiate(target, parentTransform);
-        }
-        
         public void SpawnObjectAtTransformDetached(GameObject target, Transform parentTransform)
         {
             var spawnedObject = Instantiate(target, parentTransform);
@@ -39,12 +34,6 @@ namespace Core
             target.AddParticles(particles);
         }
 
-        public void SpawnSpaceObject(SpaceObject target)
-        {
-            var spawnedObject = Instantiate(target);
-            SetObjectId(spawnedObject.gameObject);
-        }
-        
         public SpaceObject SpawnSpaceObjectAtTransform(SpaceObject target, Transform parentTransform)
         {
             var spawnedObject = Instantiate(target, parentTransform);

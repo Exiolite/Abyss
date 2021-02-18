@@ -7,10 +7,7 @@ namespace Core.LevelManaging
         private readonly LevelManager _levelManager;
 
 
-        public LevelCreator(LevelManager levelManager)
-        {
-            _levelManager = levelManager;
-        }
+        public LevelCreator(LevelManager levelManager) => _levelManager = levelManager;
 
 
         public void CreateLevel()

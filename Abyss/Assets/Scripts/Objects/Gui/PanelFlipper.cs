@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Objects.Gui
 {
-    public class PanelFlipFlopper : MonoBehaviour
+    public class PanelFlipper : MonoBehaviour
     {
+        [Tooltip("Assign panel for turning Off/On. To flip/flop panel - assign Methods of this script in button")]
         [SerializeField] private GameObject _panel;
 
         private bool _isPanelActive;
@@ -16,14 +17,14 @@ namespace Objects.Gui
             _panel.SetActive(_isPanelActive);
         }
 
-        public void ActivateCoroutineDisable()
+        public void ActivateWaitThenDisable()
         {
             Activate();
             
             StartCoroutine(DisableResourcesPanel());
         }
         
-        public void ActivateDisable()
+        public void ActivateThenDisable()
         {
             Activate();
             Deactivate();
@@ -40,6 +41,7 @@ namespace Objects.Gui
             _isPanelActive = false;
             _panel.SetActive(_isPanelActive);
         }
+        
         
 
         private IEnumerator DisableResourcesPanel()

@@ -193,16 +193,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoreCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 7931756646433927141, guid: 5ce6582b2b0f17a4c80e6dbc80f929ce,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 12.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384405890555415456, guid: 5ce6582b2b0f17a4c80e6dbc80f929ce,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -32
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce6582b2b0f17a4c80e6dbc80f929ce, type: 3}
 --- !u!1 &639166740

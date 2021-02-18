@@ -28,7 +28,7 @@ namespace Objects.BackGrounds
 
             FirstSpawn();
             
-            LevelEvent.DestroyAllExcludePlayer.AddListener(UpdateTest);
+            LevelEvent.DestroyAllExcludePlayer.AddListener(UpdatePlanetAndField);
         }
 
         protected override void Execute()
@@ -61,7 +61,7 @@ namespace Objects.BackGrounds
             UpdateAsteroidsField();
         }
         
-        private void UpdateTest(Ship test)
+        private void UpdatePlanetAndField(Ship garbage)
         {
             var randomX = Random.Range(-800, 800);
             var randomY = Random.Range(-800, 800);
